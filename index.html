@@ -489,14 +489,16 @@ async function getAccessToken() {
 }
 
 async function importPrivateKey(pem) {
-  const pemContent = pem.replace(/-----BEGIN RSA PRIVATE KEY-----|-----BEGIN PRIVATE KEY-----|-----END RSA PRIVATE KEY-----|-----END PRIVATE KEY-----|\n|\r/g, '');
+  // Handle both real newlines and escaped \n from JSON
+  const cleaned = pem.replace(/\\n/g, '\n');
+  const pemContent = cleaned
+    .replace(/-----BEGIN RSA PRIVATE KEY-----/g, '')
+    .replace(/-----BEGIN PRIVATE KEY-----/g, '')
+    .replace(/-----END RSA PRIVATE KEY-----/g, '')
+    .replace(/-----END PRIVATE KEY-----/g, '')
+    .replace(/\s/g, '');
   const binaryDer = Uint8Array.from(atob(pemContent), c => c.charCodeAt(0));
-  try {
-    return await crypto.subtle.importKey('pkcs8', binaryDer, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
-  } catch(e) {
-    // Try as raw RSA key
-    return await crypto.subtle.importKey('pkcs8', binaryDer, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
-  }
+  return await crypto.subtle.importKey('pkcs8', binaryDer, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1205,7 +1207,19 @@ function renderTodoItem(t,compact){
   const link=[];
   if(t.contactLabel)link.push('👤 '+t.contactLabel);
   if(t.companyLabel)link.push('🏢 '+t.companyLabel);
-  return`<div class="todo-item"><button class="todo-check ${done?'done':''}" onclick="toggleTodo('${t.id}')"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-content"><div class="todo-text ${done?'done':''}">${escHtml(t.text)}</div>${link.length?`<div class="todo-link">${link.join(' · ')}</div>`:''}</div><div class="todo-right"><span class="badge b-${t.priority.toLowerCase()}">${t.priority}</span>${!done&&!compact?`<div class="todo-actions"><select class="move-sel" onchange="changePriority('${t.id}',this.value)"><option value="">Move</option>${['Now','Later','Radar'].filter(x=>x!==t.priority).map(x=>`<option value="${x}">${x}</option>`).join('')}</select><button class="mini-btn" onclick="deleteTodo('${t.id}')">✕</button></div>`:''}</div></div>`;
+  return`<div class="todo-item"><button class="todo-check ${done?'done':''}" onclick="toggleTodo('${t.id}')"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-content"><div class="todo-text ${done?'done':''}">${escHtml(t.text)}</div>${link.length?`<div class="todo-link">${link.join(' · ')}</div>`:''}</div><div class="todo-right"><span class="badge b-${t.priority.toLowerCase()}">${t.priority}</span>${!done&&!compact?`<div class="todo-actions"><button class="mini-btn" onclick="editTodo('${t.id}')">Edit</button><select class="move-sel" onchange="changePriority('${t.id}',this.value)"><option value="">Change prio</option>${['Now','Later','Radar'].filter(x=>x!==t.priority).map(x=>`<option value="${x}">${x}</option>`).join('')}</select><button class="mini-btn" onclick="deleteTodo('${t.id}')">✕</button></div>`:''}</div></div>`;
+}
+function editTodo(id){
+  const t=DB.todos.find(x=>x.id===id);if(!t)return;
+  editingTodo=id;
+  openModal('add-todo');
+  setTimeout(()=>{
+    document.getElementById('at-title').textContent='Edit To-Do';
+    document.getElementById('at-text').value=t.text||'';
+    document.getElementById('at-priority').value=t.priority||'Now';
+    if(t.contactId&&t.contactLabel){msState['at-c']=[{id:t.contactId,label:t.contactLabel,_type:'contact'}];renderMsChips('at-c');}
+    if(t.companyId&&t.companyLabel){msState['at-co']=[{id:t.companyId,label:t.companyLabel,_type:'corp'}];renderMsChips('at-co');}
+  },100);
 }
 async function toggleTodo(id){
   const t=DB.todos.find(x=>x.id===id);if(!t)return;
