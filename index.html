@@ -18,38 +18,28 @@
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;background:var(--bg);color:var(--text);min-height:100vh}
 .app{display:flex;flex-direction:column;min-height:100vh;max-width:680px;margin:0 auto;background:var(--surface);box-shadow:0 0 0 0.5px var(--border)}
-
-/* TOP BAR */
 .topbar{background:var(--accent);color:#fff;padding:12px 16px 10px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:50}
 .topbar-logo{font-size:18px;font-weight:700;letter-spacing:-.5px;flex:1}
 .topbar-logo span{font-weight:300;opacity:.7}
 .icon-btn{background:none;border:none;color:#fff;cursor:pointer;padding:4px;border-radius:var(--radius-sm);opacity:.8;display:flex;align-items:center;justify-content:center}
 .icon-btn:hover{opacity:1;background:rgba(255,255,255,.1)}
 .icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-/* NAV */
+.sync-status{font-size:11px;opacity:.7;padding:2px 6px;border-radius:10px;background:rgba(255,255,255,.1)}
+.sync-status.syncing{opacity:1;background:rgba(255,200,0,.3)}
+.sync-status.error{background:rgba(255,80,80,.3)}
 .nav{display:grid;grid-template-columns:repeat(4,1fr);background:var(--accent);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:52px;z-index:50}
 .nav-btn{background:none;border:none;color:rgba(255,255,255,.6);padding:8px 4px 10px;font-size:11px;font-weight:500;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;letter-spacing:.02em;border-bottom:2px solid transparent;transition:all .15s}
 .nav-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav-btn.active{color:#fff;border-bottom-color:#fff}
-
-/* CONTENT */
 .page{display:none;padding:0 0 80px}
 .page.active{display:block}
-
-/* SEARCH BAR */
 .search-wrap{padding:12px 16px;background:var(--surface);border-bottom:0.5px solid var(--border);position:sticky;top:104px;z-index:40}
 .search-row{display:flex;gap:8px;align-items:center}
 .search-filter{padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:13px;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none;min-width:90px}
 .search-box{flex:1;position:relative}
 .search-box input{width:100%;padding:8px 12px 8px 34px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;background:var(--surface);color:var(--text)}
 .search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text3);cursor:pointer;font-size:16px;padding:2px 4px}
-
-/* SECTION HEADERS */
 .section-hd{padding:16px 16px 8px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
-
-/* CARDS */
 .card{background:var(--surface);border-bottom:0.5px solid var(--border);padding:12px 16px;cursor:pointer;transition:background .1s;display:flex;align-items:flex-start;gap:12px}
 .card:active{background:var(--surface2)}
 .card-body{flex:1;min-width:0}
@@ -58,15 +48,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .card-meta{font-size:12px;color:var(--text3);margin-top:3px}
 .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
 .chevron{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
-
-/* AVATAR */
 .avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;letter-spacing:-.5px}
 .av-blue{background:var(--accent-bg);color:var(--accent2)}
 .av-green{background:var(--green-bg);color:var(--green)}
 .av-amber{background:var(--amber-bg);color:var(--amber)}
 .av-gray{background:var(--surface2);color:var(--text2)}
-
-/* BADGES */
 .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;white-space:nowrap}
 .b-sponsor{background:var(--accent-bg);color:var(--accent2)}
 .b-corp{background:var(--green-bg);color:var(--green)}
@@ -77,14 +63,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .b-active{background:var(--green-bg);color:var(--green)}
 .b-pipeline{background:var(--amber-bg);color:var(--amber)}
 .b-watching{background:var(--surface2);color:var(--text2)}
-
-/* PRIORITY DOTS */
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
-.dot-high{background:#e74c3c}
-.dot-med{background:#f39c12}
-.dot-low{background:#bdc3c7}
-
-/* INTERACTION LOG */
 .log-item{padding:12px 16px;border-bottom:0.5px solid var(--border)}
 .log-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .log-date{font-size:12px;color:var(--text3);font-weight:500}
@@ -94,8 +72,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .tag{font-size:11px;padding:2px 7px;border-radius:10px}
 .tag-contact{background:var(--accent-bg);color:var(--accent2)}
 .tag-company{background:var(--green-bg);color:var(--green)}
-
-/* TODO */
 .todo-item{padding:12px 16px;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;gap:10px}
 .todo-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);background:none;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s}
 .todo-check.done{background:var(--green);border-color:var(--green)}
@@ -108,10 +84,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .todo-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .todo-actions{display:flex;gap:4px}
 .mini-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:3px 7px;font-size:11px;color:var(--text2);cursor:pointer}
-.mini-btn:active{background:var(--surface2)}
 .move-sel{font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text2);appearance:none;-webkit-appearance:none}
-
-/* PROFILE */
 .profile-hero{padding:20px 16px 16px;border-bottom:0.5px solid var(--border);display:flex;gap:14px;align-items:flex-start}
 .profile-avatar{width:56px;height:56px;border-radius:50%;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .profile-info{flex:1;min-width:0}
@@ -119,7 +92,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .profile-sub{font-size:14px;color:var(--text2);margin-bottom:6px}
 .profile-badges{display:flex;flex-wrap:wrap;gap:5px}
 .profile-actions{display:flex;gap:8px;padding:10px 16px;border-bottom:0.5px solid var(--border);background:var(--surface2)}
-.action-btn{flex:1;padding:8px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--surface);font-size:13px;font-weight:500;color:var(--accent2);cursor:pointer;text-align:center}
+.action-btn{flex:1;padding:8px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--surface);font-size:13px;font-weight:500;color:var(--accent2);cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center}
 .action-btn:active{background:var(--surface2)}
 .profile-section{border-bottom:0.5px solid var(--border)}
 .profile-section-hd{padding:12px 16px 0;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
@@ -141,16 +114,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .cr-sub{font-size:12px;color:var(--text3)}
 .cr-actions{display:flex;gap:8px}
 .cr-link{font-size:12px;color:var(--accent2)}
-
-/* MODAL / SHEET */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .modal-bg.open{display:flex}
 .modal{background:var(--surface);border-radius:16px 16px 0 0;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom)}
 .modal-hd{padding:16px 16px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10}
 .modal-title{font-size:17px;font-weight:600}
 .modal-close{background:var(--surface2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center}
-
-/* FORMS */
 .form-body{padding:12px 16px}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
@@ -161,9 +130,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .form-actions{display:flex;gap:10px;padding:12px 16px 16px;border-top:0.5px solid var(--border)}
 .btn-cancel{flex:1;padding:12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;font-weight:500;background:none;color:var(--text2);cursor:pointer}
 .btn-save{flex:2;padding:12px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:600;background:var(--accent);color:#fff;cursor:pointer}
-.btn-save:active{background:var(--accent2)}
-
-/* MULTI-SELECT CHIPS */
 .ms-wrap{border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 8px;background:var(--surface);min-height:44px;cursor:text}
 .ms-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
 .ms-chip{display:inline-flex;align-items:center;gap:3px;font-size:13px;padding:3px 8px;border-radius:20px;background:var(--accent-bg);color:var(--accent2)}
@@ -173,12 +139,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .ms-opt{padding:10px 12px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
 .ms-opt:active{background:var(--surface2)}
 .ms-opt-new{color:var(--accent2);font-style:italic}
-
-/* FAB */
 .fab{position:fixed;bottom:24px;right:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.25);z-index:100;transition:transform .1s}
 .fab:active{transform:scale(.94)}
-
-/* DASHBOARD */
 .dash-search{padding:16px 16px 12px;background:var(--surface);border-bottom:0.5px solid var(--border)}
 .dash-row{display:flex;gap:8px;align-items:center}
 .dash-filter{padding:9px 10px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none;flex-shrink:0}
@@ -186,14 +148,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .dash-input-wrap input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;background:var(--surface);color:var(--text)}
 .dash-input-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .search-results{background:var(--surface)}
-
-/* UTILITY */
 .divider{height:8px;background:var(--bg);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
 mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 .empty-state{padding:40px 20px;text-align:center;color:var(--text3);font-size:14px;line-height:1.6}
-.empty-state svg{width:40px;height:40px;stroke:var(--border2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.empty-state svg{width:40px;height:40px;stroke:var(--border2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto}
 .focus-panel{background:var(--accent-bg);border-top:0.5px solid var(--border);padding:12px 16px}
-.focus-panel-hd{font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:10px;display:flex;justify-content:space-between}
+.focus-panel-hd{font-size:12px;font-weight:600;color:var(--accent2);margin-bottom:10px}
 .focus-group{margin-bottom:10px}
 .focus-group-name{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
 .focus-chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:3px 8px;border-radius:10px;margin:2px;cursor:pointer}
@@ -201,20 +161,37 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 .fc-pipeline{background:var(--amber-bg);color:var(--amber)}
 .fc-watching{background:var(--surface2);color:var(--text2)}
 .toggle-btn{background:none;border:1px solid var(--accent2);border-radius:var(--radius-sm);padding:4px 10px;font-size:12px;color:var(--accent2);cursor:pointer}
+.loading-overlay{position:fixed;inset:0;background:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;color:#fff;gap:16px}
+.loading-overlay.hidden{display:none}
+.loading-spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:15px;opacity:.8}
 </style>
 </head>
 <body>
-<div class="app">
 
-  <!-- TOP BAR -->
+<!-- LOADING SCREEN -->
+<div class="loading-overlay" id="loading">
+  <div style="font-size:24px;font-weight:700;letter-spacing:-.5px">Field<span style="font-weight:300;opacity:.7">Notes</span></div>
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loading-text">Connecting to Google Sheets…</div>
+</div>
+
+<div class="app">
   <div class="topbar">
     <div class="topbar-logo">Field<span>Notes</span></div>
+    <span class="sync-status" id="sync-status">Synced</span>
+    <button class="icon-btn" onclick="syncNow()" title="Sync">
+      <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+    </button>
     <button class="icon-btn" onclick="openModal('log')" title="Log interaction">
       <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
     </button>
+    <button class="icon-btn" onclick="exportAll()" title="Export CSV">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </button>
   </div>
 
-  <!-- NAV -->
   <nav class="nav">
     <button class="nav-btn active" onclick="showPage('dash',this)">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
@@ -234,7 +211,6 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     </button>
   </nav>
 
-  <!-- DASHBOARD PAGE -->
   <div id="page-dash" class="page active">
     <div class="dash-search">
       <div class="dash-row">
@@ -246,12 +222,11 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
         </select>
         <div class="dash-input-wrap">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          <input type="search" id="dash-search" placeholder="Search contacts, sponsors, companies…" oninput="dashSearch()" autocomplete="off" autocorrect="off" spellcheck="false"/>
+          <input type="search" id="dash-search-input" placeholder="Search contacts, sponsors, companies…" oninput="dashSearch()" autocomplete="off" autocorrect="off" spellcheck="false"/>
         </div>
       </div>
       <div id="dash-results" class="search-results"></div>
     </div>
-
     <div id="dash-body">
       <div class="section-hd">To-Dos — Now</div>
       <div id="dash-todos"></div>
@@ -261,7 +236,6 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     </div>
   </div>
 
-  <!-- CONTACTS PAGE -->
   <div id="page-contacts" class="page">
     <div class="search-wrap">
       <div class="search-row">
@@ -274,7 +248,6 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div id="contact-list"></div>
   </div>
 
-  <!-- COMPANIES PAGE -->
   <div id="page-companies" class="page">
     <div class="search-wrap">
       <div class="search-row">
@@ -293,82 +266,54 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div id="company-list"></div>
   </div>
 
-  <!-- TODOS PAGE -->
   <div id="page-todos" class="page">
-    <div id="focus-toggle-bar" style="padding:10px 16px;border-bottom:0.5px solid var(--border);display:flex;justify-content:flex-end">
+    <div style="padding:10px 16px;border-bottom:0.5px solid var(--border);display:flex;justify-content:flex-end">
       <button class="toggle-btn" onclick="toggleFocusPanel()">Show Focus Names</button>
     </div>
     <div id="focus-panel" style="display:none"></div>
     <div id="todo-list"></div>
   </div>
-
-</div><!-- .app -->
+</div>
 
 <!-- PROFILE MODAL -->
 <div class="modal-bg" id="modal-profile">
   <div class="modal" id="modal-profile-body"></div>
 </div>
 
-<!-- LOG INTERACTION MODAL -->
+<!-- LOG INTERACTION -->
 <div class="modal-bg" id="modal-log">
   <div class="modal">
-    <div class="modal-hd">
-      <span class="modal-title" id="log-title">Log Interaction</span>
-      <button class="modal-close" onclick="closeModal('log')">×</button>
-    </div>
+    <div class="modal-hd"><span class="modal-title" id="log-title">Log Interaction</span><button class="modal-close" onclick="closeModal('log')">×</button></div>
     <div class="form-body">
-      <div class="field">
-        <label>Date</label>
-        <input type="date" id="log-date"/>
-      </div>
-      <div class="field">
-        <label>Contacts (up to 4)</label>
-        <div class="ms-wrap" onclick="focusMs('lc')">
-          <div class="ms-chips" id="lc-chips"></div>
-          <input class="ms-input" id="lc-input" placeholder="Search contacts…" oninput="msSearch('lc',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+      <div class="field"><label>Date</label><input type="date" id="log-date"/></div>
+      <div class="field"><label>Contacts (up to 4)</label>
+        <div class="ms-wrap" onclick="focusMs('lc')"><div class="ms-chips" id="lc-chips"></div><input class="ms-input" id="lc-input" placeholder="Search contacts…" oninput="msSearch('lc',this.value)" autocomplete="off"/></div>
         <div id="lc-dd" class="ms-dropdown" style="display:none"></div>
       </div>
-      <div class="field">
-        <label>Topic (optional)</label>
-        <div class="ms-wrap" onclick="focusMs('lt')">
-          <div class="ms-chips" id="lt-chips"></div>
-          <input class="ms-input" id="lt-input" placeholder="Search sponsors or companies…" oninput="msSearch('lt',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+      <div class="field"><label>Topic (optional)</label>
+        <div class="ms-wrap" onclick="focusMs('lt')"><div class="ms-chips" id="lt-chips"></div><input class="ms-input" id="lt-input" placeholder="Search sponsors or companies…" oninput="msSearch('lt',this.value)" autocomplete="off"/></div>
         <div id="lt-dd" class="ms-dropdown" style="display:none"></div>
-        <div class="field-hint">What company or sponsor was discussed — separate from who the contact works at</div>
+        <div class="field-hint">What company was discussed — separate from who the contact works at</div>
       </div>
-      <div class="field">
-        <label>Type</label>
-        <select id="log-type">
-          <option>Call</option><option>Meeting</option><option>Conference</option><option>Email</option><option>Other</option>
-        </select>
+      <div class="field"><label>Type</label>
+        <select id="log-type"><option>Call</option><option>Meeting</option><option>Conference</option><option>Email</option><option>Other</option></select>
       </div>
-      <div class="field">
-        <label>Notes</label>
-        <textarea id="log-notes" placeholder="Key points, context, anything worth remembering…" style="min-height:120px"></textarea>
-      </div>
+      <div class="field"><label>Notes</label><textarea id="log-notes" placeholder="Key points, context, anything worth remembering…" style="min-height:120px"></textarea></div>
     </div>
-    <div class="form-actions">
-      <button class="btn-cancel" onclick="closeModal('log')">Cancel</button>
-      <button class="btn-save" onclick="saveInteraction()">Save</button>
-    </div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('log')">Cancel</button><button class="btn-save" onclick="saveInteraction()">Save</button></div>
   </div>
 </div>
 
-<!-- ADD ENTITY MODAL -->
+<!-- ADD MENU -->
 <div class="modal-bg" id="modal-add">
   <div class="modal">
-    <div class="modal-hd">
-      <span class="modal-title">Add New</span>
-      <button class="modal-close" onclick="closeModal('add')">×</button>
-    </div>
+    <div class="modal-hd"><span class="modal-title">Add New</span><button class="modal-close" onclick="closeModal('add')">×</button></div>
     <div class="form-body" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px">
-      <button class="action-btn" style="padding:16px;font-size:14px" onclick="closeModal('add');openModal('add-contact')">+ Contact</button>
-      <button class="action-btn" style="padding:16px;font-size:14px" onclick="closeModal('add');openModal('add-sponsor')">+ PE Firm</button>
-      <button class="action-btn" style="padding:16px;font-size:14px" onclick="closeModal('add');openModal('add-corp')">+ Corporate</button>
-      <button class="action-btn" style="padding:16px;font-size:14px" onclick="closeModal('add');openModal('add-focus')">+ Focus Name</button>
-      <button class="action-btn" style="padding:16px;font-size:14px;grid-column:1/-1" onclick="closeModal('add');openModal('add-todo')">+ To-Do</button>
+      <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-contact')">+ Contact</button>
+      <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-sponsor')">+ PE Firm</button>
+      <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-corp')">+ Corporate</button>
+      <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-focus')">+ Focus Name</button>
+      <button class="action-btn" style="padding:16px;grid-column:1/-1" onclick="closeModal('add');openModal('add-todo')">+ To-Do</button>
     </div>
   </div>
 </div>
@@ -388,17 +333,14 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
         <div class="field"><label>Priority</label><select id="ac-priority"><option value="">—</option><option value="High">High</option><option value="Med">Med</option><option value="Low">Low</option></select></div>
       </div>
       <div class="field"><label>Company</label>
-        <div class="ms-wrap" onclick="focusMs('ac-co')">
-          <div class="ms-chips" id="ac-co-chips"></div>
-          <input class="ms-input" id="ac-co-input" placeholder="Search companies…" oninput="msSearch('ac-co',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+        <div class="ms-wrap" onclick="focusMs('ac-co')"><div class="ms-chips" id="ac-co-chips"></div><input class="ms-input" id="ac-co-input" placeholder="Search companies…" oninput="msSearch('ac-co',this.value)" autocomplete="off"/></div>
         <div id="ac-co-dd" class="ms-dropdown" style="display:none"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Role</label><input id="ac-role" placeholder="Deal Partner, Cap Mkts…"/></div>
+        <div class="field"><label>Role</label><input id="ac-role" placeholder="Deal Partner…"/></div>
         <div class="field"><label>Title</label><input id="ac-title-f" placeholder="MD, VP…"/></div>
       </div>
-      <div class="field"><label>Coverage</label><input id="ac-coverage" placeholder="Enterprise Software, Rates…"/></div>
+      <div class="field"><label>Coverage</label><input id="ac-coverage" placeholder="Enterprise Software…"/></div>
       <div class="field-row">
         <div class="field"><label>Email</label><input id="ac-email" type="email" placeholder="email@firm.com"/></div>
         <div class="field"><label>Phone</label><input id="ac-phone" type="tel" placeholder="+1 212…"/></div>
@@ -407,8 +349,8 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
         <div class="field"><label>Location</label><input id="ac-location" placeholder="NYC, SF…"/></div>
         <div class="field"><label>LinkedIn</label><input id="ac-linkedin" placeholder="linkedin.com/in/…"/></div>
       </div>
-      <div class="field"><label>Connection</label><input id="ac-connection" placeholder="How you met, intro context…"/></div>
-      <div class="field"><label>Bio / Notes</label><textarea id="ac-bio" placeholder="Personal notes, background, anything worth remembering…"></textarea></div>
+      <div class="field"><label>Connection</label><input id="ac-connection" placeholder="How you met…"/></div>
+      <div class="field"><label>Bio / Notes</label><textarea id="ac-bio" placeholder="Personal notes, background…"></textarea></div>
     </div>
     <div class="form-actions"><button class="btn-cancel" onclick="closeModal('add-contact')">Cancel</button><button class="btn-save" onclick="saveContact()">Save</button></div>
   </div>
@@ -421,8 +363,8 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div class="form-body">
       <div class="field"><label>Firm Name *</label><input id="as-name" placeholder="e.g. Vista Equity Partners"/></div>
       <div class="field"><label>Priority</label><select id="as-priority"><option value="">—</option><option value="High">High</option><option value="Med">Med</option><option value="Low">Low</option></select></div>
-      <div class="field"><label>Fund Notes</label><textarea id="as-funds" placeholder="Fund VI $8B flagship, Fund V $4B mid-cap, Growth Fund $2B…"></textarea></div>
-      <div class="field"><label>Notes</label><textarea id="as-notes" placeholder="Strategy, relationship context, anything else…"></textarea></div>
+      <div class="field"><label>Fund Notes</label><textarea id="as-funds" placeholder="Fund VI $8B flagship, Fund V $4B mid-cap…"></textarea></div>
+      <div class="field"><label>Notes</label><textarea id="as-notes" placeholder="Strategy, relationship context…"></textarea></div>
     </div>
     <div class="form-actions"><button class="btn-cancel" onclick="closeModal('add-sponsor')">Cancel</button><button class="btn-save" onclick="saveSponsor()">Save</button></div>
   </div>
@@ -435,14 +377,11 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div class="form-body">
       <div class="field"><label>Company Name *</label><input id="aco-name" placeholder="e.g. Proofpoint"/></div>
       <div class="field-row">
-        <div class="field"><label>Type</label><select id="aco-type"><option value="Private">Private</option><option value="Public">Public</option></select></div>
+        <div class="field"><label>Type</label><select id="aco-type"><option value="Private">Private</option><option value="Public">Public</option><option value="Other">Other</option></select></div>
         <div class="field"><label>Priority</label><select id="aco-priority"><option value="">—</option><option value="High">High</option><option value="Med">Med</option><option value="Low">Low</option></select></div>
       </div>
       <div class="field"><label>PE Owner (if applicable)</label>
-        <div class="ms-wrap" onclick="focusMs('aco-pe')">
-          <div class="ms-chips" id="aco-pe-chips"></div>
-          <input class="ms-input" id="aco-pe-input" placeholder="Search PE firms…" oninput="msSearch('aco-pe',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+        <div class="ms-wrap" onclick="focusMs('aco-pe')"><div class="ms-chips" id="aco-pe-chips"></div><input class="ms-input" id="aco-pe-input" placeholder="Search PE firms…" oninput="msSearch('aco-pe',this.value)" autocomplete="off"/></div>
         <div id="aco-pe-dd" class="ms-dropdown" style="display:none"></div>
       </div>
       <div class="field"><label>Description</label><textarea id="aco-desc" placeholder="What the company does…" style="min-height:60px"></textarea></div>
@@ -458,7 +397,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
         <div class="field"><label>Valuation</label><input id="aco-val" placeholder="$2.4B"/></div>
         <div class="field"><label>Leverage</label><input id="aco-lev" placeholder="6.5x"/></div>
       </div>
-      <div class="field"><label>Notes</label><textarea id="aco-notes" placeholder="Capital structure, credit notes, anything else…" style="min-height:60px"></textarea></div>
+      <div class="field"><label>Notes</label><textarea id="aco-notes" placeholder="Capital structure, credit notes…" style="min-height:60px"></textarea></div>
     </div>
     <div class="form-actions"><button class="btn-cancel" onclick="closeModal('add-corp')">Cancel</button><button class="btn-save" onclick="saveCorp()">Save</button></div>
   </div>
@@ -470,24 +409,16 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div class="modal-hd"><span class="modal-title" id="af-title">New Focus Name</span><button class="modal-close" onclick="closeModal('add-focus')">×</button></div>
     <div class="form-body">
       <div class="field"><label>Company *</label>
-        <div class="ms-wrap" onclick="focusMs('af-co')">
-          <div class="ms-chips" id="af-co-chips"></div>
-          <input class="ms-input" id="af-co-input" placeholder="Search companies…" oninput="msSearch('af-co',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+        <div class="ms-wrap" onclick="focusMs('af-co')"><div class="ms-chips" id="af-co-chips"></div><input class="ms-input" id="af-co-input" placeholder="Search companies…" oninput="msSearch('af-co',this.value)" autocomplete="off"/></div>
         <div id="af-co-dd" class="ms-dropdown" style="display:none"></div>
       </div>
       <div class="field"><label>Interested Party (Sponsor)</label>
-        <div class="ms-wrap" onclick="focusMs('af-sp')">
-          <div class="ms-chips" id="af-sp-chips"></div>
-          <input class="ms-input" id="af-sp-input" placeholder="Search PE firms…" oninput="msSearch('af-sp',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+        <div class="ms-wrap" onclick="focusMs('af-sp')"><div class="ms-chips" id="af-sp-chips"></div><input class="ms-input" id="af-sp-input" placeholder="Search PE firms…" oninput="msSearch('af-sp',this.value)" autocomplete="off"/></div>
         <div id="af-sp-dd" class="ms-dropdown" style="display:none"></div>
         <div class="field-hint">Leave blank if tracking personally</div>
       </div>
-      <div class="field"><label>Status</label>
-        <select id="af-status"><option value="Active">Active</option><option value="Pipeline">Pipeline</option><option value="Watching">Watching</option></select>
-      </div>
-      <div class="field"><label>Notes</label><textarea id="af-notes" placeholder="Context e.g. potential exit, anticipated bond deal, add-on target…"></textarea></div>
+      <div class="field"><label>Status</label><select id="af-status"><option value="Active">Active</option><option value="Pipeline">Pipeline</option><option value="Watching">Watching</option></select></div>
+      <div class="field"><label>Notes</label><textarea id="af-notes" placeholder="Context e.g. potential exit, anticipated bond deal…"></textarea></div>
     </div>
     <div class="form-actions"><button class="btn-cancel" onclick="closeModal('add-focus')">Cancel</button><button class="btn-save" onclick="saveFocus()">Save</button></div>
   </div>
@@ -499,21 +430,13 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div class="modal-hd"><span class="modal-title" id="at-title">New To-Do</span><button class="modal-close" onclick="closeModal('add-todo')">×</button></div>
     <div class="form-body">
       <div class="field"><label>Task *</label><textarea id="at-text" placeholder="What needs to be done…" style="min-height:80px"></textarea></div>
-      <div class="field"><label>Priority</label>
-        <select id="at-priority"><option value="Now">Now</option><option value="Later">Later</option><option value="Radar">Radar</option></select>
-      </div>
+      <div class="field"><label>Priority</label><select id="at-priority"><option value="Now">Now</option><option value="Later">Later</option><option value="Radar">Radar</option></select></div>
       <div class="field"><label>Linked Contact (optional)</label>
-        <div class="ms-wrap" onclick="focusMs('at-c')">
-          <div class="ms-chips" id="at-c-chips"></div>
-          <input class="ms-input" id="at-c-input" placeholder="Search contacts…" oninput="msSearch('at-c',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+        <div class="ms-wrap" onclick="focusMs('at-c')"><div class="ms-chips" id="at-c-chips"></div><input class="ms-input" id="at-c-input" placeholder="Search contacts…" oninput="msSearch('at-c',this.value)" autocomplete="off"/></div>
         <div id="at-c-dd" class="ms-dropdown" style="display:none"></div>
       </div>
       <div class="field"><label>Linked Company (optional)</label>
-        <div class="ms-wrap" onclick="focusMs('at-co')">
-          <div class="ms-chips" id="at-co-chips"></div>
-          <input class="ms-input" id="at-co-input" placeholder="Search sponsors or companies…" oninput="msSearch('at-co',this.value)" autocomplete="off" autocorrect="off" spellcheck="false"/>
-        </div>
+        <div class="ms-wrap" onclick="focusMs('at-co')"><div class="ms-chips" id="at-co-chips"></div><input class="ms-input" id="at-co-input" placeholder="Search sponsors or companies…" oninput="msSearch('at-co',this.value)" autocomplete="off"/></div>
         <div id="at-co-dd" class="ms-dropdown" style="display:none"></div>
       </div>
     </div>
@@ -521,259 +444,446 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
   </div>
 </div>
 
-<!-- FAB -->
 <button class="fab" onclick="openModal('add')">+</button>
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// DATA
+// CONFIGURATION — REPLACE THESE THREE VALUES
 // ─────────────────────────────────────────────────────────────
-function uid(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
-function today(){return new Date().toISOString().slice(0,10)}
-function fmtDate(iso){if(!iso)return'';const d=new Date(iso);return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
-function initials(n){if(!n)return'?';return n.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()}
+const SHEET_ID = '12uhcFfFHWXhZy5Ig-zI2GNK0jRlxLt7laNBj3LogE_A';
+const CLIENT_EMAIL = 'fieldnotes@field-notes-493112.iam.gserviceaccount.com';
+const PRIVATE_KEY = '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDwQip2CQR5RoRS\nNw/Ccj7Xhz7xysEFOERItkUQ+oTbN/DQWpdsjbP1EHHuAeQxMOZnGtxE1mRwsao6\nsPZoEgKP85Ixqf33+wv9sYjfWIcHYBxqHwRBAVFaIh6wpufpRbepuQdZEP+ERUt6\nGml3m+PqIvuJaEVeYWmG7Toespviulm/zcVkDY6TiUptYWsnqg6A5CdDrfpkFBUt\niVysUkzRiHOR9h8zfKM/p7goC1D08wgA0ZgALdBjD2yA3xqZlnDP64h6TZyCevu+\nORMac8nRRptZy1nKE3BveBHCAwTRs0ICpM5FozGb60l75hJ4Csk+DDJMYERUS72T\nflcY0OUhAgMBAAECggEACagdKQqefongLGZIaMA7CKJn3CPSO4WaEAKcdszc7Ws7\nj4JOowc0iBlxvNdgXr5IinUczJsB5Tos3YhKlR8BMZxAgGTE35RcdGVP+yslnT0m\nkzjdLMgy5wCnU2IYAOsjkUutsQ2i+YPn/1fDrLIsOFdQ3SJe5GbdrRXIn959r8CK\nBQg/iU1BV4mkiefylHp7pitm7jqfBYhtbGbMwK6VZDTK0fx4NNGd5Wv8jRfcBkmz\nU/OFbkXykx/np5H03TOJXVrwBl+lfmPweMBokSHUBMXGmq6MNlmFTL3y7z7Z89xr\njHD55Z9Pma2gmD87mr22LeL2SDI9QA05YkIo8Tz1mQKBgQD9/STZ9bRKBJgL6+BQ\nvi+T9oFtr4xKgADxD/imFTYL9tktiY1LAZVJWuc44kFyRQEmUzxfbkzy3ZJDFlc5\nILxVvO6MaL8PEXALWJcaBcEnA+h8oxIAUFnrgdTyJ3HBp2WDkIn9v9iEknLo+dZL\n24uUwf4s8X1rWCmLT717AJkDuQKBgQDyKTB2j2Aww8OxZjVibxvtukHE5nSJvhqz\nlzuJ/u7cQDCQlXiXOzbdZQMrW19d7QQ57rZP5v0ZuJxX7yeQTnO8+/+oIWGqXOtq\nZTs3aNjETBsiZhfvFDcww5SBDN3mBz57fGRTwCTRjkCzB/nynWOybZWp/B2W7k+1\nvy/8CtDwqQKBgAQ5a518aq04elboa2isYRoy5WAvpUOv8VQREe+hNq7oQiBxwznW\nIud/bY0SpkgCQcyjYcOsj/cSHFalTnoSw08hv03yiAr2HUjzBkBWjCnb9Mft5mS+\n8V/rXuFQKqIv6I5RnxnrUOyTivm4/glw81dcCqAwvAdHBhndD6e2ENVxAoGBANIw\nFjSSNfeds9ni0StjLWamaDezoCt+qkZ/WdppQIJD5ONaGZWKfBCmgJ29bYVlGGoA\nXJX19HHC31Ej7789mQ/L2xfgAZmRlXR/8WoiwyN+u36cBuIpNc5JtDhfJqtmVkFw\nstROzqZlRpserUB8g/B3VZR5lGVQ7Dbgf5HRAZIhAoGBAL1FzWlLogU65JFWf70S\nbZVzuJFR7aNGD6Tq4L/4czDxcfdcwJ+XyLssMXivXPcz9Q8tiM0cxRmmTEsxOXv9\n66zj3dmXMGY7MrCLTTWheY5dlKvz+tnpyGqtxeVXMpVaip53UbR/lmUDE3vkRmfA\nAqhI/g9x20KvxdTjJFmh3kgc\n-----END PRIVATE KEY-----\n';
+// ─────────────────────────────────────────────────────────────
 
-const PE_FIRMS = [
-  "Vista","Thoma","H&F","Francisco Partners","Warburg Pincus","Cinven","Apax","TA",
-  "Hg","Brookfield","Insight Partners","HGGC","Clearlake","Summit","KKR","Berkshire",
-  "Turn/River","Stripes","Mubadala","Goldman Sachs"
-];
-const CORP_NAMES = [
-  "Proofpoint","Acrisure","Ramp","Motive","Crusoe.ai","CoreWeave","Forter","Landis + Gyr","Cloud","Stripe"
-];
-const OTHER_NAMES = ["SocGen","DB","HSBC","BMO","Evercore","Moelis"];
+// ─────────────────────────────────────────────────────────────
+// GOOGLE SHEETS AUTH (JWT)
+// ─────────────────────────────────────────────────────────────
+let accessToken = null;
+let tokenExpiry = 0;
 
-// Seed data
-const SEED_SPONSORS = PE_FIRMS.map(n=>({id:'sp_'+n.replace(/\W/g,'_'),name:n,funds:'',priority:'',notes:''}));
-const SEED_CORPS = [
-  ...CORP_NAMES.map(n=>({id:'co_'+n.replace(/\W/g,'_'),name:n,type:'Private',peOwner:null,description:'',revenue:'',ebitda:'',margin:'',growth:'',valuation:'',leverage:'',priority:'',notes:''})),
-  {id:'co_Stripe',name:'Stripe',type:'Public',peOwner:null,description:'',revenue:'',ebitda:'',margin:'',growth:'',valuation:'',leverage:'',priority:'',notes:''}
-];
-const SEED_OTHER = OTHER_NAMES.map(n=>({id:'ot_'+n.replace(/\W/g,'_'),name:n,type:'Other',peOwner:null,description:'',revenue:'',ebitda:'',margin:'',growth:'',valuation:'',leverage:'',priority:'',notes:''}));
-const ALL_CORPS_SEED = [...SEED_CORPS,...SEED_OTHER];
-
-function coId(name){
-  if(!name)return null;
-  const sp=SEED_SPONSORS.find(s=>s.name===name);if(sp)return{type:'sponsor',id:sp.id};
-  const co=ALL_CORPS_SEED.find(c=>c.name===name);if(co)return{type:'corp',id:co.id};
-  return null;
+async function getAccessToken() {
+  if (accessToken && Date.now() < tokenExpiry - 60000) return accessToken;
+  const now = Math.floor(Date.now() / 1000);
+  const header = { alg: 'RS256', typ: 'JWT' };
+  const claim = {
+    iss: CLIENT_EMAIL,
+    scope: 'https://www.googleapis.com/auth/spreadsheets',
+    aud: 'https://oauth2.googleapis.com/token',
+    exp: now + 3600,
+    iat: now
+  };
+  const b64 = obj => btoa(JSON.stringify(obj)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  const unsigned = b64(header) + '.' + b64(claim);
+  const key = await importPrivateKey(PRIVATE_KEY);
+  const sig = await crypto.subtle.sign({ name: 'RSASSA-PKCS1-v1_5' }, key, new TextEncoder().encode(unsigned));
+  const jwt = unsigned + '.' + btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  const resp = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${jwt}`
+  });
+  const data = await resp.json();
+  accessToken = data.access_token;
+  tokenExpiry = Date.now() + (data.expires_in * 1000);
+  return accessToken;
 }
 
-const RAW_CONTACTS=[
-  ['Vista','Kevin Sofield','','Cap Mtks','','Head','Austin','Yes, and did couple trx while at SocGen','ksofield@vistaequitypartners.com',''],
-  ['Vista','Elizabeth Walsh','','Cap Mtks','','day to day on flagship fund','SF','Yes, super friendly','ewalsh@vistaequitypartners.com',''],
-  ['Vista','Chris Lutz','','Cap Mtks','','Flagship, hedging','','','clutz@vistaequitypartners.com',''],
-  ['Vista','John Seni','','Cap Mtks','','Middle market fund','Austin','','jseni@vistaequitypartners.com',''],
-  ['Vista','Anna Parakkott','','','','','','','aparakkott@vistaequitypartners.com',''],
-  ['Vista','Joshua Honorat','','','','','','','jhonorat@vistaequitypartners.com',''],
-  ['Vista','John Stalder','','Deal Partner','','Cloud, Stats','','','jstalder@vistaequitypartners.com',''],
-  ['Vista','Brooke Natsukasa','','Deal Partner','','Infra, Sec','SF','Yes, once in SF w Rebecca, John, and Nick','bnakatsukasa@vistaequitypartners.com',''],
-  ['Vista','Nick Grisius','','Deal Partner','','','Austin','No, supposed to meet in Austin','ngrisius@vistaequitypartners.com',''],
-  ['Vista','Stephen Foster','','Deal Partner','','','Austin','','sfoster@vistaequitypartners.com',''],
-  ['Thoma','Erwin Mock','','Cap Mtks','','','SF','YES','emock@thomabravo.com',''],
-  ['Thoma','Matt Gilbert','','Cap Mtks','','','Miami','YES','mgilbert@thomabravo.com',''],
-  ['Thoma','Ned Sullivan','','Cap Mtks','','','','','nsullivan@thomabravo.com',''],
-  ['Thoma','Nick Garas','','Cap Mtks','','','','','ngaras@thomabravo.com',''],
-  ['Proofpoint','Remi Thomas','','CFO','','','','','',''],
-  ['H&F','Emily Johnson','','Cap Mtks','','','','','ejohnson@hf.com',''],
-  ['Francisco Partners','Megan Karlen','','Cap Mtks','','','SF','YES','karlen@franciscopartners.com',''],
-  ['Francisco Partners','Rich Saum','','Cap Mtks','','','NYC','YES','richard.saum@franciscopartners.com',''],
-  ['Francisco Partners','Clayton Read','','Cap Mtks','','','SF','YES','clayton.read@franciscopartners.com',''],
-  ['Francisco Partners','Cherry Zout','','Deal Partners','','','NYC','YES, at RSA event at Reed Smith. Likes Rich, joined 4y ago from McKinsey','',''],
-  ['Warburg Pincus','Saumya Khaitan','','Cap Mtks','','','NYC','YES','saumya.khaitan@warburgpincus.com',''],
-  ['Cinven','Meghan Leddy','','Cap Mtks','','','NYC','DB days','meghan.leddy@cinven.com',''],
-  ['Cinven','Sam Doniger','','Deal Partner','','','NYC','YES','sam.doniger@cinven.com',''],
-  ['Apax','Erskine Love','','Cap Mtks','','','NYC','Yes, June lunch at The Grill w Nick','erskine.love@apax.com',''],
-  ['Apax','Mark Zubko','','Cap Mtks','','','NYC','','mark.zubko@apax.com',''],
-  ['TA','Ashu Agrawal','','Deal Partner','','','Menlo Park','','aagrawal@ta.com',''],
-  ['TA','Tony Marsh','','Cap Mkts','','','Austin','','tmarsh@ta.com',''],
-  ['TA','Elliott Brennan','','Cap Mkts','','','Boston','','ebrennan@ta.com',''],
-  ['Hg','Olena Ostasheva','','Cap Mkts','','','London','','olena.ostasheva@hgcapital.com',''],
-  ['Brookfield','Doug Bayerd','','Deal Partner','','','NYC','','doug.bayerd@brookfield.com',''],
-  ['Insight Partners','Kevin Hurth','','Cap Mkts','','','NYC','','khurth@insightpartners.com',''],
-  ['Goldman Sachs','Shawn Wallace','','Cap Mkts','','Project Finance','NYC',"Yes, lunch at Del Frisco's with Nick A in early Feb 2026",'shawn.wallace@gs.com',''],
-  ['HGGC','Colin Phinisey','','Cap Mkts','','','SF','','cphinisey@hggc.com',''],
-  ['Clearlake','Josh Lederman','','Cap Mkts','','','LA','','josh.lederman@clearlakecapmarkets.com',''],
-  ['Clearlake','Shalini Bala Subramaniam','','BizDev','','Non-Tech','LA','','shalinib@clearlake.com',''],
-  ['Clearlake','Dan Groen','','BizDev','','All Tech','LA','','dgroen@clearlake.com',''],
-  ['Clearlake','Martin Arzac','','Credit','','Credit side','LA','','marzac@clearlake.com',''],
-  ['Clearlake','Marcello Pantuliano','','Deal Partner','','','LA','','marcello.pantuliano@clearlake.com',''],
-  ['Summit','Aaron White','','Cap Mkts','','','Boston','','acwhite@summitpartners.com',''],
-  ['Summit','Mark Nordstrom','','Cap Mkts','','','Boston','','mnordstrom@summitpartners.com',''],
-  ['Summit','Nick Oppedisano','','Deal Partner','','','Menlo Park','','noppedisano@summitpartners.com',''],
-  ['Summit','Chris Dean','','Deal Partner','','','Boston','','cdean@summitpartners.com',''],
-  ['KKR','Blair Ohman','','Deal Partner','','','NYC','','',''],
-  ['KKR','Elizabeth Qian','','Deal Partner','','','NYC','','',''],
-  ['KKR','David Kirby','','Cap Mkts','','','NYC','','david.kirby@kkr.com',''],
-  ['KKR','Amanda Taitz','','Cap Mkts','','','NYC','','amanda.taitz@kkr.com',''],
-  ['KKR','Laila King','','Cap Mkts','','','NYC','','laila.king@kkr.com',''],
-  ['Berkshire','Liz Chang','','Cap Mkts','','','Boston','','lchang@berkshirepartners.com',''],
-  ['Turn/River','Donny Dailey','','Deal Partner','','','SF','','ddailey@turnriver.com',''],
-  ['Turn/River','Jared Mole','','Deal Partner','','','SF','','jmole@turnriver.com',''],
-  ['Stripes','Aidan Lynch','','Cap Mkts / BizDev','','','','','aidan@stripes.co',''],
-  ['Mubadala','Megan Loucas','','Cap Mkts','','','NYC','Yes','mloucas@mubadalacapital.ae',''],
-  ['Mubadala','Alexandra Stark','','Cap Mkts','','','NYC','Yes','astark@mubadalacapital.ae',''],
-  ['Acrisure','Juhnmo Kim','','M&A / Corp Dev','','','NYC','','juhkim@acrisure.com',''],
-  ['Acrisure','Kent Snyder','','VP Finance, Cap Mkts','','','Grand Rapids','','ksnyder@acrisure.com',''],
-  ['Ramp','Ryan Foss','','Trsy','','','NYC','Yes, met w Avinash on Feb 18th at their office on 23rd','rfoss@ramp.com',''],
-  ['Motive','Chirag Shah','','CFO','','','','','chirag.shah@gomotive.com',''],
-  ['Motive','Scott Edstrom','','Head of Finance','','','','','scott.edstrom@gomotive.com',''],
-  ['Motive','Simon Lee','','Corp Dev','','','','','simon.lee@gomotive.com',''],
-  ['Cloud','Ric Chi','','CFO','','','','','ric.chi@cloud.com',''],
-  ['Stripe','Steffan Tomlinson','','CFO','','','','','steffan@stripe.com',''],
-  ['Forter','Jim Lejeal','','CFO','','','','','jim.lejeal@forter.com',''],
-  ['Crusoe.ai','Dante Cordaro','','Finance','','','','','dcordaro@crusoe.ai','(412) 420-7701'],
-  ['CoreWeave','Paul Yim','','Credit & Cap Mkts','VP','','','','pyim@coreweave.com',''],
-  ['CoreWeave','Nick Robbins','','Corp Dev','','','','','nrobbins@coreweave.com',''],
-  ['CoreWeave','Nick Hoover','','Strategic Finance','Head','','','','nhoover@coreweave.com',''],
-  ['Landis + Gyr','Cyrille Lamy','','Trsy','','','','','cyrille.lamy@landisgyr.com',''],
-  ['SocGen','Nick Agarwal','','','','','','','',''],
-  ['DB','Manfred Affenzeller','','','','','','','manfred.affenzeller@db.com',''],
-  ['DB','Kent Penwell','','','','','','','kent.penwell@db.com',''],
-  ['HSBC','Ian Dorrington','','','','','','Get talking points prior to sharing','ian.dorrington@us.hsbc.com',''],
-  ['BMO','Spencer Alstodt','','','','','','','',''],
-  ['Evercore','Momin Khan','','','','','','','',''],
-  ['Moelis','Yoni Safier','','','','','','','yoni.safier@moelis.com',''],
-];
+async function importPrivateKey(pem) {
+  const pemContent = pem.replace(/-----BEGIN RSA PRIVATE KEY-----|-----BEGIN PRIVATE KEY-----|-----END RSA PRIVATE KEY-----|-----END PRIVATE KEY-----|\n|\r/g, '');
+  const binaryDer = Uint8Array.from(atob(pemContent), c => c.charCodeAt(0));
+  try {
+    return await crypto.subtle.importKey('pkcs8', binaryDer, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
+  } catch(e) {
+    // Try as raw RSA key
+    return await crypto.subtle.importKey('pkcs8', binaryDer, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
+  }
+}
 
-function buildSeedContacts(){
-  return RAW_CONTACTS.map((r,i)=>{
-    const[co,name,,,role,title,coverage,location,connection,email,phone]=
-      [r[0],r[1],r[2],r[3],r[3],r[4],r[5],r[6],r[7],r[8],r[9]];
-    const parts=name.trim().split(/\s+/);
-    const first=parts[0]||'';
-    const last=parts.slice(1).join(' ')||'';
-    const cRef=coId(co);
-    let cType='other';
-    if(PE_FIRMS.includes(co))cType='sponsor';
-    else if(CORP_NAMES.includes(co)||co==='Stripe')cType='corp';
-    return{
-      id:'c'+i+'_'+uid(),
-      firstName:first,lastName:last,preferredName:'',
-      contactType:cType,
-      companyId:cRef?cRef.id:null,
-      companyType:cRef?cRef.type:null,
-      role:r[3],title:r[4],coverage:r[5],
-      location:r[6],connection:r[7],email:r[8],phone:r[9],
-      linkedin:'',bio:'',priority:'',
-      createdAt:new Date().toISOString()
-    };
+// ─────────────────────────────────────────────────────────────
+// SHEETS READ/WRITE
+// ─────────────────────────────────────────────────────────────
+async function sheetsGet(range) {
+  const token = await getAccessToken();
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}`;
+  const resp = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (!resp.ok) throw new Error(`Sheets GET failed: ${resp.status}`);
+  const data = await resp.json();
+  return data.values || [];
+}
+
+async function sheetsUpdate(range, values) {
+  const token = await getAccessToken();
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?valueInputOption=RAW`;
+  const resp = await fetch(url, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ range, majorDimension: 'ROWS', values })
+  });
+  if (!resp.ok) throw new Error(`Sheets PUT failed: ${resp.status}`);
+  return resp.json();
+}
+
+async function sheetsAppend(range, values) {
+  const token = await getAccessToken();
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ range, majorDimension: 'ROWS', values })
+  });
+  if (!resp.ok) throw new Error(`Sheets append failed: ${resp.status}`);
+  return resp.json();
+}
+
+async function sheetsClear(range) {
+  const token = await getAccessToken();
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}:clear`;
+  const resp = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+  if (!resp.ok) throw new Error(`Sheets clear failed: ${resp.status}`);
+  return resp.json();
+}
+
+// ─────────────────────────────────────────────────────────────
+// DATA LAYER
+// ─────────────────────────────────────────────────────────────
+let DB = { sponsors:[], corps:[], contacts:[], interactions:[], todos:[], focusNames:[] };
+
+function rowsToObjects(rows) {
+  if (!rows.length) return [];
+  const headers = rows[0];
+  return rows.slice(1).filter(r => r.some(v => v)).map(r => {
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = r[i] || ''; });
+    return obj;
   });
 }
 
-let DB = {
-  sponsors:[],corps:[],contacts:[],interactions:[],todos:[],focusNames:[]
-};
-
-async function loadDB(){
-  try{
-    const r=await window.storage.get('fn_db');
-    if(r){
-      const p=JSON.parse(r.value);
-      if(p&&p.contacts&&p.contacts.length>0){DB=p;return;}
-    }
-  }catch(e){}
-  // First run — seed data
-  DB.sponsors=[...SEED_SPONSORS];
-  DB.corps=[...ALL_CORPS_SEED];
-  DB.contacts=buildSeedContacts();
-  DB.interactions=[];DB.todos=[];DB.focusNames=[];
-  await saveDB();
+function objectsToRows(objects, headers) {
+  return [headers, ...objects.map(obj => headers.map(h => obj[h] !== undefined ? String(obj[h]) : ''))];
 }
 
-async function saveDB(){
-  try{await window.storage.set('fn_db',JSON.stringify(DB));}catch(e){}
+const HEADERS = {
+  Contacts: ['id','firstName','lastName','preferredName','contactType','companyId','companyType','role','title','coverage','email','phone','location','linkedin','connection','bio','priority','createdAt'],
+  Sponsors: ['id','name','funds','priority','notes'],
+  Corporates: ['id','name','type','peOwner','description','revenue','ebitda','margin','growth','valuation','leverage','priority','notes'],
+  Interactions: ['id','date','contactIds','topicId','topicType','topicLabel','type','notes','createdAt'],
+  FocusNames: ['id','companyId','companyLabel','sponsorId','sponsorLabel','status','notes','createdAt'],
+  Todos: ['id','text','priority','contactId','contactLabel','companyId','companyLabel','status','completedAt','createdAt']
+};
+
+async function loadFromSheets() {
+  setSyncStatus('syncing', 'Loading…');
+  try {
+    const [contacts, sponsors, corps, interactions, focusNames, todos] = await Promise.all([
+      sheetsGet('Contacts!A:R'),
+      sheetsGet('Sponsors!A:E'),
+      sheetsGet('Corporates!A:M'),
+      sheetsGet('Interactions!A:I'),
+      sheetsGet('FocusNames!A:H'),
+      sheetsGet('Todos!A:J')
+    ]);
+    DB.contacts = rowsToObjects(contacts);
+    DB.sponsors = rowsToObjects(sponsors);
+    DB.corps = rowsToObjects(corps);
+    DB.interactions = rowsToObjects(interactions);
+    DB.focusNames = rowsToObjects(focusNames);
+    DB.todos = rowsToObjects(todos);
+
+    // If sheets are empty, seed with initial data
+    if (!DB.contacts.length && !DB.sponsors.length) {
+      await seedInitialData();
+    }
+
+    setSyncStatus('synced', 'Synced');
+    return true;
+  } catch(e) {
+    console.error('Load error:', e);
+    setSyncStatus('error', 'Offline');
+    // Fall back to local storage
+    loadLocalFallback();
+    return false;
+  }
+}
+
+async function saveSheet(sheetName, data) {
+  const headers = HEADERS[sheetName];
+  if (!data.length) {
+    await sheetsUpdate(`${sheetName}!A1`, [headers]);
+    return;
+  }
+  const rows = objectsToRows(data, headers);
+  await sheetsUpdate(`${sheetName}!A1`, rows);
+}
+
+async function saveAll() {
+  setSyncStatus('syncing', 'Saving…');
+  try {
+    await Promise.all([
+      saveSheet('Contacts', DB.contacts),
+      saveSheet('Sponsors', DB.sponsors),
+      saveSheet('Corporates', DB.corps),
+      saveSheet('Interactions', DB.interactions),
+      saveSheet('FocusNames', DB.focusNames),
+      saveSheet('Todos', DB.todos)
+    ]);
+    saveLocalFallback();
+    setSyncStatus('synced', 'Synced');
+  } catch(e) {
+    console.error('Save error:', e);
+    setSyncStatus('error', 'Save failed');
+    saveLocalFallback();
+  }
+}
+
+function saveLocalFallback() {
+  try { localStorage.setItem('fn_db_backup', JSON.stringify(DB)); } catch(e) {}
+}
+
+function loadLocalFallback() {
+  try {
+    const d = localStorage.getItem('fn_db_backup');
+    if (d) { const p = JSON.parse(d); if (p.contacts) DB = p; }
+  } catch(e) {}
+}
+
+function setSyncStatus(state, text) {
+  const el = document.getElementById('sync-status');
+  el.textContent = text;
+  el.className = 'sync-status' + (state !== 'synced' ? ' ' + state : '');
+}
+
+async function syncNow() {
+  await loadFromSheets();
+  renderAll();
+}
+
+// ─────────────────────────────────────────────────────────────
+// SEED DATA
+// ─────────────────────────────────────────────────────────────
+function uid() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+function today() { return new Date().toISOString().slice(0,10); }
+function fmtDate(iso) { if(!iso) return ''; const d = new Date(iso); return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+function initials(n) { if(!n) return '?'; return n.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
+
+const PE_FIRMS = ["Vista","Thoma","H&F","Francisco Partners","Warburg Pincus","Cinven","Apax","TA","Hg","Brookfield","Insight Partners","HGGC","Clearlake","Summit","KKR","Berkshire","Turn/River","Stripes","Mubadala","Goldman Sachs"];
+const CORP_NAMES = ["Proofpoint","Acrisure","Ramp","Motive","Crusoe.ai","CoreWeave","Forter","Landis + Gyr","Cloud","Stripe"];
+const OTHER_NAMES = ["SocGen","DB","HSBC","BMO","Evercore","Moelis"];
+
+const RAW_CONTACTS=[
+  ['Vista','Kevin Sofield','Cap Mtks','','Head','Austin','Yes, and did couple trx while at SocGen','ksofield@vistaequitypartners.com',''],
+  ['Vista','Elizabeth Walsh','Cap Mtks','','day to day on flagship fund','SF','Yes, super friendly','ewalsh@vistaequitypartners.com',''],
+  ['Vista','Chris Lutz','Cap Mtks','','Flagship, hedging','','','clutz@vistaequitypartners.com',''],
+  ['Vista','John Seni','Cap Mtks','','Middle market fund','Austin','','jseni@vistaequitypartners.com',''],
+  ['Vista','Anna Parakkott','','','','','','aparakkott@vistaequitypartners.com',''],
+  ['Vista','Joshua Honorat','','','','','','jhonorat@vistaequitypartners.com',''],
+  ['Vista','John Stalder','Deal Partner','','Cloud, Stats','','','jstalder@vistaequitypartners.com',''],
+  ['Vista','Brooke Natsukasa','Deal Partner','','Infra, Sec','SF','Yes, once in SF w Rebecca, John, and Nick','bnakatsukasa@vistaequitypartners.com',''],
+  ['Vista','Nick Grisius','Deal Partner','','','Austin','No, supposed to meet in Austin','ngrisius@vistaequitypartners.com',''],
+  ['Vista','Stephen Foster','Deal Partner','','','Austin','','sfoster@vistaequitypartners.com',''],
+  ['Thoma','Erwin Mock','Cap Mtks','','','SF','YES','emock@thomabravo.com',''],
+  ['Thoma','Matt Gilbert','Cap Mtks','','','Miami','YES','mgilbert@thomabravo.com',''],
+  ['Thoma','Ned Sullivan','Cap Mtks','','','','','nsullivan@thomabravo.com',''],
+  ['Thoma','Nick Garas','Cap Mtks','','','','','ngaras@thomabravo.com',''],
+  ['Proofpoint','Remi Thomas','CFO','','','','','',''],
+  ['H&F','Emily Johnson','Cap Mtks','','','','','ejohnson@hf.com',''],
+  ['Francisco Partners','Megan Karlen','Cap Mtks','','','SF','YES','karlen@franciscopartners.com',''],
+  ['Francisco Partners','Rich Saum','Cap Mtks','','','NYC','YES','richard.saum@franciscopartners.com',''],
+  ['Francisco Partners','Clayton Read','Cap Mtks','','','SF','YES','clayton.read@franciscopartners.com',''],
+  ['Francisco Partners','Cherry Zout','Deal Partners','','','NYC','YES, at RSA event at Reed Smith. Likes Rich, joined 4y ago from McKinsey','',''],
+  ['Warburg Pincus','Saumya Khaitan','Cap Mtks','','','NYC','YES','saumya.khaitan@warburgpincus.com',''],
+  ['Cinven','Meghan Leddy','Cap Mtks','','','NYC','DB days','meghan.leddy@cinven.com',''],
+  ['Cinven','Sam Doniger','Deal Partner','','','NYC','YES','sam.doniger@cinven.com',''],
+  ['Apax','Erskine Love','Cap Mtks','','','NYC','Yes, June lunch at The Grill w Nick','erskine.love@apax.com',''],
+  ['Apax','Mark Zubko','Cap Mtks','','','NYC','','mark.zubko@apax.com',''],
+  ['TA','Ashu Agrawal','Deal Partner','','','Menlo Park','','aagrawal@ta.com',''],
+  ['TA','Tony Marsh','Cap Mkts','','','Austin','','tmarsh@ta.com',''],
+  ['TA','Elliott Brennan','Cap Mkts','','','Boston','','ebrennan@ta.com',''],
+  ['Hg','Olena Ostasheva','Cap Mkts','','','London','','olena.ostasheva@hgcapital.com',''],
+  ['Brookfield','Doug Bayerd','Deal Partner','','','NYC','','doug.bayerd@brookfield.com',''],
+  ['Insight Partners','Kevin Hurth','Cap Mkts','','','NYC','','khurth@insightpartners.com',''],
+  ['Goldman Sachs','Shawn Wallace','Cap Mkts','','Project Finance','NYC',"Yes, lunch at Del Frisco's with Nick A in early Feb 2026",'shawn.wallace@gs.com',''],
+  ['HGGC','Colin Phinisey','Cap Mkts','','','SF','','cphinisey@hggc.com',''],
+  ['Clearlake','Josh Lederman','Cap Mkts','','','LA','','josh.lederman@clearlakecapmarkets.com',''],
+  ['Clearlake','Shalini Bala Subramaniam','BizDev','','Non-Tech','LA','','shalinib@clearlake.com',''],
+  ['Clearlake','Dan Groen','BizDev','','All Tech','LA','','dgroen@clearlake.com',''],
+  ['Clearlake','Martin Arzac','Credit','','Credit side','LA','','marzac@clearlake.com',''],
+  ['Clearlake','Marcello Pantuliano','Deal Partner','','','LA','','marcello.pantuliano@clearlake.com',''],
+  ['Summit','Aaron White','Cap Mkts','','','Boston','','acwhite@summitpartners.com',''],
+  ['Summit','Mark Nordstrom','Cap Mkts','','','Boston','','mnordstrom@summitpartners.com',''],
+  ['Summit','Nick Oppedisano','Deal Partner','','','Menlo Park','','noppedisano@summitpartners.com',''],
+  ['Summit','Chris Dean','Deal Partner','','','Boston','','cdean@summitpartners.com',''],
+  ['KKR','Blair Ohman','Deal Partner','','','NYC','','',''],
+  ['KKR','Elizabeth Qian','Deal Partner','','','NYC','','',''],
+  ['KKR','David Kirby','Cap Mkts','','','NYC','','david.kirby@kkr.com',''],
+  ['KKR','Amanda Taitz','Cap Mkts','','','NYC','','amanda.taitz@kkr.com',''],
+  ['KKR','Laila King','Cap Mkts','','','NYC','','laila.king@kkr.com',''],
+  ['Berkshire','Liz Chang','Cap Mkts','','','Boston','','lchang@berkshirepartners.com',''],
+  ['Turn/River','Donny Dailey','Deal Partner','','','SF','','ddailey@turnriver.com',''],
+  ['Turn/River','Jared Mole','Deal Partner','','','SF','','jmole@turnriver.com',''],
+  ['Stripes','Aidan Lynch','Cap Mkts / BizDev','','','','','aidan@stripes.co',''],
+  ['Mubadala','Megan Loucas','Cap Mkts','','','NYC','Yes','mloucas@mubadalacapital.ae',''],
+  ['Mubadala','Alexandra Stark','Cap Mkts','','','NYC','Yes','astark@mubadalacapital.ae',''],
+  ['Acrisure','Juhnmo Kim','M&A / Corp Dev','','','NYC','','juhkim@acrisure.com',''],
+  ['Acrisure','Kent Snyder','VP Finance, Cap Mkts','','','Grand Rapids','','ksnyder@acrisure.com',''],
+  ['Ramp','Ryan Foss','Trsy','','','NYC','Yes, met w Avinash on Feb 18th at their office on 23rd','rfoss@ramp.com',''],
+  ['Motive','Chirag Shah','CFO','','','','','chirag.shah@gomotive.com',''],
+  ['Motive','Scott Edstrom','Head of Finance','','','','','scott.edstrom@gomotive.com',''],
+  ['Motive','Simon Lee','Corp Dev','','','','','simon.lee@gomotive.com',''],
+  ['Cloud','Ric Chi','CFO','','','','','ric.chi@cloud.com',''],
+  ['Stripe','Steffan Tomlinson','CFO','','','','','steffan@stripe.com',''],
+  ['Forter','Jim Lejeal','CFO','','','','','jim.lejeal@forter.com',''],
+  ['Crusoe.ai','Dante Cordaro','Finance','','','','','dcordaro@crusoe.ai','(412) 420-7701'],
+  ['CoreWeave','Paul Yim','Credit & Cap Mkts','VP','','','','pyim@coreweave.com',''],
+  ['CoreWeave','Nick Robbins','Corp Dev','','','','','nrobbins@coreweave.com',''],
+  ['CoreWeave','Nick Hoover','Strategic Finance','Head','','','','nhoover@coreweave.com',''],
+  ['Landis + Gyr','Cyrille Lamy','Trsy','','','','','cyrille.lamy@landisgyr.com',''],
+  ['SocGen','Nick Agarwal','','','','','','',''],
+  ['DB','Manfred Affenzeller','','','','','','manfred.affenzeller@db.com',''],
+  ['DB','Kent Penwell','','','','','','kent.penwell@db.com',''],
+  ['HSBC','Ian Dorrington','','','','','Get talking points prior to sharing','ian.dorrington@us.hsbc.com',''],
+  ['BMO','Spencer Alstodt','','','','','','',''],
+  ['Evercore','Momin Khan','','','','','','',''],
+  ['Moelis','Yoni Safier','','','','','','yoni.safier@moelis.com',''],
+];
+
+async function seedInitialData() {
+  document.getElementById('loading-text').textContent = 'Setting up your data…';
+
+  // Build sponsors
+  DB.sponsors = PE_FIRMS.map(n => ({ id: 'sp_'+uid(), name: n, funds: '', priority: '', notes: '' }));
+
+  // Build corporates
+  DB.corps = [
+    ...CORP_NAMES.map(n => ({ id: 'co_'+uid(), name: n, type: n==='Stripe'?'Public':'Private', peOwner: '', description: '', revenue: '', ebitda: '', margin: '', growth: '', valuation: '', leverage: '', priority: '', notes: '' })),
+    ...OTHER_NAMES.map(n => ({ id: 'ot_'+uid(), name: n, type: 'Other', peOwner: '', description: '', revenue: '', ebitda: '', margin: '', growth: '', valuation: '', leverage: '', priority: '', notes: '' }))
+  ];
+
+  function findCompany(name) {
+    const sp = DB.sponsors.find(s => s.name === name);
+    if (sp) return { id: sp.id, type: 'sponsor' };
+    const co = DB.corps.find(c => c.name === name);
+    if (co) return { id: co.id, type: 'corp' };
+    return { id: '', type: '' };
+  }
+
+  // Build contacts
+  DB.contacts = RAW_CONTACTS.map((r, i) => {
+    const [coName, fullName, role, title, coverage, location, connection, email, phone] = r;
+    const parts = fullName.trim().split(/\s+/);
+    const ref = findCompany(coName);
+    let cType = 'other';
+    if (PE_FIRMS.includes(coName)) cType = 'sponsor';
+    else if (CORP_NAMES.includes(coName) || coName === 'Stripe') cType = 'corp';
+    return {
+      id: 'c'+uid(), firstName: parts[0]||'', lastName: parts.slice(1).join(' ')||'',
+      preferredName: '', contactType: cType,
+      companyId: ref.id, companyType: ref.type,
+      role, title, coverage, email, phone, location, connection, bio: '', priority: '',
+      createdAt: new Date().toISOString()
+    };
+  });
+
+  DB.interactions = [];
+  DB.todos = [];
+  DB.focusNames = [];
+
+  await saveAll();
 }
 
 // ─────────────────────────────────────────────────────────────
 // HELPERS
 // ─────────────────────────────────────────────────────────────
-function displayName(c){
-  if(!c)return'Unknown';
-  return c.preferredName||(c.firstName+' '+c.lastName).trim()||'Unknown';
+function displayName(c) {
+  if (!c) return 'Unknown';
+  return c.preferredName || (c.firstName + ' ' + c.lastName).trim() || 'Unknown';
 }
-function getCompany(id,type){
-  if(type==='sponsor')return DB.sponsors.find(s=>s.id===id);
-  return DB.corps.find(c=>c.id===id);
+function getCompanyName(id, type) {
+  if (!id) return '';
+  if (type === 'sponsor') { const s = DB.sponsors.find(x => x.id === id); return s ? s.name : ''; }
+  const c = DB.corps.find(x => x.id === id); return c ? c.name : '';
 }
-function allCompanies(){
-  return[
-    ...DB.sponsors.map(s=>({...s,_type:'sponsor'})),
-    ...DB.corps.map(c=>({...c,_type:'corp'}))
-  ].sort((a,b)=>a.name.localeCompare(b.name));
+function getSponsorName(id) { const s = DB.sponsors.find(x => x.id === id); return s ? s.name : ''; }
+function allCompanies() {
+  return [...DB.sponsors.map(s=>({...s,_type:'sponsor'})),...DB.corps.map(c=>({...c,_type:'corp'}))].sort((a,b)=>a.name.localeCompare(b.name));
 }
-function contactsAtCompany(companyId){
-  return DB.contacts.filter(c=>c.companyId===companyId);
-}
-function portcosOfSponsor(sponsorId){
-  return DB.corps.filter(c=>c.peOwner===sponsorId);
-}
-function highlight(text,q){
-  if(!q||!text)return escHtml(text||'');
-  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+function contactsAtCompany(id) { return DB.contacts.filter(c => c.companyId === id); }
+function portcosOfSponsor(id) { return DB.corps.filter(c => c.peOwner === id); }
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function highlight(text, q) {
+  if (!q || !text) return escHtml(text||'');
+  const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
   return escHtml(text).replace(re,'<mark>$1</mark>');
 }
-function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-function hl(t,q){return highlight(t,q)}
+function hl(t, q) { return highlight(t, q); }
+function lastContactedDate(contactId) {
+  const hits = DB.interactions.filter(i => (i.contactIds||'').split(';').map(x=>x.trim()).includes(contactId));
+  if (!hits.length) return '';
+  hits.sort((a,b) => new Date(b.date) - new Date(a.date));
+  return fmtDate(hits[0].date);
+}
 
 // ─────────────────────────────────────────────────────────────
 // NAVIGATION
 // ─────────────────────────────────────────────────────────────
-function showPage(id,btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  if(btn)btn.classList.add('active');
-  if(id==='dash')renderDash();
-  else if(id==='contacts')renderContacts();
-  else if(id==='companies')renderCompanies();
-  else if(id==='todos')renderTodos();
+  if (btn) btn.classList.add('active');
+  if (id==='dash') renderDash();
+  else if (id==='contacts') renderContacts();
+  else if (id==='companies') renderCompanies();
+  else if (id==='todos') renderTodos();
+}
+
+function renderAll() {
+  renderDash();renderContacts();renderCompanies();renderTodos();
 }
 
 // ─────────────────────────────────────────────────────────────
 // MODALS
 // ─────────────────────────────────────────────────────────────
-function openModal(id,data){
-  // Reset multiselect state for relevant modals
-  if(id==='log'){
+let editingLog=null,editingContact=null,editingSponsor=null,editingCorp=null,editingFocus=null,editingTodo=null;
+const msState = {lc:[],lt:[],'ac-co':[],'aco-pe':[],'af-co':[],'af-sp':[],'at-c':[],'at-co':[]};
+const msMax = {lc:4,lt:1,'ac-co':1,'aco-pe':1,'af-co':1,'af-sp':1,'at-c':1,'at-co':1};
+
+function openModal(id, data) {
+  if (id==='log') {
     msState.lc=[];msState.lt=[];
     document.getElementById('log-date').value=today();
     document.getElementById('log-type').value='Call';
     document.getElementById('log-notes').value='';
     document.getElementById('log-title').textContent='Log Interaction';
     renderMsChips('lc');renderMsChips('lt');
-    // Pre-fill contact if passed
-    if(data&&data.contactId){
-      const c=DB.contacts.find(x=>x.id===data.contactId);
-      if(c){msState.lc=[{id:c.id,label:displayName(c)}];renderMsChips('lc');}
-    }
     editingLog=null;
+    if (data&&data.contactId) {
+      const c=DB.contacts.find(x=>x.id===data.contactId);
+      if (c) { msState.lc=[{id:c.id,label:displayName(c)}]; renderMsChips('lc'); }
+    }
   }
-  if(id==='add-contact'){
+  if (id==='add-contact') {
     editingContact=null;
     document.getElementById('ac-title').textContent='New Contact';
-    ['ac-first','ac-last','ac-pref','ac-role','ac-title-f','ac-coverage','ac-email','ac-phone','ac-location','ac-linkedin','ac-connection','ac-bio'].forEach(f=>{
-      const el=document.getElementById(f);if(el)el.value='';
-    });
+    ['ac-first','ac-last','ac-pref','ac-role','ac-title-f','ac-coverage','ac-email','ac-phone','ac-location','ac-linkedin','ac-connection','ac-bio'].forEach(f=>{const el=document.getElementById(f);if(el)el.value='';});
     document.getElementById('ac-type').value='sponsor';
     document.getElementById('ac-priority').value='';
     msState['ac-co']=[];renderMsChips('ac-co');
   }
-  if(id==='add-sponsor'){
+  if (id==='add-sponsor') {
     editingSponsor=null;
     document.getElementById('as-title').textContent='New PE Firm';
-    ['as-name','as-funds','as-notes'].forEach(f=>{document.getElementById(f).value='';});
+    ['as-name','as-funds','as-notes'].forEach(f=>document.getElementById(f).value='');
     document.getElementById('as-priority').value='';
   }
-  if(id==='add-corp'){
+  if (id==='add-corp') {
     editingCorp=null;
     document.getElementById('aco-title').textContent='New Corporate';
-    ['aco-name','aco-desc','aco-rev','aco-ebitda','aco-margin','aco-growth','aco-val','aco-lev','aco-notes'].forEach(f=>{document.getElementById(f).value='';});
+    ['aco-name','aco-desc','aco-rev','aco-ebitda','aco-margin','aco-growth','aco-val','aco-lev','aco-notes'].forEach(f=>document.getElementById(f).value='');
     document.getElementById('aco-type').value='Private';
     document.getElementById('aco-priority').value='';
     msState['aco-pe']=[];renderMsChips('aco-pe');
   }
-  if(id==='add-focus'){
+  if (id==='add-focus') {
     editingFocus=null;
     document.getElementById('af-title').textContent='New Focus Name';
     document.getElementById('af-status').value='Active';
@@ -781,7 +891,7 @@ function openModal(id,data){
     msState['af-co']=[];msState['af-sp']=[];
     renderMsChips('af-co');renderMsChips('af-sp');
   }
-  if(id==='add-todo'){
+  if (id==='add-todo') {
     editingTodo=null;
     document.getElementById('at-title').textContent='New To-Do';
     document.getElementById('at-text').value='';
@@ -790,145 +900,86 @@ function openModal(id,data){
     renderMsChips('at-c');renderMsChips('at-co');
   }
   document.getElementById('modal-'+id).classList.add('open');
-  // Focus first input
-  setTimeout(()=>{
-    const inp=document.querySelector('#modal-'+id+' input:not([type=date]):not([type=hidden])');
-    if(inp)inp.focus();
-  },300);
-}
-function closeModal(id){
-  document.getElementById('modal-'+id).classList.remove('open');
-  // Close all dropdowns
-  document.querySelectorAll('.ms-dropdown').forEach(d=>d.style.display='none');
-}
-function closeProfile(){
-  document.getElementById('modal-profile').classList.remove('open');
+  setTimeout(()=>{const inp=document.querySelector('#modal-'+id+' input:not([type=date])');if(inp)inp.focus();},300);
 }
 
-// Close modals on background tap
+function closeModal(id) {
+  document.getElementById('modal-'+id).classList.remove('open');
+  document.querySelectorAll('.ms-dropdown').forEach(d=>d.style.display='none');
+}
+function closeProfile() { document.getElementById('modal-profile').classList.remove('open'); }
+
 document.querySelectorAll('.modal-bg').forEach(bg=>{
   bg.addEventListener('click',e=>{
-    if(e.target===bg){
-      const id=bg.id.replace('modal-','');
-      closeModal(id);
-      if(id==='profile')closeProfile();
-    }
+    if(e.target===bg){const id=bg.id.replace('modal-','');if(id==='profile')closeProfile();else closeModal(id);}
   });
 });
 
 // ─────────────────────────────────────────────────────────────
-// MULTI-SELECT STATE
+// MULTI-SELECT
 // ─────────────────────────────────────────────────────────────
-const msState={lc:[],lt:[],'ac-co':[],'aco-pe':[],'af-co':[],'af-sp':[],'at-c':[],'at-co':[]};
-const msMax={lc:4,lt:1,'ac-co':1,'aco-pe':1,'af-co':1,'af-sp':1,'at-c':1,'at-co':1};
-
-function focusMs(key){document.getElementById(key+'-input').focus();}
-
-function renderMsChips(key){
+function focusMs(key) { document.getElementById(key+'-input').focus(); }
+function renderMsChips(key) {
   const cont=document.getElementById(key+'-chips');
   if(!cont)return;
-  cont.innerHTML=(msState[key]||[]).map(item=>
-    `<span class="ms-chip">${escHtml(item.label)}<button onclick="msRemove('${key}','${item.id}')">×</button></span>`
-  ).join('');
+  cont.innerHTML=(msState[key]||[]).map(item=>`<span class="ms-chip">${escHtml(item.label)}<button onclick="msRemove('${key}','${item.id}')">×</button></span>`).join('');
 }
-
-function msRemove(key,id){
-  msState[key]=(msState[key]||[]).filter(i=>i.id!==id);
-  renderMsChips(key);
-}
-
-function msSearch(key,q){
+function msRemove(key,id) { msState[key]=(msState[key]||[]).filter(i=>i.id!==id);renderMsChips(key); }
+function msSearch(key,q) {
   const dd=document.getElementById(key+'-dd');
   if(!dd)return;
   if(!q.trim()){dd.style.display='none';return;}
   const lq=q.toLowerCase();
-  const max=msMax[key]||4;
   const already=(msState[key]||[]).map(i=>i.id);
-
   let items=[];
-  if(key==='lc'||key==='at-c'){
-    items=DB.contacts
-      .filter(c=>!already.includes(c.id)&&displayName(c).toLowerCase().includes(lq))
-      .slice(0,8)
-      .map(c=>({id:c.id,label:displayName(c),sub:c.role||'',_type:'contact'}));
-  } else if(key==='lt'||key==='at-co'){
-    items=allCompanies()
-      .filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq))
-      .slice(0,8)
-      .map(c=>({id:c.id,label:c.name,sub:c._type==='sponsor'?'PE Firm':'Corporate',_type:c._type}));
-  } else if(key==='ac-co'){
-    items=allCompanies()
-      .filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq))
-      .slice(0,8)
-      .map(c=>({id:c.id,label:c.name,sub:c._type==='sponsor'?'PE Firm':'Corporate',_type:c._type}));
-  } else if(key==='aco-pe'){
-    items=DB.sponsors
-      .filter(s=>!already.includes(s.id)&&s.name.toLowerCase().includes(lq))
-      .slice(0,8)
-      .map(s=>({id:s.id,label:s.name,sub:'PE Firm',_type:'sponsor'}));
-  } else if(key==='af-co'){
-    items=DB.corps
-      .filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq))
-      .slice(0,8)
-      .map(c=>({id:c.id,label:c.name,sub:c.type,_type:'corp'}));
-    if(!items.length&&q.trim()){
-      items=[{id:'__new__',label:'Create "'+q.trim()+'"',sub:'New company',_type:'new',_name:q.trim()}];
-    }
-  } else if(key==='af-sp'){
-    items=DB.sponsors
-      .filter(s=>!already.includes(s.id)&&s.name.toLowerCase().includes(lq))
-      .slice(0,8)
-      .map(s=>({id:s.id,label:s.name,sub:'PE Firm',_type:'sponsor'}));
+  if(key==='lc'||key==='at-c') {
+    items=DB.contacts.filter(c=>!already.includes(c.id)&&displayName(c).toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:displayName(c),sub:c.role||'',_type:'contact'}));
+  } else if(key==='lt'||key==='at-co') {
+    items=allCompanies().filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:c.name,sub:c._type==='sponsor'?'PE Firm':'Corporate',_type:c._type}));
+  } else if(key==='ac-co') {
+    items=allCompanies().filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:c.name,sub:c._type==='sponsor'?'PE Firm':'Corporate',_type:c._type}));
+  } else if(key==='aco-pe') {
+    items=DB.sponsors.filter(s=>!already.includes(s.id)&&s.name.toLowerCase().includes(lq)).slice(0,8).map(s=>({id:s.id,label:s.name,sub:'PE Firm',_type:'sponsor'}));
+  } else if(key==='af-co') {
+    items=DB.corps.filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:c.name,sub:c.type,_type:'corp'}));
+    if(!items.length&&q.trim()) items=[{id:'__new__',label:'Create "'+q.trim()+'"',sub:'New company',_type:'new',_name:q.trim()}];
+  } else if(key==='af-sp') {
+    items=DB.sponsors.filter(s=>!already.includes(s.id)&&s.name.toLowerCase().includes(lq)).slice(0,8).map(s=>({id:s.id,label:s.name,sub:'PE Firm',_type:'sponsor'}));
   }
-
   if(!items.length){dd.style.display='none';return;}
-  dd.innerHTML=items.map(item=>
-    `<div class="ms-opt ${item.id==='__new__'?'ms-opt-new':''}" onclick="msSelect('${key}',${JSON.stringify(item).replace(/"/g,'&quot;')})">
-      <span>${escHtml(item.label)}</span>
-      <span style="font-size:11px;color:var(--text3)">${escHtml(item.sub)}</span>
-    </div>`
-  ).join('');
+  dd.innerHTML=items.map(item=>`<div class="ms-opt ${item.id==='__new__'?'ms-opt-new':''}" onclick='msSelect("${key}",${JSON.stringify(item).replace(/'/g,"\\'")})'><span>${escHtml(item.label)}</span><span style="font-size:11px;color:var(--text3)">${escHtml(item.sub)}</span></div>`).join('');
   dd.style.display='block';
 }
-
-function msSelect(key,item){
+function msSelect(key,item) {
   if(item.id==='__new__'){
-    // Quick create company stub
-    const newCo={id:uid(),name:item._name,type:'Private',peOwner:null,description:'',revenue:'',ebitda:'',margin:'',growth:'',valuation:'',leverage:'',priority:'',notes:''};
-    DB.corps.push(newCo);saveDB();
+    const newCo={id:uid(),name:item._name,type:'Private',peOwner:'',description:'',revenue:'',ebitda:'',margin:'',growth:'',valuation:'',leverage:'',priority:'',notes:''};
+    DB.corps.push(newCo);saveAll();
     item={id:newCo.id,label:newCo.name,sub:'Private',_type:'corp'};
   }
-  const max=msMax[key]||4;
-  if((msState[key]||[]).length>=max)msState[key]=[];
+  if((msState[key]||[]).length>=(msMax[key]||4)) msState[key]=[];
   msState[key]=[...(msState[key]||[]),{id:item.id,label:item.label,_type:item._type}];
   renderMsChips(key);
   document.getElementById(key+'-input').value='';
   document.getElementById(key+'-dd').style.display='none';
 }
-
-// Close dropdowns on outside tap
 document.addEventListener('click',e=>{
-  if(!e.target.closest('.ms-wrap')&&!e.target.closest('.ms-dropdown')){
-    document.querySelectorAll('.ms-dropdown').forEach(d=>d.style.display='none');
-  }
+  if(!e.target.closest('.ms-wrap')&&!e.target.closest('.ms-dropdown')) document.querySelectorAll('.ms-dropdown').forEach(d=>d.style.display='none');
 });
 
 // ─────────────────────────────────────────────────────────────
 // SAVE FUNCTIONS
 // ─────────────────────────────────────────────────────────────
-let editingLog=null,editingContact=null,editingSponsor=null,editingCorp=null,editingFocus=null,editingTodo=null;
-
-function saveInteraction(){
-  const contacts=(msState.lc||[]).map(i=>i.id);
+async function saveInteraction() {
+  const contactIds=(msState.lc||[]).map(i=>i.id).join('; ');
   const topicItem=(msState.lt||[])[0]||null;
   const body=document.getElementById('log-notes').value.trim();
-  if(!body&&!contacts.length){alert('Please add at least a note or a contact.');return;}
+  if(!body&&!contactIds){alert('Please add at least a note or a contact.');return;}
   const obj={
     id:editingLog||uid(),
     date:document.getElementById('log-date').value,
-    contactIds:contacts,
-    topicId:topicItem?topicItem.id:null,
-    topicType:topicItem?topicItem._type:null,
+    contactIds,
+    topicId:topicItem?topicItem.id:'',
+    topicType:topicItem?topicItem._type:'',
     topicLabel:topicItem?topicItem.label:'',
     type:document.getElementById('log-type').value,
     notes:body,
@@ -936,15 +987,11 @@ function saveInteraction(){
   };
   if(editingLog){const i=DB.interactions.findIndex(x=>x.id===editingLog);if(i>=0)DB.interactions[i]=obj;}
   else DB.interactions.unshift(obj);
-  saveDB();closeModal('log');
-  renderDash();
-  // Refresh profile if open
-  if(document.getElementById('modal-profile').classList.contains('open')&&currentProfileId){
-    showProfile(currentProfileType,currentProfileId);
-  }
+  await saveAll();closeModal('log');renderAll();
+  if(document.getElementById('modal-profile').classList.contains('open')&&currentProfileId) showProfile(currentProfileType,currentProfileId);
 }
 
-function saveContact(){
+async function saveContact() {
   const first=document.getElementById('ac-first').value.trim();
   const last=document.getElementById('ac-last').value.trim();
   if(!first&&!last){alert('Please enter a name.');return;}
@@ -954,8 +1001,7 @@ function saveContact(){
     firstName:first,lastName:last,
     preferredName:document.getElementById('ac-pref').value.trim(),
     contactType:document.getElementById('ac-type').value,
-    companyId:coSel?coSel.id:null,
-    companyType:coSel?coSel._type:null,
+    companyId:coSel?coSel.id:'',companyType:coSel?coSel._type:'',
     role:document.getElementById('ac-role').value.trim(),
     title:document.getElementById('ac-title-f').value.trim(),
     coverage:document.getElementById('ac-coverage').value.trim(),
@@ -970,297 +1016,161 @@ function saveContact(){
   };
   if(editingContact){const i=DB.contacts.findIndex(x=>x.id===editingContact);if(i>=0)DB.contacts[i]=obj;}
   else DB.contacts.push(obj);
-  saveDB();closeModal('add-contact');renderContacts();
+  await saveAll();closeModal('add-contact');renderContacts();
 }
 
-function saveSponsor(){
+async function saveSponsor() {
   const name=document.getElementById('as-name').value.trim();
   if(!name){alert('Please enter a firm name.');return;}
-  if(!editingSponsor&&DB.sponsors.find(s=>s.name.toLowerCase()===name.toLowerCase())){
-    alert('"'+name+'" already exists.');return;
-  }
-  const obj={
-    id:editingSponsor||uid(),name,
-    funds:document.getElementById('as-funds').value.trim(),
-    priority:document.getElementById('as-priority').value,
-    notes:document.getElementById('as-notes').value.trim()
-  };
+  if(!editingSponsor&&DB.sponsors.find(s=>s.name.toLowerCase()===name.toLowerCase())){alert('"'+name+'" already exists.');return;}
+  const obj={id:editingSponsor||uid(),name,funds:document.getElementById('as-funds').value.trim(),priority:document.getElementById('as-priority').value,notes:document.getElementById('as-notes').value.trim()};
   if(editingSponsor){const i=DB.sponsors.findIndex(x=>x.id===editingSponsor);if(i>=0)DB.sponsors[i]=obj;}
   else DB.sponsors.push(obj);
-  saveDB();closeModal('add-sponsor');renderCompanies();
+  await saveAll();closeModal('add-sponsor');renderCompanies();
 }
 
-function saveCorp(){
+async function saveCorp() {
   const name=document.getElementById('aco-name').value.trim();
   if(!name){alert('Please enter a company name.');return;}
-  if(!editingCorp&&DB.corps.find(c=>c.name.toLowerCase()===name.toLowerCase())){
-    alert('"'+name+'" already exists.');return;
-  }
+  if(!editingCorp&&DB.corps.find(c=>c.name.toLowerCase()===name.toLowerCase())){alert('"'+name+'" already exists.');return;}
   const peSel=(msState['aco-pe']||[])[0]||null;
   const obj={
-    id:editingCorp||uid(),name,
-    type:document.getElementById('aco-type').value,
-    peOwner:peSel?peSel.id:null,
-    description:document.getElementById('aco-desc').value.trim(),
-    revenue:document.getElementById('aco-rev').value.trim(),
-    ebitda:document.getElementById('aco-ebitda').value.trim(),
-    margin:document.getElementById('aco-margin').value.trim(),
-    growth:document.getElementById('aco-growth').value.trim(),
-    valuation:document.getElementById('aco-val').value.trim(),
-    leverage:document.getElementById('aco-lev').value.trim(),
-    priority:document.getElementById('aco-priority').value,
-    notes:document.getElementById('aco-notes').value.trim()
+    id:editingCorp||uid(),name,type:document.getElementById('aco-type').value,
+    peOwner:peSel?peSel.id:'',description:document.getElementById('aco-desc').value.trim(),
+    revenue:document.getElementById('aco-rev').value.trim(),ebitda:document.getElementById('aco-ebitda').value.trim(),
+    margin:document.getElementById('aco-margin').value.trim(),growth:document.getElementById('aco-growth').value.trim(),
+    valuation:document.getElementById('aco-val').value.trim(),leverage:document.getElementById('aco-lev').value.trim(),
+    priority:document.getElementById('aco-priority').value,notes:document.getElementById('aco-notes').value.trim()
   };
   if(editingCorp){const i=DB.corps.findIndex(x=>x.id===editingCorp);if(i>=0)DB.corps[i]=obj;}
   else DB.corps.push(obj);
-  saveDB();closeModal('add-corp');renderCompanies();
+  await saveAll();closeModal('add-corp');renderCompanies();
 }
 
-function saveFocus(){
+async function saveFocus() {
   const coSel=(msState['af-co']||[])[0]||null;
   if(!coSel){alert('Please select a company.');return;}
   const spSel=(msState['af-sp']||[])[0]||null;
   const obj={
     id:editingFocus||uid(),
     companyId:coSel.id,companyLabel:coSel.label,
-    sponsorId:spSel?spSel.id:null,sponsorLabel:spSel?spSel.label:'',
+    sponsorId:spSel?spSel.id:'',sponsorLabel:spSel?spSel.label:'',
     status:document.getElementById('af-status').value,
     notes:document.getElementById('af-notes').value.trim(),
     createdAt:new Date().toISOString()
   };
   if(editingFocus){const i=DB.focusNames.findIndex(x=>x.id===editingFocus);if(i>=0)DB.focusNames[i]=obj;}
   else DB.focusNames.push(obj);
-  saveDB();closeModal('add-focus');renderTodos();
+  await saveAll();closeModal('add-focus');renderTodos();
 }
 
-function saveTodo(){
+async function saveTodo() {
   const text=document.getElementById('at-text').value.trim();
   if(!text){alert('Please enter a task.');return;}
   const cSel=(msState['at-c']||[])[0]||null;
   const coSel=(msState['at-co']||[])[0]||null;
   const obj={
-    id:editingTodo||uid(),text,
-    priority:document.getElementById('at-priority').value,
-    contactId:cSel?cSel.id:null,contactLabel:cSel?cSel.label:'',
-    companyId:coSel?coSel.id:null,companyLabel:coSel?coSel.label:'',
-    status:'Open',completedAt:null,
-    createdAt:new Date().toISOString()
+    id:editingTodo||uid(),text,priority:document.getElementById('at-priority').value,
+    contactId:cSel?cSel.id:'',contactLabel:cSel?cSel.label:'',
+    companyId:coSel?coSel.id:'',companyLabel:coSel?coSel.label:'',
+    status:'Open',completedAt:'',createdAt:new Date().toISOString()
   };
   if(editingTodo){const i=DB.todos.findIndex(x=>x.id===editingTodo);if(i>=0)DB.todos[i]=obj;}
   else DB.todos.push(obj);
-  saveDB();closeModal('add-todo');renderTodos();
+  await saveAll();closeModal('add-todo');renderTodos();
 }
 
 // ─────────────────────────────────────────────────────────────
 // DASHBOARD
 // ─────────────────────────────────────────────────────────────
-function renderDash(){
-  // Todos
+function renderDash() {
   const nowTodos=DB.todos.filter(t=>t.status==='Open'&&t.priority==='Now').slice(0,5);
-  const td=document.getElementById('dash-todos');
-  td.innerHTML=nowTodos.length
-    ?nowTodos.map(t=>renderTodoItem(t,true)).join('')
-    :'<div class="empty-state" style="padding:16px">No \'Now\' to-dos</div>';
-
-  // Interactions
+  document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,true)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
   const recent=DB.interactions.slice(0,5);
-  const id2=document.getElementById('dash-interactions');
-  id2.innerHTML=recent.length
-    ?recent.map(i=>renderLogItem(i)).join('')
-    :'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
+  document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderLogItem(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
 }
 
-function dashSearch(){
-  const q=document.getElementById('dash-search').value.trim();
+function dashSearch() {
+  const q=document.getElementById('dash-search-input').value.trim();
   const filter=document.getElementById('dash-filter').value;
   const results=document.getElementById('dash-results');
   const body=document.getElementById('dash-body');
-
   if(!q){results.innerHTML='';body.style.display='';return;}
   body.style.display='none';
-
   const lq=q.toLowerCase();
   let html='';
-
   if(filter==='all'||filter==='contact'){
     const hits=DB.contacts.filter(c=>[displayName(c),c.role,c.coverage,c.email,c.connection,c.bio].join(' ').toLowerCase().includes(lq)).slice(0,6);
-    if(hits.length){
-      html+='<div class="section-hd">Contacts</div>';
-      html+=hits.map(c=>`<div class="card" onclick="openProfile('contact','${c.id}')">
-        <div class="avatar av-blue">${initials(displayName(c))}</div>
-        <div class="card-body">
-          <div class="card-name">${hl(displayName(c),q)}</div>
-          <div class="card-sub">${hl(c.role||'',q)}${c.role&&c.companyId?' · ':''}${c.companyId?hl(getCompanyName(c.companyId,c.companyType),q):''}</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      </div>`).join('');
-    }
+    if(hits.length){html+='<div class="section-hd">Contacts</div>';html+=hits.map(c=>`<div class="card" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&c.companyId?' · ':''}${hl(getCompanyName(c.companyId,c.companyType),q)}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
-
   if(filter==='all'||filter==='sponsor'){
-    const hits=DB.sponsors.filter(s=>s.name.toLowerCase().includes(lq)||s.notes.toLowerCase().includes(lq)).slice(0,4);
-    if(hits.length){
-      html+='<div class="section-hd">PE Sponsors</div>';
-      html+=hits.map(s=>`<div class="card" onclick="openProfile('sponsor','${s.id}')">
-        <div class="avatar av-amber">${initials(s.name)}</div>
-        <div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">PE Sponsor</div></div>
-        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      </div>`).join('');
-    }
+    const hits=DB.sponsors.filter(s=>s.name.toLowerCase().includes(lq)||(s.notes||'').toLowerCase().includes(lq)).slice(0,4);
+    if(hits.length){html+='<div class="section-hd">PE Sponsors</div>';html+=hits.map(s=>`<div class="card" onclick="openProfile('sponsor','${s.id}')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">PE Sponsor</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
-
   if(filter==='all'||filter==='corp'){
     const hits=DB.corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq)).slice(0,4);
-    if(hits.length){
-      html+='<div class="section-hd">Corporates</div>';
-      html+=hits.map(c=>`<div class="card" onclick="openProfile('corp','${c.id}')">
-        <div class="avatar av-green">${initials(c.name)}</div>
-        <div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${c.peOwner?' · '+getSponsorName(c.peOwner):''}</div></div>
-        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      </div>`).join('');
-    }
+    if(hits.length){html+='<div class="section-hd">Corporates</div>';html+=hits.map(c=>`<div class="card" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${c.peOwner?' · '+getSponsorName(c.peOwner):''}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
-
-  // Interactions full-text
   if(filter==='all'){
     const hits=DB.interactions.filter(i=>i.notes.toLowerCase().includes(lq)).slice(0,3);
-    if(hits.length){
-      html+='<div class="section-hd">Interactions</div>';
-      html+=hits.map(i=>renderLogItem(i,q)).join('');
-    }
+    if(hits.length){html+='<div class="section-hd">Interactions</div>';html+=hits.map(i=>renderLogItem(i,q)).join('');}
   }
-
   results.innerHTML=html||'<div class="empty-state" style="padding:16px">No results for "'+escHtml(q)+'"</div>';
 }
 
-function getCompanyName(id,type){
-  if(!id)return'';
-  if(type==='sponsor'){const s=DB.sponsors.find(x=>x.id===id);return s?s.name:'';}
-  const c=DB.corps.find(x=>x.id===id);return c?c.name:'';
-}
-function getSponsorName(id){const s=DB.sponsors.find(x=>x.id===id);return s?s.name:'';}
-
 // ─────────────────────────────────────────────────────────────
-// CONTACTS LIST
+// CONTACTS
 // ─────────────────────────────────────────────────────────────
-function renderContacts(){
+function renderContacts() {
   const q=(document.getElementById('contact-search')||{}).value||'';
   const lq=q.toLowerCase();
-  const list=document.getElementById('contact-list');
-  let contacts=[...DB.contacts].sort((a,b)=>{
-    const an=(a.lastName||a.firstName||'').toLowerCase();
-    const bn=(b.lastName||b.firstName||'').toLowerCase();
-    return an.localeCompare(bn);
-  });
-  if(lq)contacts=contacts.filter(c=>[displayName(c),c.role,c.email,c.coverage,c.connection,c.bio].join(' ').toLowerCase().includes(lq));
-
-  if(!contacts.length){list.innerHTML='<div class="empty-state">No contacts found</div>';return;}
-
-  // Group by first letter of last name
-  let html='';
-  let lastLetter='';
+  let contacts=[...DB.contacts].sort((a,b)=>((a.lastName||a.firstName||'').toLowerCase()).localeCompare((b.lastName||b.firstName||'').toLowerCase()));
+  if(lq) contacts=contacts.filter(c=>[displayName(c),c.role,c.email,c.coverage,c.connection,c.bio].join(' ').toLowerCase().includes(lq));
+  if(!contacts.length){document.getElementById('contact-list').innerHTML='<div class="empty-state">No contacts found</div>';return;}
+  let html='',lastLetter='';
   contacts.forEach(c=>{
     const letter=((c.lastName||c.firstName||'?')[0]||'?').toUpperCase();
-    if(letter!==lastLetter){
-      html+=`<div class="section-hd">${letter}</div>`;
-      lastLetter=letter;
-    }
+    if(letter!==lastLetter){html+=`<div class="section-hd">${letter}</div>`;lastLetter=letter;}
     const co=c.companyId?getCompanyName(c.companyId,c.companyType):'';
-    const lastContact=lastContactedDate(c.id);
-    html+=`<div class="card" onclick="openProfile('contact','${c.id}')">
-      <div class="avatar av-blue">${initials(displayName(c))}</div>
-      <div class="card-body">
-        <div class="card-name">${hl(displayName(c),q)}</div>
-        <div class="card-sub">${hl(c.role||'',q)}${c.role&&co?' · ':''}${hl(co,q)}</div>
-        ${lastContact?`<div class="card-meta">Last: ${lastContact}</div>`:''}
-      </div>
-      <div class="card-right">
-        <span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>
-        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      </div>
-    </div>`;
+    const lc=lastContactedDate(c.id);
+    html+=`<div class="card" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&co?' · ':''}${hl(co,q)}</div>${lc?`<div class="card-meta">Last: ${lc}</div>`:''}</div><div class="card-right"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;
   });
-  list.innerHTML=html;
-}
-
-function lastContactedDate(contactId){
-  const hits=DB.interactions.filter(i=>i.contactIds&&i.contactIds.includes(contactId));
-  if(!hits.length)return'';
-  hits.sort((a,b)=>new Date(b.date)-new Date(a.date));
-  return fmtDate(hits[0].date);
+  document.getElementById('contact-list').innerHTML=html;
 }
 
 // ─────────────────────────────────────────────────────────────
-// COMPANIES LIST
+// COMPANIES
 // ─────────────────────────────────────────────────────────────
-function renderCompanies(){
+function renderCompanies() {
   const q=(document.getElementById('co-search')||{}).value||'';
   const filter=(document.getElementById('co-filter')||{}).value||'all';
   const lq=q.toLowerCase();
-  const list=document.getElementById('company-list');
-
   let html='';
-
   if(filter==='all'||filter==='sponsor'){
     let sponsors=[...DB.sponsors].sort((a,b)=>a.name.localeCompare(b.name));
-    if(lq)sponsors=sponsors.filter(s=>s.name.toLowerCase().includes(lq));
+    if(lq) sponsors=sponsors.filter(s=>s.name.toLowerCase().includes(lq));
     if(sponsors.length){
       if(filter==='all')html+='<div class="section-hd">PE Sponsors</div>';
-      html+=sponsors.map(s=>{
-        const ccount=contactsAtCompany(s.id).length;
-        const pcount=portcosOfSponsor(s.id).length;
-        return`<div class="card" onclick="openProfile('sponsor','${s.id}')">
-          <div class="avatar av-amber">${initials(s.name)}</div>
-          <div class="card-body">
-            <div class="card-name">${hl(s.name,q)}</div>
-            <div class="card-sub">${ccount} contact${ccount!==1?'s':''}${pcount?' · '+pcount+' portco'+(pcount!==1?'s':''):''}</div>
-          </div>
-          <div class="card-right">
-            <span class="badge b-sponsor">Sponsor</span>
-            <svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          </div>
-        </div>`;
-      }).join('');
+      html+=sponsors.map(s=>{const cc=contactsAtCompany(s.id).length;const pc=portcosOfSponsor(s.id).length;return`<div class="card" onclick="openProfile('sponsor','${s.id}')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">${cc} contact${cc!==1?'s':''}${pc?' · '+pc+' portco'+(pc!==1?'s':''):''}</div></div><div class="card-right"><span class="badge b-sponsor">Sponsor</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
     }
   }
-
   if(filter==='all'||filter==='corporate'){
     let corps=[...DB.corps].filter(c=>c.type!=='Other').sort((a,b)=>a.name.localeCompare(b.name));
-    if(lq)corps=corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq));
+    if(lq) corps=corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq));
     if(corps.length){
       if(filter==='all')html+='<div class="divider"></div><div class="section-hd">Corporates</div>';
-      html+=corps.map(c=>{
-        const owner=c.peOwner?getSponsorName(c.peOwner):'';
-        return`<div class="card" onclick="openProfile('corp','${c.id}')">
-          <div class="avatar av-green">${initials(c.name)}</div>
-          <div class="card-body">
-            <div class="card-name">${hl(c.name,q)}</div>
-            <div class="card-sub">${c.type}${owner?' · PE: '+hl(owner,q):''}</div>
-            ${c.revenue||c.ebitda?`<div class="card-meta">${c.revenue?'Rev: '+c.revenue:''}${c.revenue&&c.ebitda?' | ':''}${c.ebitda?'EBITDA: '+c.ebitda:''}</div>`:''}
-          </div>
-          <div class="card-right">
-            <span class="badge b-corp">Corp</span>
-            <svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          </div>
-        </div>`;
-      }).join('');
+      html+=corps.map(c=>{const owner=c.peOwner?getSponsorName(c.peOwner):'';return`<div class="card" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${owner?' · PE: '+hl(owner,q):''}</div>${c.revenue||c.ebitda?`<div class="card-meta">${c.revenue?'Rev: '+c.revenue:''}${c.revenue&&c.ebitda?' | ':''}${c.ebitda?'EBITDA: '+c.ebitda:''}</div>`:''}</div><div class="card-right"><span class="badge b-corp">Corp</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
     }
   }
-
   if(filter==='all'||filter==='other'){
     let others=[...DB.corps].filter(c=>c.type==='Other').sort((a,b)=>a.name.localeCompare(b.name));
-    if(lq)others=others.filter(c=>c.name.toLowerCase().includes(lq));
+    if(lq) others=others.filter(c=>c.name.toLowerCase().includes(lq));
     if(others.length){
       if(filter==='all')html+='<div class="divider"></div><div class="section-hd">Other</div>';
-      html+=others.map(c=>`<div class="card" onclick="openProfile('corp','${c.id}')">
-        <div class="avatar av-gray">${initials(c.name)}</div>
-        <div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">Bank / Advisory / Other</div></div>
-        <div class="card-right"><span class="badge b-other">Other</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
-      </div>`).join('');
+      html+=others.map(c=>`<div class="card" onclick="openProfile('corp','${c.id}')"><div class="avatar av-gray">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">Bank / Advisory / Other</div></div><div class="card-right"><span class="badge b-other">Other</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
     }
   }
-
-  list.innerHTML=html||'<div class="empty-state">No companies found</div>';
+  document.getElementById('company-list').innerHTML=html||'<div class="empty-state">No companies found</div>';
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1269,129 +1179,63 @@ function renderCompanies(){
 let showFocus=false;
 function toggleFocusPanel(){
   showFocus=!showFocus;
-  document.querySelector('#focus-toggle-bar button').textContent=showFocus?'Hide Focus Names':'Show Focus Names';
+  document.querySelector('#page-todos .toggle-btn').textContent=showFocus?'Hide Focus Names':'Show Focus Names';
   renderTodos();
 }
-
 function renderTodos(){
-  // Focus panel
   const fp=document.getElementById('focus-panel');
   if(showFocus&&DB.focusNames.length){
     const bySponsors={};
-    DB.focusNames.forEach(f=>{
-      const key=f.sponsorLabel||'Personal';
-      if(!bySponsors[key])bySponsors[key]=[];
-      bySponsors[key].push(f);
-    });
+    DB.focusNames.forEach(f=>{const key=f.sponsorLabel||'Personal';if(!bySponsors[key])bySponsors[key]=[];bySponsors[key].push(f);});
     fp.style.display='block';
-    fp.innerHTML=`<div class="focus-panel">
-      <div class="focus-panel-hd"><span>Focus Names</span></div>
-      ${Object.entries(bySponsors).map(([sp,items])=>`
-        <div class="focus-group">
-          <div class="focus-group-name">${escHtml(sp)}</div>
-          ${items.map(f=>`<span class="focus-chip fc-${f.status.toLowerCase()}" onclick="openProfile('corp','${f.companyId}')">${escHtml(f.companyLabel)}</span>`).join('')}
-        </div>
-      `).join('')}
-    </div>`;
-  } else {fp.style.display='none';}
-
-  const list=document.getElementById('todo-list');
-  const priorities=['Now','Later','Radar'];
+    fp.innerHTML=`<div class="focus-panel"><div class="focus-panel-hd">Focus Names</div>${Object.entries(bySponsors).map(([sp,items])=>`<div class="focus-group"><div class="focus-group-name">${escHtml(sp)}</div>${items.map(f=>`<span class="focus-chip fc-${f.status.toLowerCase()}" onclick="openProfile('corp','${f.companyId}')">${escHtml(f.companyLabel)}</span>`).join('')}</div>`).join('')}</div>`;
+  } else { fp.style.display='none'; }
   let html='';
-
-  priorities.forEach(p=>{
+  ['Now','Later','Radar'].forEach(p=>{
     const items=DB.todos.filter(t=>t.status==='Open'&&t.priority===p);
-    if(items.length){
-      html+=`<div class="section-hd">${p}</div>`;
-      html+=items.map(t=>renderTodoItem(t)).join('');
-    }
+    if(items.length){html+=`<div class="section-hd">${p}</div>`;html+=items.map(t=>renderTodoItem(t)).join('');}
   });
-
-  // Recently completed
   const done=DB.todos.filter(t=>t.status==='Complete').sort((a,b)=>new Date(b.completedAt)-new Date(a.completedAt)).slice(0,5);
-  if(done.length){
-    html+='<div class="divider"></div><div class="section-hd">Recently completed</div>';
-    html+=done.map(t=>renderTodoItem(t)).join('');
-  }
-
+  if(done.length){html+='<div class="divider"></div><div class="section-hd">Recently completed</div>';html+=done.map(t=>renderTodoItem(t)).join('');}
   if(!DB.todos.length)html='<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>No to-dos yet.<br>Tap + to add one.</div>';
-  list.innerHTML=html;
+  document.getElementById('todo-list').innerHTML=html;
 }
-
 function renderTodoItem(t,compact){
   const done=t.status==='Complete';
   const link=[];
   if(t.contactLabel)link.push('👤 '+t.contactLabel);
   if(t.companyLabel)link.push('🏢 '+t.companyLabel);
-  return`<div class="todo-item">
-    <button class="todo-check ${done?'done':''}" onclick="toggleTodo('${t.id}')">
-      <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-    </button>
-    <div class="todo-content">
-      <div class="todo-text ${done?'done':''}">${escHtml(t.text)}</div>
-      ${link.length?`<div class="todo-link">${link.join(' · ')}</div>`:''}
-    </div>
-    <div class="todo-right">
-      <span class="badge b-${t.priority.toLowerCase()}">${t.priority}</span>
-      ${!done&&!compact?`<div class="todo-actions">
-        <select class="move-sel" onchange="changePriority('${t.id}',this.value)">
-          <option value="">Move</option>
-          ${['Now','Later','Radar'].filter(x=>x!==t.priority).map(x=>`<option value="${x}">${x}</option>`).join('')}
-        </select>
-        <button class="mini-btn" onclick="deleteTodo('${t.id}')">✕</button>
-      </div>`:''}
-    </div>
-  </div>`;
+  return`<div class="todo-item"><button class="todo-check ${done?'done':''}" onclick="toggleTodo('${t.id}')"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-content"><div class="todo-text ${done?'done':''}">${escHtml(t.text)}</div>${link.length?`<div class="todo-link">${link.join(' · ')}</div>`:''}</div><div class="todo-right"><span class="badge b-${t.priority.toLowerCase()}">${t.priority}</span>${!done&&!compact?`<div class="todo-actions"><select class="move-sel" onchange="changePriority('${t.id}',this.value)"><option value="">Move</option>${['Now','Later','Radar'].filter(x=>x!==t.priority).map(x=>`<option value="${x}">${x}</option>`).join('')}</select><button class="mini-btn" onclick="deleteTodo('${t.id}')">✕</button></div>`:''}</div></div>`;
 }
-
-function toggleTodo(id){
-  const t=DB.todos.find(x=>x.id===id);
-  if(!t)return;
+async function toggleTodo(id){
+  const t=DB.todos.find(x=>x.id===id);if(!t)return;
   t.status=t.status==='Complete'?'Open':'Complete';
-  t.completedAt=t.status==='Complete'?new Date().toISOString():null;
-  saveDB();renderTodos();
+  t.completedAt=t.status==='Complete'?new Date().toISOString():'';
+  await saveAll();renderTodos();
 }
-function changePriority(id,val){
+async function changePriority(id,val){
   if(!val)return;
-  const t=DB.todos.find(x=>x.id===id);
-  if(!t)return;
-  t.priority=val;
-  saveDB();renderTodos();
+  const t=DB.todos.find(x=>x.id===id);if(!t)return;
+  t.priority=val;await saveAll();renderTodos();
 }
-function deleteTodo(id){
+async function deleteTodo(id){
   if(!confirm('Delete this to-do?'))return;
-  DB.todos=DB.todos.filter(x=>x.id!==id);
-  saveDB();renderTodos();
+  DB.todos=DB.todos.filter(x=>x.id!==id);await saveAll();renderTodos();
 }
 
 // ─────────────────────────────────────────────────────────────
 // LOG RENDERING
 // ─────────────────────────────────────────────────────────────
 function renderLogItem(i,q){
-  const contacts=(i.contactIds||[]).map(id=>{const c=DB.contacts.find(x=>x.id===id);return c?displayName(c):null;}).filter(Boolean);
-  return`<div class="log-item">
-    <div class="log-header">
-      <span class="log-date">${fmtDate(i.date)}</span>
-      <span class="log-type">${i.type||'Note'}</span>
-    </div>
-    <div class="log-body">${q?hl(i.notes,q):escHtml(i.notes)}</div>
-    <div class="log-tags">
-      ${contacts.map(n=>`<span class="tag tag-contact">${escHtml(n)}</span>`).join('')}
-      ${i.topicLabel?`<span class="tag tag-company">${escHtml(i.topicLabel)}</span>`:''}
-    </div>
-  </div>`;
+  const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):null;}).filter(Boolean);
+  return`<div class="log-item"><div class="log-header"><span class="log-date">${fmtDate(i.date)}</span><span class="log-type">${i.type||'Note'}</span></div><div class="log-body">${q?hl(i.notes,q):escHtml(i.notes)}</div><div class="log-tags">${contactNames.map(n=>`<span class="tag tag-contact">${escHtml(n)}</span>`).join('')}${i.topicLabel?`<span class="tag tag-company">${escHtml(i.topicLabel)}</span>`:''}</div></div>`;
 }
 
 // ─────────────────────────────────────────────────────────────
 // PROFILES
 // ─────────────────────────────────────────────────────────────
 let currentProfileType=null,currentProfileId=null;
-
-function openProfile(type,id){
-  currentProfileType=type;currentProfileId=id;
-  showProfile(type,id);
-}
-
+function openProfile(type,id){currentProfileType=type;currentProfileId=id;showProfile(type,id);}
 function showProfile(type,id){
   const body=document.getElementById('modal-profile-body');
   if(type==='contact')body.innerHTML=buildContactProfile(id);
@@ -1401,206 +1245,54 @@ function showProfile(type,id){
 }
 
 function buildContactProfile(id){
-  const c=DB.contacts.find(x=>x.id===id);
-  if(!c)return'<div class="empty-state">Not found</div>';
+  const c=DB.contacts.find(x=>x.id===id);if(!c)return'<div class="empty-state">Not found</div>';
   const co=c.companyId?getCompanyName(c.companyId,c.companyType):'';
-  const directLogs=DB.interactions.filter(i=>i.contactIds&&i.contactIds.includes(id));
-  const nameLower=(displayName(c)).toLowerCase();
-  const mentionLogs=DB.interactions.filter(i=>!i.contactIds?.includes(id)&&i.notes.toLowerCase().includes(nameLower)&&nameLower.length>3);
-
-  return`
-    <div class="modal-hd">
-      <span class="modal-title">${escHtml(displayName(c))}</span>
-      <button class="modal-close" onclick="closeProfile()">×</button>
-    </div>
-    <div class="profile-hero">
-      <div class="profile-avatar av-blue">${initials(displayName(c))}</div>
-      <div class="profile-info">
-        <div class="profile-name">${escHtml(displayName(c))}</div>
-        <div class="profile-sub">${escHtml([c.title,c.role,co].filter(Boolean).join(' · '))}</div>
-        <div class="profile-badges">
-          <span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>
-          ${c.coverage?`<span class="badge b-other">${escHtml(c.coverage)}</span>`:''}
-          ${c.location?`<span class="badge b-other">📍 ${escHtml(c.location)}</span>`:''}
-        </div>
-      </div>
-    </div>
-    <div class="profile-actions">
-      ${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''}
-      ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}
-      <button class="action-btn" onclick="closeProfile();openModal('log',{contactId:'${id}'})">+ Log</button>
-      <button class="action-btn" onclick="editContact('${id}')">Edit</button>
-    </div>
-    ${c.email||c.phone||c.linkedin?`
-    <div class="profile-section">
-      <div class="profile-section-hd">Contact</div>
-      ${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}
-      ${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}
-      ${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}
-    </div>`:''}
-    ${c.connection||c.bio?`
-    <div class="profile-section">
-      ${c.connection?`<div class="profile-field"><span class="pf-label">Connection</span><span class="pf-value">${escHtml(c.connection)}</span></div>`:''}
-      ${c.bio?`<div class="bio-box"><div class="bio-text">${escHtml(c.bio)}</div></div>`:''}
-    </div>`:''}
-    <div class="profile-section">
-      <div class="subsection-hd">Direct interactions (${directLogs.length})</div>
-      ${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}
-      ${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}
-    </div>
-  `;
+  const directLogs=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id));
+  const nameLower=displayName(c).toLowerCase();
+  const mentionLogs=DB.interactions.filter(i=>!(i.contactIds||'').split(';').map(x=>x.trim()).includes(id)&&i.notes.toLowerCase().includes(nameLower)&&nameLower.length>3);
+  return`<div class="modal-hd"><span class="modal-title">${escHtml(displayName(c))}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
+  <div class="profile-hero"><div class="profile-avatar av-blue">${initials(displayName(c))}</div><div class="profile-info"><div class="profile-name">${escHtml(displayName(c))}</div><div class="profile-sub">${escHtml([c.title,c.role,co].filter(Boolean).join(' · '))}</div><div class="profile-badges"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>${c.coverage?`<span class="badge b-other">${escHtml(c.coverage)}</span>`:''}${c.location?`<span class="badge b-other">📍 ${escHtml(c.location)}</span>`:''}</div></div></div>
+  <div class="profile-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''} ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}<button class="action-btn" onclick="closeProfile();openModal('log',{contactId:'${id}'})">+ Log</button><button class="action-btn" onclick="editContact('${id}')">Edit</button></div>
+  ${c.email||c.phone||c.linkedin?`<div class="profile-section"><div class="profile-section-hd">Contact</div>${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}</div>`:''}
+  ${c.connection||c.bio?`<div class="profile-section">${c.connection?`<div class="profile-field"><span class="pf-label">Connection</span><span class="pf-value">${escHtml(c.connection)}</span></div>`:''} ${c.bio?`<div class="bio-box"><div class="bio-text">${escHtml(c.bio)}</div></div>`:''}</div>`:''}
+  <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
 }
 
 function buildSponsorProfile(id){
-  const s=DB.sponsors.find(x=>x.id===id);
-  if(!s)return'<div class="empty-state">Not found</div>';
+  const s=DB.sponsors.find(x=>x.id===id);if(!s)return'<div class="empty-state">Not found</div>';
   const contacts=contactsAtCompany(id).sort((a,b)=>displayName(a).localeCompare(displayName(b)));
   const portcos=portcosOfSponsor(id).sort((a,b)=>a.name.localeCompare(b.name));
   const focusItems=DB.focusNames.filter(f=>f.sponsorId===id);
   const directLogs=DB.interactions.filter(i=>i.topicId===id);
   const nameLower=s.name.toLowerCase();
   const mentionLogs=DB.interactions.filter(i=>i.topicId!==id&&i.notes.toLowerCase().includes(nameLower));
-
-  return`
-    <div class="modal-hd">
-      <span class="modal-title">${escHtml(s.name)}</span>
-      <button class="modal-close" onclick="closeProfile()">×</button>
-    </div>
-    <div class="profile-hero">
-      <div class="profile-avatar av-amber">${initials(s.name)}</div>
-      <div class="profile-info">
-        <div class="profile-name">${escHtml(s.name)}</div>
-        <div class="profile-sub">PE Sponsor</div>
-        <div class="profile-badges">
-          ${s.priority?`<span class="badge b-other">Priority: ${s.priority}</span>`:''}
-        </div>
-      </div>
-    </div>
-    <div class="profile-actions">
-      <button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button>
-      <button class="action-btn" onclick="editSponsor('${id}')">Edit</button>
-    </div>
-    ${s.funds||s.notes?`
-    <div class="profile-section">
-      ${s.funds?`<div class="profile-field"><span class="pf-label">Funds</span><span class="pf-value">${escHtml(s.funds)}</span></div>`:''}
-      ${s.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(s.notes)}</span></div>`:''}
-    </div>`:''}
-    <div class="profile-section">
-      <div class="subsection-hd">Contacts at ${escHtml(s.name)} (${contacts.length})</div>
-      ${contacts.length?contacts.map(c=>`
-        <div class="contact-row" onclick="openProfile('contact','${c.id}')">
-          <div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(c))}</div>
-          <div class="cr-info">
-            <div class="cr-name">${escHtml(displayName(c))}</div>
-            <div class="cr-sub">${escHtml([c.role,c.title].filter(Boolean).join(', '))}${c.coverage?' · '+escHtml(c.coverage):''}</div>
-          </div>
-          <div class="cr-actions">
-            ${c.email?`<a href="mailto:${escHtml(c.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}
-            ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="cr-link" onclick="event.stopPropagation()">📞</a>`:''}
-          </div>
-        </div>`).join(''):'<div class="empty-section">No contacts linked</div>'}
-    </div>
-    ${portcos.length?`
-    <div class="profile-section">
-      <div class="subsection-hd">Portfolio Companies (${portcos.length})</div>
-      ${portcos.map(c=>`<div class="contact-row" onclick="openProfile('corp','${c.id}')">
-        <div class="avatar av-green" style="width:32px;height:32px;font-size:11px">${initials(c.name)}</div>
-        <div class="cr-info">
-          <div class="cr-name">${escHtml(c.name)}</div>
-          <div class="cr-sub">${[c.revenue?'Rev: '+c.revenue:'',c.ebitda?'EBITDA: '+c.ebitda:'',c.leverage?c.leverage+' lev':''].filter(Boolean).join(' · ')||'No financial data'}</div>
-        </div>
-      </div>`).join('')}
-    </div>`:''}
-    ${focusItems.length?`
-    <div class="profile-section">
-      <div class="subsection-hd">Focus Names (${focusItems.length})</div>
-      ${focusItems.map(f=>`<div class="contact-row" onclick="openProfile('corp','${f.companyId}')">
-        <div class="cr-info">
-          <div class="cr-name">${escHtml(f.companyLabel)}</div>
-          <div class="cr-sub">${f.notes||''}</div>
-        </div>
-        <span class="badge b-${f.status.toLowerCase()}">${f.status}</span>
-      </div>`).join('')}
-    </div>`:''}
-    <div class="profile-section">
-      <div class="subsection-hd">Direct interactions (${directLogs.length})</div>
-      ${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}
-      ${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}
-    </div>
-  `;
+  return`<div class="modal-hd"><span class="modal-title">${escHtml(s.name)}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
+  <div class="profile-hero"><div class="profile-avatar av-amber">${initials(s.name)}</div><div class="profile-info"><div class="profile-name">${escHtml(s.name)}</div><div class="profile-sub">PE Sponsor</div></div></div>
+  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editSponsor('${id}')">Edit</button></div>
+  ${s.funds||s.notes?`<div class="profile-section">${s.funds?`<div class="profile-field"><span class="pf-label">Funds</span><span class="pf-value">${escHtml(s.funds)}</span></div>`:''} ${s.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(s.notes)}</span></div>`:''}</div>`:''}
+  <div class="profile-section"><div class="subsection-hd">Contacts at ${escHtml(s.name)} (${contacts.length})</div>${contacts.length?contacts.map(c=>`<div class="contact-row" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(c))}</div><div class="cr-info"><div class="cr-name">${escHtml(displayName(c))}</div><div class="cr-sub">${escHtml([c.role,c.title].filter(Boolean).join(', '))}${c.coverage?' · '+escHtml(c.coverage):''}</div></div><div class="cr-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}</div></div>`).join(''):'<div class="empty-section">No contacts linked</div>'}</div>
+  ${portcos.length?`<div class="profile-section"><div class="subsection-hd">Portfolio Companies (${portcos.length})</div>${portcos.map(c=>`<div class="contact-row" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green" style="width:32px;height:32px;font-size:11px">${initials(c.name)}</div><div class="cr-info"><div class="cr-name">${escHtml(c.name)}</div><div class="cr-sub">${[c.revenue?'Rev: '+c.revenue:'',c.ebitda?'EBITDA: '+c.ebitda:'',c.leverage?c.leverage+' lev':''].filter(Boolean).join(' · ')||'No financial data'}</div></div></div>`).join('')}</div>`:''}
+  ${focusItems.length?`<div class="profile-section"><div class="subsection-hd">Focus Names (${focusItems.length})</div>${focusItems.map(f=>`<div class="contact-row" onclick="openProfile('corp','${f.companyId}')"><div class="cr-info"><div class="cr-name">${escHtml(f.companyLabel)}</div><div class="cr-sub">${f.notes||''}</div></div><span class="badge b-${f.status.toLowerCase()}">${f.status}</span></div>`).join('')}</div>`:''}
+  <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
 }
 
 function buildCorpProfile(id){
-  const c=DB.corps.find(x=>x.id===id);
-  if(!c)return'<div class="empty-state">Not found</div>';
+  const c=DB.corps.find(x=>x.id===id);if(!c)return'<div class="empty-state">Not found</div>';
   const owner=c.peOwner?DB.sponsors.find(s=>s.id===c.peOwner):null;
   const contacts=contactsAtCompany(id).sort((a,b)=>displayName(a).localeCompare(displayName(b)));
   const focusItems=DB.focusNames.filter(f=>f.companyId===id);
   const directLogs=DB.interactions.filter(i=>i.topicId===id);
   const nameLower=c.name.toLowerCase();
   const mentionLogs=DB.interactions.filter(i=>i.topicId!==id&&i.notes.toLowerCase().includes(nameLower));
-  const financials=[
-    c.revenue?['Revenue',c.revenue]:null,
-    c.ebitda?['EBITDA',c.ebitda]:null,
-    c.margin?['EBITDA Margin',c.margin]:null,
-    c.growth?['Growth',c.growth]:null,
-    c.valuation?['Valuation',c.valuation]:null,
-    c.leverage?['Leverage',c.leverage]:null,
-  ].filter(Boolean);
-
-  return`
-    <div class="modal-hd">
-      <span class="modal-title">${escHtml(c.name)}</span>
-      <button class="modal-close" onclick="closeProfile()">×</button>
-    </div>
-    <div class="profile-hero">
-      <div class="profile-avatar av-green">${initials(c.name)}</div>
-      <div class="profile-info">
-        <div class="profile-name">${escHtml(c.name)}</div>
-        <div class="profile-sub">${c.type}${owner?' · PE: '+escHtml(owner.name):''}</div>
-        <div class="profile-badges">
-          ${owner?`<span class="badge b-sponsor" onclick="openProfile('sponsor','${owner.id}')" style="cursor:pointer">${escHtml(owner.name)}</span>`:''}
-          ${c.priority?`<span class="badge b-other">${c.priority}</span>`:''}
-        </div>
-      </div>
-    </div>
-    <div class="profile-actions">
-      <button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button>
-      <button class="action-btn" onclick="editCorp('${id}')">Edit</button>
-      <button class="action-btn" onclick="closeProfile();openModal('add-focus')">+ Focus</button>
-    </div>
-    ${c.description?`<div class="bio-box"><div class="bio-text">${escHtml(c.description)}</div></div>`:''}
-    ${financials.length?`
-    <div class="profile-section">
-      <div class="profile-section-hd">Financials</div>
-      ${financials.map(([k,v])=>`<div class="profile-field"><span class="pf-label">${k}</span><span class="pf-value">${escHtml(v)}</span></div>`).join('')}
-      ${c.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(c.notes)}</span></div>`:''}
-    </div>`:''}
-    ${contacts.length?`
-    <div class="profile-section">
-      <div class="subsection-hd">Contacts (${contacts.length})</div>
-      ${contacts.map(ct=>`<div class="contact-row" onclick="openProfile('contact','${ct.id}')">
-        <div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(ct))}</div>
-        <div class="cr-info"><div class="cr-name">${escHtml(displayName(ct))}</div><div class="cr-sub">${escHtml(ct.role||'')}</div></div>
-        <div class="cr-actions">
-          ${ct.email?`<a href="mailto:${escHtml(ct.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}
-        </div>
-      </div>`).join('')}
-    </div>`:''}
-    ${focusItems.length?`
-    <div class="profile-section">
-      <div class="subsection-hd">On Focus Lists</div>
-      ${focusItems.map(f=>`<div class="profile-field">
-        <span class="pf-label">${escHtml(f.sponsorLabel||'Personal')}</span>
-        <span class="pf-value"><span class="badge b-${f.status.toLowerCase()}">${f.status}</span> ${f.notes?escHtml(f.notes):''}</span>
-      </div>`).join('')}
-    </div>`:''}
-    <div class="profile-section">
-      <div class="subsection-hd">Direct interactions (${directLogs.length})</div>
-      ${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}
-      ${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}
-    </div>
-  `;
+  const fin=[c.revenue?['Revenue',c.revenue]:null,c.ebitda?['EBITDA',c.ebitda]:null,c.margin?['EBITDA Margin',c.margin]:null,c.growth?['Growth',c.growth]:null,c.valuation?['Valuation',c.valuation]:null,c.leverage?['Leverage',c.leverage]:null].filter(Boolean);
+  return`<div class="modal-hd"><span class="modal-title">${escHtml(c.name)}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
+  <div class="profile-hero"><div class="profile-avatar av-green">${initials(c.name)}</div><div class="profile-info"><div class="profile-name">${escHtml(c.name)}</div><div class="profile-sub">${c.type}${owner?' · PE: '+escHtml(owner.name):''}</div><div class="profile-badges">${owner?`<span class="badge b-sponsor" onclick="openProfile('sponsor','${owner.id}')" style="cursor:pointer">${escHtml(owner.name)}</span>`:''}</div></div></div>
+  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editCorp('${id}')">Edit</button><button class="action-btn" onclick="closeProfile();openModal('add-focus')">+ Focus</button></div>
+  ${c.description?`<div class="bio-box"><div class="bio-text">${escHtml(c.description)}</div></div>`:''}
+  ${fin.length?`<div class="profile-section"><div class="profile-section-hd">Financials</div>${fin.map(([k,v])=>`<div class="profile-field"><span class="pf-label">${k}</span><span class="pf-value">${escHtml(v)}</span></div>`).join('')}${c.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(c.notes)}</span></div>`:''}</div>`:''}
+  ${contacts.length?`<div class="profile-section"><div class="subsection-hd">Contacts (${contacts.length})</div>${contacts.map(ct=>`<div class="contact-row" onclick="openProfile('contact','${ct.id}')"><div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(ct))}</div><div class="cr-info"><div class="cr-name">${escHtml(displayName(ct))}</div><div class="cr-sub">${escHtml(ct.role||'')}</div></div><div class="cr-actions">${ct.email?`<a href="mailto:${escHtml(ct.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}</div></div>`).join('')}</div>`:''}
+  ${focusItems.length?`<div class="profile-section"><div class="subsection-hd">On Focus Lists</div>${focusItems.map(f=>`<div class="profile-field"><span class="pf-label">${escHtml(f.sponsorLabel||'Personal')}</span><span class="pf-value"><span class="badge b-${f.status.toLowerCase()}">${f.status}</span> ${f.notes?escHtml(f.notes):''}</span></div>`).join('')}</div>`:''}
+  <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1608,67 +1300,40 @@ function buildCorpProfile(id){
 // ─────────────────────────────────────────────────────────────
 function editContact(id){
   const c=DB.contacts.find(x=>x.id===id);if(!c)return;
-  editingContact=id;
-  closeProfile();openModal('add-contact');
+  editingContact=id;closeProfile();openModal('add-contact');
   setTimeout(()=>{
     document.getElementById('ac-title').textContent='Edit Contact';
-    document.getElementById('ac-first').value=c.firstName||'';
-    document.getElementById('ac-last').value=c.lastName||'';
-    document.getElementById('ac-pref').value=c.preferredName||'';
-    document.getElementById('ac-type').value=c.contactType||'other';
-    document.getElementById('ac-priority').value=c.priority||'';
-    document.getElementById('ac-role').value=c.role||'';
-    document.getElementById('ac-title-f').value=c.title||'';
-    document.getElementById('ac-coverage').value=c.coverage||'';
-    document.getElementById('ac-email').value=c.email||'';
-    document.getElementById('ac-phone').value=c.phone||'';
-    document.getElementById('ac-location').value=c.location||'';
-    document.getElementById('ac-linkedin').value=c.linkedin||'';
-    document.getElementById('ac-connection').value=c.connection||'';
-    document.getElementById('ac-bio').value=c.bio||'';
-    if(c.companyId){
-      const name=getCompanyName(c.companyId,c.companyType)||'';
-      msState['ac-co']=[{id:c.companyId,label:name,_type:c.companyType}];
-      renderMsChips('ac-co');
-    }
+    document.getElementById('ac-first').value=c.firstName||'';document.getElementById('ac-last').value=c.lastName||'';
+    document.getElementById('ac-pref').value=c.preferredName||'';document.getElementById('ac-type').value=c.contactType||'other';
+    document.getElementById('ac-priority').value=c.priority||'';document.getElementById('ac-role').value=c.role||'';
+    document.getElementById('ac-title-f').value=c.title||'';document.getElementById('ac-coverage').value=c.coverage||'';
+    document.getElementById('ac-email').value=c.email||'';document.getElementById('ac-phone').value=c.phone||'';
+    document.getElementById('ac-location').value=c.location||'';document.getElementById('ac-linkedin').value=c.linkedin||'';
+    document.getElementById('ac-connection').value=c.connection||'';document.getElementById('ac-bio').value=c.bio||'';
+    if(c.companyId){const name=getCompanyName(c.companyId,c.companyType)||'';msState['ac-co']=[{id:c.companyId,label:name,_type:c.companyType}];renderMsChips('ac-co');}
   },100);
 }
-
 function editSponsor(id){
   const s=DB.sponsors.find(x=>x.id===id);if(!s)return;
-  editingSponsor=id;
-  closeProfile();openModal('add-sponsor');
+  editingSponsor=id;closeProfile();openModal('add-sponsor');
   setTimeout(()=>{
     document.getElementById('as-title').textContent='Edit PE Firm';
-    document.getElementById('as-name').value=s.name||'';
-    document.getElementById('as-funds').value=s.funds||'';
-    document.getElementById('as-priority').value=s.priority||'';
-    document.getElementById('as-notes').value=s.notes||'';
+    document.getElementById('as-name').value=s.name||'';document.getElementById('as-funds').value=s.funds||'';
+    document.getElementById('as-priority').value=s.priority||'';document.getElementById('as-notes').value=s.notes||'';
   },100);
 }
-
 function editCorp(id){
   const c=DB.corps.find(x=>x.id===id);if(!c)return;
-  editingCorp=id;
-  closeProfile();openModal('add-corp');
+  editingCorp=id;closeProfile();openModal('add-corp');
   setTimeout(()=>{
     document.getElementById('aco-title').textContent='Edit Corporate';
-    document.getElementById('aco-name').value=c.name||'';
-    document.getElementById('aco-type').value=c.type||'Private';
-    document.getElementById('aco-priority').value=c.priority||'';
-    document.getElementById('aco-desc').value=c.description||'';
-    document.getElementById('aco-rev').value=c.revenue||'';
-    document.getElementById('aco-ebitda').value=c.ebitda||'';
-    document.getElementById('aco-margin').value=c.margin||'';
-    document.getElementById('aco-growth').value=c.growth||'';
-    document.getElementById('aco-val').value=c.valuation||'';
-    document.getElementById('aco-lev').value=c.leverage||'';
+    document.getElementById('aco-name').value=c.name||'';document.getElementById('aco-type').value=c.type||'Private';
+    document.getElementById('aco-priority').value=c.priority||'';document.getElementById('aco-desc').value=c.description||'';
+    document.getElementById('aco-rev').value=c.revenue||'';document.getElementById('aco-ebitda').value=c.ebitda||'';
+    document.getElementById('aco-margin').value=c.margin||'';document.getElementById('aco-growth').value=c.growth||'';
+    document.getElementById('aco-val').value=c.valuation||'';document.getElementById('aco-lev').value=c.leverage||'';
     document.getElementById('aco-notes').value=c.notes||'';
-    if(c.peOwner){
-      const name=getSponsorName(c.peOwner)||'';
-      msState['aco-pe']=[{id:c.peOwner,label:name,_type:'sponsor'}];
-      renderMsChips('aco-pe');
-    }
+    if(c.peOwner){const name=getSponsorName(c.peOwner)||'';msState['aco-pe']=[{id:c.peOwner,label:name,_type:'sponsor'}];renderMsChips('aco-pe');}
   },100);
 }
 
@@ -1678,43 +1343,34 @@ function editCorp(id){
 function exportCSV(data,filename){
   if(!data.length)return;
   const keys=Object.keys(data[0]);
-  const rows=[keys.join(','),...data.map(r=>keys.map(k=>{
-    const v=String(r[k]||'').replace(/"/g,'""');
-    return v.includes(',')||v.includes('"')||v.includes('\n')?`"${v}"`:v;
-  }).join(','))];
+  const rows=[keys.join(','),...data.map(r=>keys.map(k=>{const v=String(r[k]||'').replace(/"/g,'""');return v.includes(',')||v.includes('"')||v.includes('\n')?`"${v}"`:v;}).join(','))];
   const blob=new Blob([rows.join('\n')],{type:'text/csv'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);a.download=filename;a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();
 }
-
 function exportAll(){
-  // Contacts
-  exportCSV(DB.contacts.map(c=>({
-    FirstName:c.firstName,LastName:c.lastName,PreferredName:c.preferredName,
-    ContactType:c.contactType,Company:getCompanyName(c.companyId,c.companyType),
-    Role:c.role,Title:c.title,Coverage:c.coverage,Email:c.email,Phone:c.phone,
-    Location:c.location,LinkedIn:c.linkedin,Connection:c.connection,Bio:c.bio,Priority:c.priority
-  })),'fieldnotes_contacts.csv');
-  setTimeout(()=>exportCSV(DB.sponsors.map(s=>({Name:s.name,FundNotes:s.funds,Priority:s.priority,Notes:s.notes})),'fieldnotes_sponsors.csv'),500);
-  setTimeout(()=>exportCSV(DB.corps.map(c=>({Name:c.name,Type:c.type,PEOwner:getSponsorName(c.peOwner),Description:c.description,Revenue:c.revenue,EBITDA:c.ebitda,Margin:c.margin,Growth:c.growth,Valuation:c.valuation,Leverage:c.leverage,Notes:c.notes})),'fieldnotes_corporates.csv'),1000);
-  setTimeout(()=>exportCSV(DB.interactions.map(i=>({Date:i.date,Contacts:(i.contactIds||[]).map(id=>{const c=DB.contacts.find(x=>x.id===id);return c?displayName(c):'';}).join('; '),Topic:i.topicLabel,Type:i.type,Notes:i.notes})),'fieldnotes_interactions.csv'),1500);
-  setTimeout(()=>exportCSV(DB.todos.map(t=>({Text:t.text,Priority:t.priority,Status:t.status,Contact:t.contactLabel,Company:t.companyLabel,CompletedAt:t.completedAt||''})),'fieldnotes_todos.csv'),2000);
+  exportCSV(DB.contacts,'fieldnotes_contacts.csv');
+  setTimeout(()=>exportCSV(DB.sponsors,'fieldnotes_sponsors.csv'),400);
+  setTimeout(()=>exportCSV(DB.corps,'fieldnotes_corporates.csv'),800);
+  setTimeout(()=>exportCSV(DB.interactions,'fieldnotes_interactions.csv'),1200);
+  setTimeout(()=>exportCSV(DB.todos,'fieldnotes_todos.csv'),1600);
 }
 
 // ─────────────────────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────────────────────
-// Export button in topbar
-document.querySelector('.topbar').insertAdjacentHTML('beforeend',
-  '<button class="icon-btn" onclick="exportAll()" title="Export all data as CSV"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>'
-);
+async function init(){
+  try {
+    await loadFromSheets();
+  } catch(e) {
+    console.error('Init error:', e);
+    loadLocalFallback();
+    setSyncStatus('error','Offline');
+  }
+  document.getElementById('loading').classList.add('hidden');
+  renderAll();
+}
 
-loadDB().then(()=>{
-  renderDash();
-  renderContacts();
-  renderCompanies();
-  renderTodos();
-});
+init();
 </script>
 </body>
 </html>
