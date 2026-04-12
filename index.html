@@ -179,7 +179,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 
 <div class="app">
   <div class="topbar">
-    <div class="topbar-logo">Field<span>Notes</span></div>
+    <div class="topbar-logo">field<span>notes</span></div>
     <span class="sync-status" id="sync-status">Synced</span>
     <button class="icon-btn" onclick="syncNow()" title="Sync">
       <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
@@ -1087,7 +1087,7 @@ async function saveTodo() {
 // ─────────────────────────────────────────────────────────────
 function renderDash() {
   const nowTodos=DB.todos.filter(t=>t.status==='Open'&&t.priority==='Now').slice(0,5);
-  document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,true)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
+  document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,false)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
   const recent=DB.interactions.slice(0,5);
   document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderLogItem(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
 }
