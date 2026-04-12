@@ -179,7 +179,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 
 <div class="app">
   <div class="topbar">
-    <div class="topbar-logo">field<span>notes</span></div>
+    <div class="topbar-logo">Field<span>Notes</span></div>
     <span class="sync-status" id="sync-status">Synced</span>
     <button class="icon-btn" onclick="syncNow()" title="Sync">
       <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
@@ -232,6 +232,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
       <div id="dash-todos"></div>
       <div class="divider"></div>
       <div class="section-hd">Recent Interactions</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:6px 16px;border-bottom:0.5px solid var(--border);background:var(--surface2)"><span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Contact</span><span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Affiliation</span><span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Subject</span></div>
       <div id="dash-interactions"></div>
     </div>
   </div>
@@ -1089,7 +1090,7 @@ function renderDash() {
   const nowTodos=DB.todos.filter(t=>t.status==='Open'&&t.priority==='Now').slice(0,5);
   document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,false)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
   const recent=DB.interactions.slice(0,5);
-  document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderLogItem(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
+  document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderDashLogItem(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
 }
 
 function dashSearch() {
@@ -1240,6 +1241,19 @@ async function deleteTodo(id){
 // ─────────────────────────────────────────────────────────────
 // LOG RENDERING
 // ─────────────────────────────────────────────────────────────
+function renderDashLogItem(i){
+  const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):null;}).filter(Boolean);
+  const firstContact=contactNames.length?DB.contacts.find(x=>displayName(x)===contactNames[0]):null;
+  const affil=firstContact&&firstContact.companyId?getCompanyName(firstContact.companyId,firstContact.companyType):'';
+  const subject=i.topicLabel||i.type||'';
+  const cid=firstContact?firstContact.id:'';
+  return '<div class="log-item" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;cursor:pointer" onclick="'+( cid ? "openProfile(\'contact\',\'"+cid+"\')": '')+'">'
+    +'<div><div style="font-size:13px;font-weight:600;color:var(--text)">'+escHtml(contactNames.join(', ')||'—')+'</div>'
+    +'<div style="font-size:11px;color:var(--text3)">'+fmtDate(i.date)+'</div></div>'
+    +'<div style="font-size:13px;color:var(--text2);padding-top:1px">'+escHtml(affil||'—')+'</div>'
+    +'<div style="font-size:13px;color:var(--text2);padding-top:1px">'+escHtml(subject||'—')+'</div>'
+    +'</div>';
+}
 function renderLogItem(i,q){
   const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):null;}).filter(Boolean);
   return`<div class="log-item"><div class="log-header"><span class="log-date">${fmtDate(i.date)}</span><span class="log-type">${i.type||'Note'}</span></div><div class="log-body">${q?hl(i.notes,q):escHtml(i.notes)}</div><div class="log-tags">${contactNames.map(n=>`<span class="tag tag-contact">${escHtml(n)}</span>`).join('')}${i.topicLabel?`<span class="tag tag-company">${escHtml(i.topicLabel)}</span>`:''}</div></div>`;
