@@ -31,7 +31,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .nav-btn{background:none;border:none;color:rgba(255,255,255,.6);padding:8px 4px 10px;font-size:11px;font-weight:500;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;letter-spacing:.02em;border-bottom:2px solid transparent;transition:all .15s}
 .nav-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav-btn.active{color:#fff;border-bottom-color:#fff}
-.page{display:none;padding:0 0 80px}
+.page{display:none;padding:0 0 100px}
 .page.active{display:block}
 .search-wrap{padding:12px 16px;background:var(--surface);border-bottom:0.5px solid var(--border);position:sticky;top:104px;z-index:40}
 .search-row{display:flex;gap:8px;align-items:center}
@@ -184,15 +184,9 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <button class="icon-btn" onclick="syncNow()" title="Sync">
       <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
     </button>
-    <button class="icon-btn" onclick="openModal('log')" title="Log interaction">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
-    <button class="icon-btn" onclick="exportAll()" title="Export CSV">
-      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    </button>
   </div>
 
-  <nav class="nav">
+  <nav class="nav" style="grid-template-columns:repeat(5,1fr)">
     <button class="nav-btn active" onclick="showPage('dash',this)">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Home
@@ -204,6 +198,10 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <button class="nav-btn" onclick="showPage('companies',this)">
       <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7h18M3 14h18M5 21V7M19 21V7M10 21V7M14 21V7"/></svg>
       Companies
+    </button>
+    <button class="nav-btn" onclick="showPage('interactions',this)">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Log
     </button>
     <button class="nav-btn" onclick="showPage('todos',this)">
       <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -232,7 +230,6 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
       <div id="dash-todos"></div>
       <div class="divider"></div>
       <div class="section-hd">Recent Interactions</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:6px 16px;border-bottom:0.5px solid var(--border);background:var(--surface2)"><span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Contact</span><span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Affiliation</span><span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Subject</span></div>
       <div id="dash-interactions"></div>
     </div>
   </div>
@@ -274,6 +271,25 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div id="focus-panel" style="display:none"></div>
     <div id="todo-list"></div>
   </div>
+
+  <div id="page-interactions" class="page">
+    <div class="search-wrap">
+      <div class="search-row">
+        <div class="search-box" style="flex:1">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="int-search" placeholder="Search interactions…" oninput="renderInteractions()" autocomplete="off" autocorrect="off" spellcheck="false"/>
+        </div>
+      </div>
+    </div>
+    <div id="interaction-list"></div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:var(--surface);border-top:0.5px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;z-index:99">
+  <span id="last-saved" style="font-size:11px;color:var(--text3)">Not yet saved</span>
+  <button onclick="exportAll()" style="font-size:12px;padding:6px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;color:var(--text2);cursor:pointer;font-family:inherit">Export CSV</button>
 </div>
 
 <!-- PROFILE MODAL -->
@@ -310,11 +326,12 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
   <div class="modal">
     <div class="modal-hd"><span class="modal-title">Add New</span><button class="modal-close" onclick="closeModal('add')">×</button></div>
     <div class="form-body" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px">
+      <button class="action-btn" style="padding:16px;grid-column:1/-1" onclick="closeModal('add');openModal('log')">+ Log Interaction</button>
+      <button class="action-btn" style="padding:16px;grid-column:1/-1" onclick="closeModal('add');openModal('add-todo')">+ To-Do</button>
+      <button class="action-btn" style="padding:16px;grid-column:1/-1" onclick="closeModal('add');openModal('add-focus')">+ Focus Name</button>
       <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-contact')">+ Contact</button>
       <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-sponsor')">+ PE Firm</button>
-      <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-corp')">+ Corporate</button>
-      <button class="action-btn" style="padding:16px" onclick="closeModal('add');openModal('add-focus')">+ Focus Name</button>
-      <button class="action-btn" style="padding:16px;grid-column:1/-1" onclick="closeModal('add');openModal('add-todo')">+ To-Do</button>
+      <button class="action-btn" style="padding:16px;grid-column:1/-1" onclick="closeModal('add');openModal('add-corp')">+ Corporate</button>
     </div>
   </div>
 </div>
@@ -630,6 +647,10 @@ async function saveAll() {
       saveSheet('Todos', DB.todos)
     ]);
     saveLocalFallback();
+    const now = new Date();
+    const stamp = now.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' ' + now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    const el = document.getElementById('last-saved');
+    if (el) el.textContent = 'Last saved ' + stamp;
     setSyncStatus('synced', 'Synced');
   } catch(e) {
     console.error('Save error:', e);
@@ -798,6 +819,12 @@ async function seedInitialData() {
 // ─────────────────────────────────────────────────────────────
 function displayName(c) {
   if (!c) return 'Unknown';
+  const full = (c.firstName + ' ' + c.lastName).trim();
+  if (c.preferredName && c.preferredName !== full) return c.preferredName + ' (' + full + ')';
+  return full || 'Unknown';
+}
+function shortName(c) {
+  if (!c) return 'Unknown';
   return c.preferredName || (c.firstName + ' ' + c.lastName).trim() || 'Unknown';
 }
 function getCompanyName(id, type) {
@@ -837,10 +864,11 @@ function showPage(id, btn) {
   else if (id==='contacts') renderContacts();
   else if (id==='companies') renderCompanies();
   else if (id==='todos') renderTodos();
+  else if (id==='interactions') renderInteractions();
 }
 
 function renderAll() {
-  renderDash();renderContacts();renderCompanies();renderTodos();
+  renderDash();renderContacts();renderCompanies();renderTodos();renderInteractions();
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1203,6 +1231,58 @@ function renderTodos(){
   if(!DB.todos.length)html='<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>No to-dos yet.<br>Tap + to add one.</div>';
   document.getElementById('todo-list').innerHTML=html;
 }
+// ─────────────────────────────────────────────────────────────
+// INTERACTIONS PAGE
+// ─────────────────────────────────────────────────────────────
+function renderInteractions(){
+  const q=(document.getElementById('int-search')||{}).value||'';
+  const lq=q.toLowerCase();
+  let items=[...DB.interactions].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(lq) items=items.filter(i=>[i.notes,i.topicLabel,(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):'';}).join(' ')].join(' ').toLowerCase().includes(lq));
+  const list=document.getElementById('interaction-list');
+  if(!items.length){list.innerHTML='<div class="empty-state">No interactions yet.<br>Tap + to log one.</div>';return;}
+  list.innerHTML=items.map(i=>renderLogItemFull(i,q)).join('');
+}
+
+function renderLogItemFull(i,q){
+  const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?shortName(c):null;}).filter(Boolean);
+  const preview=(i.notes||'').slice(0,160)+(i.notes&&i.notes.length>160?'…':'');
+  return`<div class="log-item" style="cursor:default">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:3px">
+      <div style="font-size:13px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${contactNames.length?escHtml(contactNames.join(', ')):'<span style="color:var(--text3)">No contacts</span>'}${i.topicLabel?' · <span style="color:var(--green)">'+escHtml(i.topicLabel)+'</span>':''}</div>
+      <span style="font-size:11px;color:var(--text3);flex-shrink:0">${fmtDate(i.date)}</span>
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:4px">${escHtml(i.type||'Note')}</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.5">${q?hl(preview,q):escHtml(preview)}</div>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <button class="mini-btn" onclick="editInteraction('${i.id}')">Edit</button>
+      <button class="mini-btn" onclick="deleteInteraction('${i.id}')" style="color:var(--red)">Delete</button>
+    </div>
+  </div>`;
+}
+
+function editInteraction(id){
+  const i=DB.interactions.find(x=>x.id===id);if(!i)return;
+  editingLog=id;
+  openModal('log');
+  setTimeout(()=>{
+    document.getElementById('log-title').textContent='Edit Interaction';
+    document.getElementById('log-date').value=i.date||today();
+    document.getElementById('log-type').value=i.type||'Call';
+    document.getElementById('log-notes').value=i.notes||'';
+    const contactIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
+    msState.lc=contactIds.map(cid=>{const c=DB.contacts.find(x=>x.id===cid);return c?{id:c.id,label:shortName(c)}:null;}).filter(Boolean);
+    renderMsChips('lc');
+    if(i.topicId&&i.topicLabel){msState.lt=[{id:i.topicId,label:i.topicLabel,_type:i.topicType}];renderMsChips('lt');}
+  },100);
+}
+
+async function deleteInteraction(id){
+  if(!confirm('Delete this interaction?'))return;
+  DB.interactions=DB.interactions.filter(x=>x.id!==id);
+  await saveAll();renderInteractions();renderDash();
+}
+
 function renderTodoItem(t,compact){
   const done=t.status==='Complete';
   const link=[];
@@ -1256,7 +1336,19 @@ function renderDashLogItem(i){
 }
 function renderLogItem(i,q){
   const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):null;}).filter(Boolean);
-  return`<div class="log-item"><div class="log-header"><span class="log-date">${fmtDate(i.date)}</span><span class="log-type">${i.type||'Note'}</span></div><div class="log-body">${q?hl(i.notes,q):escHtml(i.notes)}</div><div class="log-tags">${contactNames.map(n=>`<span class="tag tag-contact">${escHtml(n)}</span>`).join('')}${i.topicLabel?`<span class="tag tag-company">${escHtml(i.topicLabel)}</span>`:''}</div></div>`;
+  const preview=(i.notes||'').slice(0,120)+(i.notes&&i.notes.length>120?'…':'');
+  const headline=[
+    contactNames.length?`<strong>${escHtml(contactNames.join(', '))}</strong>`:'',
+    i.topicLabel?`<strong>${escHtml(i.topicLabel)}</strong>`:''
+  ].filter(Boolean).join(' · ');
+  return`<div class="log-item">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:3px">
+      <div style="font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${headline||'<span style="color:var(--text3)">No contacts</span>'}</div>
+      <span style="font-size:11px;color:var(--text3);flex-shrink:0">${fmtDate(i.date)}</span>
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:3px">${escHtml(i.type||'Note')}</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.4">${q?hl(preview,q):escHtml(preview)}</div>
+  </div>`;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1280,7 +1372,7 @@ function buildContactProfile(id){
   const mentionLogs=DB.interactions.filter(i=>!(i.contactIds||'').split(';').map(x=>x.trim()).includes(id)&&i.notes.toLowerCase().includes(nameLower)&&nameLower.length>3);
   return`<div class="modal-hd"><span class="modal-title">${escHtml(displayName(c))}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
   <div class="profile-hero"><div class="profile-avatar av-blue">${initials(displayName(c))}</div><div class="profile-info"><div class="profile-name">${escHtml(displayName(c))}</div><div class="profile-sub">${escHtml([c.title,c.role,co].filter(Boolean).join(' · '))}</div><div class="profile-badges"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>${c.coverage?`<span class="badge b-other">${escHtml(c.coverage)}</span>`:''}${c.location?`<span class="badge b-other">📍 ${escHtml(c.location)}</span>`:''}</div></div></div>
-  <div class="profile-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''} ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}<button class="action-btn" onclick="closeProfile();openModal('log',{contactId:'${id}'})">+ Log</button><button class="action-btn" onclick="editContact('${id}')">Edit</button></div>
+  <div class="profile-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''} ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}<button class="action-btn" onclick="closeProfile();openModal('log',{contactId:'${id}'})">+ Log</button><button class="action-btn" onclick="editContact('${id}')">Edit</button><button class="action-btn" style="color:var(--red)" onclick="deleteContact('${id}')">Delete</button></div>
   ${c.email||c.phone||c.linkedin?`<div class="profile-section"><div class="profile-section-hd">Contact</div>${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}</div>`:''}
   ${c.connection||c.bio?`<div class="profile-section">${c.connection?`<div class="profile-field"><span class="pf-label">Connection</span><span class="pf-value">${escHtml(c.connection)}</span></div>`:''} ${c.bio?`<div class="bio-box"><div class="bio-text">${escHtml(c.bio)}</div></div>`:''}</div>`:''}
   <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
@@ -1296,7 +1388,7 @@ function buildSponsorProfile(id){
   const mentionLogs=DB.interactions.filter(i=>i.topicId!==id&&i.notes.toLowerCase().includes(nameLower));
   return`<div class="modal-hd"><span class="modal-title">${escHtml(s.name)}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
   <div class="profile-hero"><div class="profile-avatar av-amber">${initials(s.name)}</div><div class="profile-info"><div class="profile-name">${escHtml(s.name)}</div><div class="profile-sub">PE Sponsor</div></div></div>
-  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editSponsor('${id}')">Edit</button></div>
+  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editSponsor('${id}')">Edit</button><button class="action-btn" style="color:var(--red)" onclick="deleteSponsor('${id}')">Delete</button></div>
   ${s.funds||s.notes?`<div class="profile-section">${s.funds?`<div class="profile-field"><span class="pf-label">Funds</span><span class="pf-value">${escHtml(s.funds)}</span></div>`:''} ${s.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(s.notes)}</span></div>`:''}</div>`:''}
   <div class="profile-section"><div class="subsection-hd">Contacts at ${escHtml(s.name)} (${contacts.length})</div>${contacts.length?contacts.map(c=>`<div class="contact-row" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(c))}</div><div class="cr-info"><div class="cr-name">${escHtml(displayName(c))}</div><div class="cr-sub">${escHtml([c.role,c.title].filter(Boolean).join(', '))}${c.coverage?' · '+escHtml(c.coverage):''}</div></div><div class="cr-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}</div></div>`).join(''):'<div class="empty-section">No contacts linked</div>'}</div>
   ${portcos.length?`<div class="profile-section"><div class="subsection-hd">Portfolio Companies (${portcos.length})</div>${portcos.map(c=>`<div class="contact-row" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green" style="width:32px;height:32px;font-size:11px">${initials(c.name)}</div><div class="cr-info"><div class="cr-name">${escHtml(c.name)}</div><div class="cr-sub">${[c.revenue?'Rev: '+c.revenue:'',c.ebitda?'EBITDA: '+c.ebitda:'',c.leverage?c.leverage+' lev':''].filter(Boolean).join(' · ')||'No financial data'}</div></div></div>`).join('')}</div>`:''}
@@ -1315,7 +1407,7 @@ function buildCorpProfile(id){
   const fin=[c.revenue?['Revenue',c.revenue]:null,c.ebitda?['EBITDA',c.ebitda]:null,c.margin?['EBITDA Margin',c.margin]:null,c.growth?['Growth',c.growth]:null,c.valuation?['Valuation',c.valuation]:null,c.leverage?['Leverage',c.leverage]:null].filter(Boolean);
   return`<div class="modal-hd"><span class="modal-title">${escHtml(c.name)}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
   <div class="profile-hero"><div class="profile-avatar av-green">${initials(c.name)}</div><div class="profile-info"><div class="profile-name">${escHtml(c.name)}</div><div class="profile-sub">${c.type}${owner?' · PE: '+escHtml(owner.name):''}</div><div class="profile-badges">${owner?`<span class="badge b-sponsor" onclick="openProfile('sponsor','${owner.id}')" style="cursor:pointer">${escHtml(owner.name)}</span>`:''}</div></div></div>
-  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editCorp('${id}')">Edit</button><button class="action-btn" onclick="closeProfile();openModal('add-focus')">+ Focus</button></div>
+  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editCorp('${id}')">Edit</button><button class="action-btn" onclick="closeProfile();openModal('add-focus')">+ Focus</button><button class="action-btn" style="color:var(--red)" onclick="deleteCorp('${id}')">Delete</button></div>
   ${c.description?`<div class="bio-box"><div class="bio-text">${escHtml(c.description)}</div></div>`:''}
   ${fin.length?`<div class="profile-section"><div class="profile-section-hd">Financials</div>${fin.map(([k,v])=>`<div class="profile-field"><span class="pf-label">${k}</span><span class="pf-value">${escHtml(v)}</span></div>`).join('')}${c.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(c.notes)}</span></div>`:''}</div>`:''}
   ${contacts.length?`<div class="profile-section"><div class="subsection-hd">Contacts (${contacts.length})</div>${contacts.map(ct=>`<div class="contact-row" onclick="openProfile('contact','${ct.id}')"><div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(ct))}</div><div class="cr-info"><div class="cr-name">${escHtml(displayName(ct))}</div><div class="cr-sub">${escHtml(ct.role||'')}</div></div><div class="cr-actions">${ct.email?`<a href="mailto:${escHtml(ct.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}</div></div>`).join('')}</div>`:''}
@@ -1363,6 +1455,40 @@ function editCorp(id){
     document.getElementById('aco-notes').value=c.notes||'';
     if(c.peOwner){const name=getSponsorName(c.peOwner)||'';msState['aco-pe']=[{id:c.peOwner,label:name,_type:'sponsor'}];renderMsChips('aco-pe');}
   },100);
+}
+
+async function deleteContact(id){
+  const linked=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id));
+  if(linked.length){alert(`Can't delete — this contact has ${linked.length} interaction${linked.length>1?'s':''} linked to them. Delete those interactions first from the Log page.`);return;}
+  if(!confirm('Delete this contact? This cannot be undone.'))return;
+  DB.contacts=DB.contacts.filter(x=>x.id!==id);
+  await saveAll();closeProfile();renderContacts();
+}
+async function deleteSponsor(id){
+  const linkedInteractions=DB.interactions.filter(i=>i.topicId===id);
+  const linkedContacts=DB.contacts.filter(c=>c.companyId===id);
+  if(linkedInteractions.length||linkedContacts.length){
+    const parts=[];
+    if(linkedContacts.length) parts.push(`${linkedContacts.length} contact${linkedContacts.length>1?'s':''}`);
+    if(linkedInteractions.length) parts.push(`${linkedInteractions.length} interaction${linkedInteractions.length>1?'s':''}`);
+    alert(`Can't delete — this firm has ${parts.join(' and ')} linked to it. Remove those first.`);return;
+  }
+  if(!confirm('Delete this PE firm? This cannot be undone.'))return;
+  DB.sponsors=DB.sponsors.filter(x=>x.id!==id);
+  await saveAll();closeProfile();renderCompanies();
+}
+async function deleteCorp(id){
+  const linkedInteractions=DB.interactions.filter(i=>i.topicId===id);
+  const linkedContacts=DB.contacts.filter(c=>c.companyId===id);
+  if(linkedInteractions.length||linkedContacts.length){
+    const parts=[];
+    if(linkedContacts.length) parts.push(`${linkedContacts.length} contact${linkedContacts.length>1?'s':''}`);
+    if(linkedInteractions.length) parts.push(`${linkedInteractions.length} interaction${linkedInteractions.length>1?'s':''}`);
+    alert(`Can't delete — this company has ${parts.join(' and ')} linked to it. Remove those first.`);return;
+  }
+  if(!confirm('Delete this company? This cannot be undone.'))return;
+  DB.corps=DB.corps.filter(x=>x.id!==id);
+  await saveAll();closeProfile();renderCompanies();
 }
 
 // ─────────────────────────────────────────────────────────────
