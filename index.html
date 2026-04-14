@@ -492,7 +492,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 // Private Key is stored in browser local storage only — never in this file.
 // ─────────────────────────────────────────────────────────────
 const SHEET_ID = '12uhcFfFHWXhZy5Ig-zI2GNK0jRlxLt7laNBj3LogE_A';
-const CLIENT_EMAIL = 'YOUR_CLIENT_EMAIL';
+const CLIENT_EMAIL = 'fieldnotes@field-notes-493112.iam.gserviceaccount.com';
 let PRIVATE_KEY = '';
 
 function getPrivateKey() {
@@ -525,7 +525,14 @@ async function getAccessToken() {
   };
   const b64 = obj => btoa(JSON.stringify(obj)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
   const unsigned = b64(header) + '.' + b64(claim);
-  const key = await importPrivateKey(PRIVATE_KEY);
+  let key;
+  try {
+    key = await importPrivateKey(PRIVATE_KEY);
+  } catch(e) {
+    console.error('Key import failed:', e);
+    localStorage.removeItem('fn_private_key');
+    throw new Error('Invalid private key format: ' + e.message);
+  }
   const sig = await crypto.subtle.sign({ name: 'RSASSA-PKCS1-v1_5' }, key, new TextEncoder().encode(unsigned));
   const jwt = unsigned + '.' + btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
   const resp = await fetch('https://oauth2.googleapis.com/token', {
@@ -534,6 +541,10 @@ async function getAccessToken() {
     body: `grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${jwt}`
   });
   const data = await resp.json();
+  if (!data.access_token) {
+    console.error('Token error:', data);
+    throw new Error('Auth failed: ' + (data.error_description || data.error || 'unknown'));
+  }
   accessToken = data.access_token;
   tokenExpiry = Date.now() + (data.expires_in * 1000);
   return accessToken;
@@ -1590,7 +1601,6 @@ function submitSetupKey() {
 }
 
 async function init(){
-  // Check for private key first
   const key = getPrivateKey();
   if (!key) {
     document.getElementById('loading').classList.add('hidden');
@@ -1602,15 +1612,25 @@ async function init(){
     await loadFromSheets();
   } catch(e) {
     console.error('Init error:', e);
-    // If auth failed, key may be wrong — show setup screen again
-    if (e.message === 'No private key configured' || (e.message && e.message.includes('401'))) {
-      localStorage.removeItem('fn_private_key');
-      document.getElementById('loading').classList.add('hidden');
-      document.getElementById('modal-setup').classList.add('open');
+    const msg = e.message || 'Unknown error';
+    if (msg.includes('Invalid private key') || msg.includes('No private key')) {
+      document.getElementById('loading-text').textContent = 'Key error — re-enter your private key';
+      setTimeout(()=>{
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('setup-key').value = '';
+        document.getElementById('setup-key').placeholder = 'Previous key was invalid. Please re-paste.';
+        document.getElementById('modal-setup').classList.add('open');
+      }, 1500);
       return;
     }
-    loadLocalFallback();
-    setSyncStatus('error','Offline');
+    document.getElementById('loading-text').textContent = 'Error: ' + msg;
+    setTimeout(()=>{
+      loadLocalFallback();
+      setSyncStatus('error','Offline');
+      document.getElementById('loading').classList.add('hidden');
+      renderAll();
+    }, 2000);
+    return;
   }
   document.getElementById('loading').classList.add('hidden');
   renderAll();
