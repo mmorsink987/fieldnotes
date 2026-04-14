@@ -289,7 +289,10 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 <!-- FOOTER -->
 <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:var(--surface);border-top:0.5px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;z-index:99">
   <span id="last-saved" style="font-size:11px;color:var(--text3)">Not yet saved</span>
-  <button onclick="exportAll()" style="font-size:12px;padding:6px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;color:var(--text2);cursor:pointer;font-family:inherit">Export CSV</button>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button onclick="resetKey()" style="font-size:11px;padding:4px 8px;border:1px solid var(--border);border-radius:var(--radius-sm);background:none;color:var(--text3);cursor:pointer;font-family:inherit">Reset key</button>
+    <button onclick="exportAll()" style="font-size:12px;padding:6px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;color:var(--text2);cursor:pointer;font-family:inherit">Export CSV</button>
+  </div>
 </div>
 
 <!-- PROFILE MODAL -->
@@ -462,15 +465,43 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
   </div>
 </div>
 
+<!-- PRIVATE KEY SETUP -->
+<div class="modal-bg" id="modal-setup" style="align-items:center">
+  <div class="modal" style="border-radius:var(--radius);max-width:480px;margin:20px">
+    <div class="modal-hd"><span class="modal-title">One-time setup</span></div>
+    <div class="form-body">
+      <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:16px">Paste your Google service account private key below. This is stored only in this browser and never uploaded anywhere.</p>
+      <div class="field">
+        <label>Private Key</label>
+        <textarea id="setup-key" style="min-height:120px;font-size:12px;font-family:monospace" placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;...paste full key here...&#10;-----END RSA PRIVATE KEY-----"></textarea>
+        <div class="field-hint">Copy the entire private_key value from your JSON credentials file, including the BEGIN and END lines.</div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" onclick="submitSetupKey()">Save & Connect</button>
+    </div>
+  </div>
+</div>
+
 <button class="fab" onclick="openModal('add')">+</button>
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// CONFIGURATION — REPLACE THESE THREE VALUES
+// CONFIGURATION
+// Sheet ID and Client Email are safe to store here publicly.
+// Private Key is stored in browser local storage only — never in this file.
 // ─────────────────────────────────────────────────────────────
 const SHEET_ID = '12uhcFfFHWXhZy5Ig-zI2GNK0jRlxLt7laNBj3LogE_A';
-const CLIENT_EMAIL = 'fieldnotes@field-notes-493112.iam.gserviceaccount.com';
-const PRIVATE_KEY = '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDwQip2CQR5RoRS\nNw/Ccj7Xhz7xysEFOERItkUQ+oTbN/DQWpdsjbP1EHHuAeQxMOZnGtxE1mRwsao6\nsPZoEgKP85Ixqf33+wv9sYjfWIcHYBxqHwRBAVFaIh6wpufpRbepuQdZEP+ERUt6\nGml3m+PqIvuJaEVeYWmG7Toespviulm/zcVkDY6TiUptYWsnqg6A5CdDrfpkFBUt\niVysUkzRiHOR9h8zfKM/p7goC1D08wgA0ZgALdBjD2yA3xqZlnDP64h6TZyCevu+\nORMac8nRRptZy1nKE3BveBHCAwTRs0ICpM5FozGb60l75hJ4Csk+DDJMYERUS72T\nflcY0OUhAgMBAAECggEACagdKQqefongLGZIaMA7CKJn3CPSO4WaEAKcdszc7Ws7\nj4JOowc0iBlxvNdgXr5IinUczJsB5Tos3YhKlR8BMZxAgGTE35RcdGVP+yslnT0m\nkzjdLMgy5wCnU2IYAOsjkUutsQ2i+YPn/1fDrLIsOFdQ3SJe5GbdrRXIn959r8CK\nBQg/iU1BV4mkiefylHp7pitm7jqfBYhtbGbMwK6VZDTK0fx4NNGd5Wv8jRfcBkmz\nU/OFbkXykx/np5H03TOJXVrwBl+lfmPweMBokSHUBMXGmq6MNlmFTL3y7z7Z89xr\njHD55Z9Pma2gmD87mr22LeL2SDI9QA05YkIo8Tz1mQKBgQD9/STZ9bRKBJgL6+BQ\nvi+T9oFtr4xKgADxD/imFTYL9tktiY1LAZVJWuc44kFyRQEmUzxfbkzy3ZJDFlc5\nILxVvO6MaL8PEXALWJcaBcEnA+h8oxIAUFnrgdTyJ3HBp2WDkIn9v9iEknLo+dZL\n24uUwf4s8X1rWCmLT717AJkDuQKBgQDyKTB2j2Aww8OxZjVibxvtukHE5nSJvhqz\nlzuJ/u7cQDCQlXiXOzbdZQMrW19d7QQ57rZP5v0ZuJxX7yeQTnO8+/+oIWGqXOtq\nZTs3aNjETBsiZhfvFDcww5SBDN3mBz57fGRTwCTRjkCzB/nynWOybZWp/B2W7k+1\nvy/8CtDwqQKBgAQ5a518aq04elboa2isYRoy5WAvpUOv8VQREe+hNq7oQiBxwznW\nIud/bY0SpkgCQcyjYcOsj/cSHFalTnoSw08hv03yiAr2HUjzBkBWjCnb9Mft5mS+\n8V/rXuFQKqIv6I5RnxnrUOyTivm4/glw81dcCqAwvAdHBhndD6e2ENVxAoGBANIw\nFjSSNfeds9ni0StjLWamaDezoCt+qkZ/WdppQIJD5ONaGZWKfBCmgJ29bYVlGGoA\nXJX19HHC31Ej7789mQ/L2xfgAZmRlXR/8WoiwyN+u36cBuIpNc5JtDhfJqtmVkFw\nstROzqZlRpserUB8g/B3VZR5lGVQ7Dbgf5HRAZIhAoGBAL1FzWlLogU65JFWf70S\nbZVzuJFR7aNGD6Tq4L/4czDxcfdcwJ+XyLssMXivXPcz9Q8tiM0cxRmmTEsxOXv9\n66zj3dmXMGY7MrCLTTWheY5dlKvz+tnpyGqtxeVXMpVaip53UbR/lmUDE3vkRmfA\nAqhI/g9x20KvxdTjJFmh3kgc\n-----END PRIVATE KEY-----\n';
+const CLIENT_EMAIL = 'YOUR_CLIENT_EMAIL';
+let PRIVATE_KEY = '';
+
+function getPrivateKey() {
+  return localStorage.getItem('fn_private_key') || '';
+}
+function savePrivateKey(key) {
+  localStorage.setItem('fn_private_key', key);
+  PRIVATE_KEY = key;
+}
 // ─────────────────────────────────────────────────────────────
 
 // ─────────────────────────────────────────────────────────────
@@ -481,6 +512,8 @@ let tokenExpiry = 0;
 
 async function getAccessToken() {
   if (accessToken && Date.now() < tokenExpiry - 60000) return accessToken;
+  PRIVATE_KEY = getPrivateKey();
+  if (!PRIVATE_KEY) throw new Error('No private key configured');
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: 'RS256', typ: 'JWT' };
   const claim = {
@@ -819,13 +852,17 @@ async function seedInitialData() {
 // ─────────────────────────────────────────────────────────────
 function displayName(c) {
   if (!c) return 'Unknown';
-  const full = (c.firstName + ' ' + c.lastName).trim();
-  if (c.preferredName && c.preferredName !== full) return c.preferredName + ' (' + full + ')';
-  return full || 'Unknown';
+  const first = c.preferredName || c.firstName || '';
+  const last = c.lastName || '';
+  return (first + ' ' + last).trim() || 'Unknown';
 }
 function shortName(c) {
   if (!c) return 'Unknown';
-  return c.preferredName || (c.firstName + ' ' + c.lastName).trim() || 'Unknown';
+  return displayName(c);
+}
+function fullLegalName(c) {
+  if (!c) return '';
+  return (c.firstName + ' ' + c.lastName).trim();
 }
 function getCompanyName(id, type) {
   if (!id) return '';
@@ -1278,9 +1315,10 @@ function editInteraction(id){
 }
 
 async function deleteInteraction(id){
-  if(!confirm('Delete this interaction?'))return;
-  DB.interactions=DB.interactions.filter(x=>x.id!==id);
-  await saveAll();renderInteractions();renderDash();
+  confirmAction('Delete this interaction? This cannot be undone.', async()=>{
+    DB.interactions=DB.interactions.filter(x=>x.id!==id);
+    await saveAll();renderInteractions();renderDash();
+  });
 }
 
 function renderTodoItem(t,compact){
@@ -1314,8 +1352,9 @@ async function changePriority(id,val){
   t.priority=val;await saveAll();renderTodos();
 }
 async function deleteTodo(id){
-  if(!confirm('Delete this to-do?'))return;
-  DB.todos=DB.todos.filter(x=>x.id!==id);await saveAll();renderTodos();
+  confirmAction('Delete this to-do?', async()=>{
+    DB.todos=DB.todos.filter(x=>x.id!==id);await saveAll();renderTodos();
+  });
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1373,7 +1412,7 @@ function buildContactProfile(id){
   return`<div class="modal-hd"><span class="modal-title">${escHtml(displayName(c))}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
   <div class="profile-hero"><div class="profile-avatar av-blue">${initials(displayName(c))}</div><div class="profile-info"><div class="profile-name">${escHtml(displayName(c))}</div><div class="profile-sub">${escHtml([c.title,c.role,co].filter(Boolean).join(' · '))}</div><div class="profile-badges"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>${c.coverage?`<span class="badge b-other">${escHtml(c.coverage)}</span>`:''}${c.location?`<span class="badge b-other">📍 ${escHtml(c.location)}</span>`:''}</div></div></div>
   <div class="profile-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''} ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}<button class="action-btn" onclick="closeProfile();openModal('log',{contactId:'${id}'})">+ Log</button><button class="action-btn" onclick="editContact('${id}')">Edit</button><button class="action-btn" style="color:var(--red)" onclick="deleteContact('${id}')">Delete</button></div>
-  ${c.email||c.phone||c.linkedin?`<div class="profile-section"><div class="profile-section-hd">Contact</div>${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}</div>`:''}
+  ${c.email||c.phone||c.linkedin||c.preferredName?`<div class="profile-section"><div class="profile-section-hd">Contact</div>${c.preferredName?`<div class="profile-field"><span class="pf-label">Full name</span><span class="pf-value">${escHtml(fullLegalName(c))}</span></div>`:''}${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}</div>`:''}
   ${c.connection||c.bio?`<div class="profile-section">${c.connection?`<div class="profile-field"><span class="pf-label">Connection</span><span class="pf-value">${escHtml(c.connection)}</span></div>`:''} ${c.bio?`<div class="bio-box"><div class="bio-text">${escHtml(c.bio)}</div></div>`:''}</div>`:''}
   <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
 }
@@ -1457,12 +1496,30 @@ function editCorp(id){
   },100);
 }
 
+function confirmAction(message, onConfirm) {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px';
+  overlay.innerHTML = `<div style="background:var(--surface);border-radius:var(--radius);padding:20px;width:100%;max-width:340px;box-shadow:0 8px 32px rgba(0,0,0,.2)">
+    <div style="font-size:15px;color:var(--text);line-height:1.5;margin-bottom:20px">${message}</div>
+    <div style="display:flex;gap:10px">
+      <button id="conf-cancel" style="flex:1;padding:11px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;font-size:15px;font-family:inherit;color:var(--text2);cursor:pointer">Cancel</button>
+      <button id="conf-ok" style="flex:1;padding:11px;border:none;border-radius:var(--radius-sm);background:var(--red);color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer">Delete</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+  overlay.querySelector('#conf-cancel').onclick = () => document.body.removeChild(overlay);
+  overlay.querySelector('#conf-ok').onclick = () => { document.body.removeChild(overlay); onConfirm(); };
+}
+
 async function deleteContact(id){
   const linked=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id));
-  if(linked.length){alert(`Can't delete — this contact has ${linked.length} interaction${linked.length>1?'s':''} linked to them. Delete those interactions first from the Log page.`);return;}
-  if(!confirm('Delete this contact? This cannot be undone.'))return;
-  DB.contacts=DB.contacts.filter(x=>x.id!==id);
-  await saveAll();closeProfile();renderContacts();
+  if(linked.length){
+    alert(`Can't delete — this contact has ${linked.length} interaction${linked.length>1?'s':''} linked. Delete those from the Log page first.`);return;
+  }
+  confirmAction('Delete this contact? This cannot be undone.', async()=>{
+    DB.contacts=DB.contacts.filter(x=>x.id!==id);
+    await saveAll();closeProfile();renderContacts();
+  });
 }
 async function deleteSponsor(id){
   const linkedInteractions=DB.interactions.filter(i=>i.topicId===id);
@@ -1473,9 +1530,10 @@ async function deleteSponsor(id){
     if(linkedInteractions.length) parts.push(`${linkedInteractions.length} interaction${linkedInteractions.length>1?'s':''}`);
     alert(`Can't delete — this firm has ${parts.join(' and ')} linked to it. Remove those first.`);return;
   }
-  if(!confirm('Delete this PE firm? This cannot be undone.'))return;
-  DB.sponsors=DB.sponsors.filter(x=>x.id!==id);
-  await saveAll();closeProfile();renderCompanies();
+  confirmAction('Delete this PE firm? This cannot be undone.', async()=>{
+    DB.sponsors=DB.sponsors.filter(x=>x.id!==id);
+    await saveAll();closeProfile();renderCompanies();
+  });
 }
 async function deleteCorp(id){
   const linkedInteractions=DB.interactions.filter(i=>i.topicId===id);
@@ -1486,9 +1544,10 @@ async function deleteCorp(id){
     if(linkedInteractions.length) parts.push(`${linkedInteractions.length} interaction${linkedInteractions.length>1?'s':''}`);
     alert(`Can't delete — this company has ${parts.join(' and ')} linked to it. Remove those first.`);return;
   }
-  if(!confirm('Delete this company? This cannot be undone.'))return;
-  DB.corps=DB.corps.filter(x=>x.id!==id);
-  await saveAll();closeProfile();renderCompanies();
+  confirmAction('Delete this company? This cannot be undone.', async()=>{
+    DB.corps=DB.corps.filter(x=>x.id!==id);
+    await saveAll();closeProfile();renderCompanies();
+  });
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1512,11 +1571,44 @@ function exportAll(){
 // ─────────────────────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────────────────────
+function resetKey() {
+  confirmAction('Clear saved private key? You will need to re-enter it.', ()=>{
+    localStorage.removeItem('fn_private_key');
+    accessToken = null;
+    document.getElementById('modal-setup').classList.add('open');
+  });
+}
+
+function submitSetupKey() {
+  const key = document.getElementById('setup-key').value.trim();
+  if (!key) { alert('Please paste your private key.'); return; }
+  savePrivateKey(key);
+  document.getElementById('modal-setup').classList.remove('open');
+  document.getElementById('loading').classList.remove('hidden');
+  document.getElementById('loading-text').textContent = 'Connecting to Google Sheets…';
+  init();
+}
+
 async function init(){
+  // Check for private key first
+  const key = getPrivateKey();
+  if (!key) {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('modal-setup').classList.add('open');
+    return;
+  }
+  PRIVATE_KEY = key;
   try {
     await loadFromSheets();
   } catch(e) {
     console.error('Init error:', e);
+    // If auth failed, key may be wrong — show setup screen again
+    if (e.message === 'No private key configured' || (e.message && e.message.includes('401'))) {
+      localStorage.removeItem('fn_private_key');
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('modal-setup').classList.add('open');
+      return;
+    }
     loadLocalFallback();
     setSyncStatus('error','Offline');
   }
