@@ -174,7 +174,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 
 <div class="app">
   <div class="topbar">
-    <div class="topbar-logo">Field<span>Notes</span></div>
+    <div class="topbar-logo">Field<span>Notes</span> <span style="font-size:10px;font-weight:300;opacity:.5;letter-spacing:.5px">v1.4 · 15 Apr</span></div>
     <span class="sync-status" id="sync-status">Synced</span>
     <button class="icon-btn" onclick="syncNow()" title="Sync">
       <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
@@ -860,11 +860,12 @@ function openModal(id, data) {
   }
   if (id==='add-todo') {
     if (!editingTodo) {
-    document.getElementById('at-title').textContent='New To-Do';
-    document.getElementById('at-text').value='';
-    document.getElementById('at-priority').value='Now';
-    msState['at-c']=[];msState['at-co']=[];
-    renderMsChips('at-c');renderMsChips('at-co');
+      document.getElementById('at-title').textContent='New To-Do';
+      document.getElementById('at-text').value='';
+      document.getElementById('at-priority').value='Now';
+      msState['at-c']=[];msState['at-co']=[];
+      renderMsChips('at-c');renderMsChips('at-co');
+    }
   }
   document.getElementById('modal-'+id).classList.add('open');
   setTimeout(()=>{const inp=document.querySelector('#modal-'+id+' input:not([type=date])');if(inp)inp.focus();},300);
