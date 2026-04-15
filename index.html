@@ -170,12 +170,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div class="loading-overlay" id="loading">
-  <div style="font-size:24px;font-weight:700;letter-spacing:-.5px">Field<span style="font-weight:300;opacity:.7">Notes</span></div>
-  <div class="loading-spinner"></div>
-  <div class="loading-text" id="loading-text">Connecting to Google Sheets…</div>
-</div>
+<!-- loading overlay removed - app loads instantly -->
 
 <div class="app">
   <div class="topbar">
@@ -1488,32 +1483,29 @@ function submitSetupKey() {
   if (!key) { alert('Please paste your private key.'); return; }
   savePrivateKey(key);
   document.getElementById('modal-setup').classList.remove('open');
-  document.getElementById('loading').classList.remove('hidden');
-  document.getElementById('loading-text').textContent = 'Connecting to Google Sheets…';
   init();
 }
 
 async function init(){
   const key = getPrivateKey();
   if (!key) {
-    document.getElementById('loading').classList.add('hidden');
     document.getElementById('modal-setup').classList.add('open');
     return;
   }
   PRIVATE_KEY = key;
 
-  // Load local cache immediately so app is usable right away
+  // Always show app immediately
   loadLocalFallback();
-  document.getElementById('loading').classList.add('hidden');
   renderAll();
+  setSyncStatus('syncing', 'Loading…');
 
-  // Then try Google Sheets in background with a 10 second timeout
+  // Sync with Google Sheets in background
   try {
-    const timeoutPromise = new Promise((_,reject) => setTimeout(()=>reject(new Error('Timeout')), 10000));
+    const timeoutPromise = new Promise((_,reject) => setTimeout(()=>reject(new Error('Timeout')), 15000));
     await Promise.race([loadFromSheets(), timeoutPromise]);
     renderAll();
   } catch(e) {
-    console.error('Background sync failed:', e);
+    console.error('Sync failed:', e);
     const msg = e.message || '';
     if (msg.includes('Invalid private key')) {
       localStorage.removeItem('fn_private_key');
@@ -1521,7 +1513,7 @@ async function init(){
       document.getElementById('modal-setup').classList.add('open');
       return;
     }
-    setSyncStatus('error', 'Offline');
+    setSyncStatus('error', 'Offline — tap sync to retry');
   }
 }
 
