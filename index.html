@@ -1635,15 +1635,10 @@ async function init(){
       }, 1500);
       return;
     }
-    document.getElementById('loading-text').textContent = 'Error: ' + msg;
-    setTimeout(()=>{
-      loadLocalFallback();
-      setSyncStatus('error','Offline');
-      document.getElementById('loading').classList.add('hidden');
-      renderAll();
-    }, 2000);
-    return;
+    loadLocalFallback();
+    setSyncStatus('error','Offline');
   }
+  // Always hide loading screen and render regardless of success/failure
   document.getElementById('loading').classList.add('hidden');
   renderAll();
 }
