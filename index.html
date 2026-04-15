@@ -492,7 +492,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 // Private Key is stored in browser local storage only — never in this file.
 // ─────────────────────────────────────────────────────────────
 const SHEET_ID = '12uhcFfFHWXhZy5Ig-zI2GNK0jRlxLt7laNBj3LogE_A';
-const CLIENT_EMAIL = 'fieldnotes@field-notes-493112.iam.gserviceaccount.com';
+const CLIENT_EMAIL = 'YOUR_CLIENT_EMAIL';
 let PRIVATE_KEY = '';
 
 function getPrivateKey() {
@@ -928,50 +928,55 @@ const msMax = {lc:4,lt:1,'ac-co':1,'aco-pe':1,'af-co':1,'af-sp':1,'at-c':1,'at-c
 
 function openModal(id, data) {
   if (id==='log') {
-    msState.lc=[];msState.lt=[];
-    document.getElementById('log-date').value=today();
-    document.getElementById('log-type').value='Call';
-    document.getElementById('log-notes').value='';
-    document.getElementById('log-title').textContent='Log Interaction';
-    renderMsChips('lc');renderMsChips('lt');
-    editingLog=null;
-    if (data&&data.contactId) {
-      const c=DB.contacts.find(x=>x.id===data.contactId);
-      if (c) { msState.lc=[{id:c.id,label:displayName(c)}]; renderMsChips('lc'); }
+    if (!editingLog) {
+      msState.lc=[];msState.lt=[];
+      document.getElementById('log-date').value=today();
+      document.getElementById('log-type').value='Call';
+      document.getElementById('log-notes').value='';
+      document.getElementById('log-title').textContent='Log Interaction';
+      renderMsChips('lc');renderMsChips('lt');
+      if (data&&data.contactId) {
+        const c=DB.contacts.find(x=>x.id===data.contactId);
+        if (c) { msState.lc=[{id:c.id,label:displayName(c)}]; renderMsChips('lc'); }
+      }
     }
   }
   if (id==='add-contact') {
-    editingContact=null;
-    document.getElementById('ac-title').textContent='New Contact';
-    ['ac-first','ac-last','ac-pref','ac-role','ac-title-f','ac-coverage','ac-email','ac-phone','ac-location','ac-linkedin','ac-connection','ac-bio'].forEach(f=>{const el=document.getElementById(f);if(el)el.value='';});
-    document.getElementById('ac-type').value='sponsor';
-    document.getElementById('ac-priority').value='';
-    msState['ac-co']=[];renderMsChips('ac-co');
+    if (!editingContact) {
+      document.getElementById('ac-title').textContent='New Contact';
+      ['ac-first','ac-last','ac-pref','ac-role','ac-title-f','ac-coverage','ac-email','ac-phone','ac-location','ac-linkedin','ac-connection','ac-bio'].forEach(f=>{const el=document.getElementById(f);if(el)el.value='';});
+      document.getElementById('ac-type').value='sponsor';
+      document.getElementById('ac-priority').value='';
+      msState['ac-co']=[];renderMsChips('ac-co');
+    }
   }
   if (id==='add-sponsor') {
-    editingSponsor=null;
-    document.getElementById('as-title').textContent='New PE Firm';
-    ['as-name','as-funds','as-notes'].forEach(f=>document.getElementById(f).value='');
-    document.getElementById('as-priority').value='';
+    if (!editingSponsor) {
+      document.getElementById('as-title').textContent='New PE Firm';
+      ['as-name','as-funds','as-notes'].forEach(f=>document.getElementById(f).value='');
+      document.getElementById('as-priority').value='';
+    }
   }
   if (id==='add-corp') {
-    editingCorp=null;
-    document.getElementById('aco-title').textContent='New Corporate';
-    ['aco-name','aco-desc','aco-rev','aco-ebitda','aco-margin','aco-growth','aco-val','aco-lev','aco-notes'].forEach(f=>document.getElementById(f).value='');
-    document.getElementById('aco-type').value='Private';
-    document.getElementById('aco-priority').value='';
-    msState['aco-pe']=[];renderMsChips('aco-pe');
+    if (!editingCorp) {
+      document.getElementById('aco-title').textContent='New Corporate';
+      ['aco-name','aco-desc','aco-rev','aco-ebitda','aco-margin','aco-growth','aco-val','aco-lev','aco-notes'].forEach(f=>document.getElementById(f).value='');
+      document.getElementById('aco-type').value='Private';
+      document.getElementById('aco-priority').value='';
+      msState['aco-pe']=[];renderMsChips('aco-pe');
+    }
   }
   if (id==='add-focus') {
-    editingFocus=null;
-    document.getElementById('af-title').textContent='New Focus Name';
-    document.getElementById('af-status').value='Active';
-    document.getElementById('af-notes').value='';
-    msState['af-co']=[];msState['af-sp']=[];
-    renderMsChips('af-co');renderMsChips('af-sp');
+    if (!editingFocus) {
+      document.getElementById('af-title').textContent='New Focus Name';
+      document.getElementById('af-status').value='Active';
+      document.getElementById('af-notes').value='';
+      msState['af-co']=[];msState['af-sp']=[];
+      renderMsChips('af-co');renderMsChips('af-sp');
+    }
   }
   if (id==='add-todo') {
-    editingTodo=null;
+    if (!editingTodo) {
     document.getElementById('at-title').textContent='New To-Do';
     document.getElementById('at-text').value='';
     document.getElementById('at-priority').value='Now';
@@ -985,6 +990,13 @@ function openModal(id, data) {
 function closeModal(id) {
   document.getElementById('modal-'+id).classList.remove('open');
   document.querySelectorAll('.ms-dropdown').forEach(d=>d.style.display='none');
+  // Clear editing state when modal is dismissed
+  if(id==='log') editingLog=null;
+  if(id==='add-contact') editingContact=null;
+  if(id==='add-sponsor') editingSponsor=null;
+  if(id==='add-corp') editingCorp=null;
+  if(id==='add-focus') editingFocus=null;
+  if(id==='add-todo') editingTodo=null;
 }
 function closeProfile() { document.getElementById('modal-profile').classList.remove('open'); }
 
