@@ -1501,27 +1501,28 @@ async function init(){
     return;
   }
   PRIVATE_KEY = key;
-  try {
-    await loadFromSheets();
-  } catch(e) {
-    console.error('Init error:', e);
-    const msg = e.message || 'Unknown error';
-    if (msg.includes('Invalid private key') || msg.includes('No private key')) {
-      document.getElementById('loading-text').textContent = 'Key error — re-enter your private key';
-      setTimeout(()=>{
-        document.getElementById('loading').classList.add('hidden');
-        document.getElementById('setup-key').value = '';
-        document.getElementById('setup-key').placeholder = 'Previous key was invalid. Please re-paste.';
-        document.getElementById('modal-setup').classList.add('open');
-      }, 1500);
-      return;
-    }
-    loadLocalFallback();
-    setSyncStatus('error','Offline');
-  }
-  // Always hide loading screen and render regardless of success/failure
+
+  // Load local cache immediately so app is usable right away
+  loadLocalFallback();
   document.getElementById('loading').classList.add('hidden');
   renderAll();
+
+  // Then try Google Sheets in background with a 10 second timeout
+  try {
+    const timeoutPromise = new Promise((_,reject) => setTimeout(()=>reject(new Error('Timeout')), 10000));
+    await Promise.race([loadFromSheets(), timeoutPromise]);
+    renderAll();
+  } catch(e) {
+    console.error('Background sync failed:', e);
+    const msg = e.message || '';
+    if (msg.includes('Invalid private key')) {
+      localStorage.removeItem('fn_private_key');
+      document.getElementById('setup-key').value = '';
+      document.getElementById('modal-setup').classList.add('open');
+      return;
+    }
+    setSyncStatus('error', 'Offline');
+  }
 }
 
 init();
