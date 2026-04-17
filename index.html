@@ -18,27 +18,41 @@
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;background:var(--bg);color:var(--text);min-height:100vh}
 .app{display:flex;flex-direction:column;min-height:100vh;max-width:680px;margin:0 auto;background:var(--surface);box-shadow:0 0 0 0.5px var(--border)}
+/* TOPBAR */
 .topbar{background:var(--accent);color:#fff;padding:12px 16px 10px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:50}
 .topbar-logo{font-size:18px;font-weight:700;letter-spacing:-.5px;flex:1}
 .topbar-logo span{font-weight:300;opacity:.7}
+.topbar-version{font-size:10px;font-weight:300;opacity:.5;letter-spacing:.5px}
 .icon-btn{background:none;border:none;color:#fff;cursor:pointer;padding:4px;border-radius:var(--radius-sm);opacity:.8;display:flex;align-items:center;justify-content:center}
 .icon-btn:hover{opacity:1;background:rgba(255,255,255,.1)}
 .icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .sync-status{font-size:11px;opacity:.7;padding:2px 6px;border-radius:10px;background:rgba(255,255,255,.1)}
 .sync-status.syncing{opacity:1;background:rgba(255,200,0,.3)}
 .sync-status.error{background:rgba(255,80,80,.3)}
-.nav{display:grid;grid-template-columns:repeat(4,1fr);background:var(--accent);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:52px;z-index:50}
+/* NAV */
+.nav{display:grid;grid-template-columns:repeat(5,1fr);background:var(--accent);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:52px;z-index:50}
 .nav-btn{background:none;border:none;color:rgba(255,255,255,.6);padding:8px 4px 10px;font-size:11px;font-weight:500;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;letter-spacing:.02em;border-bottom:2px solid transparent;transition:all .15s}
 .nav-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav-btn.active{color:#fff;border-bottom-color:#fff}
+/* PAGES */
 .page{display:none;padding:0 0 100px}
 .page.active{display:block}
+/* LANDING PAGE SYSTEM */
+.landing{position:fixed;inset:0;background:var(--surface);z-index:150;overflow-y:auto;display:none;flex-direction:column;max-width:680px;margin:0 auto}
+.landing.open{display:flex}
+.landing-topbar{background:var(--accent);color:#fff;padding:12px 16px 10px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;flex-shrink:0}
+.landing-title{font-size:17px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back-btn{background:none;border:none;color:#fff;cursor:pointer;padding:4px;display:flex;align-items:center;gap:4px;font-size:13px;opacity:.9}
+.back-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.landing-body{flex:1;padding-bottom:40px}
+/* SEARCH */
 .search-wrap{padding:12px 16px;background:var(--surface);border-bottom:0.5px solid var(--border);position:sticky;top:104px;z-index:40}
 .search-row{display:flex;gap:8px;align-items:center}
 .search-filter{padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:13px;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none;min-width:90px}
 .search-box{flex:1;position:relative}
 .search-box input{width:100%;padding:8px 12px 8px 34px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;background:var(--surface);color:var(--text)}
 .search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+/* CARDS */
 .section-hd{padding:16px 16px 8px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
 .card{background:var(--surface);border-bottom:0.5px solid var(--border);padding:12px 16px;cursor:pointer;transition:background .1s;display:flex;align-items:flex-start;gap:12px}
 .card:active{background:var(--surface2)}
@@ -48,11 +62,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .card-meta{font-size:12px;color:var(--text3);margin-top:3px}
 .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
 .chevron{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+/* AVATARS */
 .avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;letter-spacing:-.5px}
 .av-blue{background:var(--accent-bg);color:var(--accent2)}
 .av-green{background:var(--green-bg);color:var(--green)}
 .av-amber{background:var(--amber-bg);color:var(--amber)}
 .av-gray{background:var(--surface2);color:var(--text2)}
+/* BADGES */
 .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;white-space:nowrap}
 .b-sponsor{background:var(--accent-bg);color:var(--accent2)}
 .b-corp{background:var(--green-bg);color:var(--green)}
@@ -63,15 +79,106 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .b-active{background:var(--green-bg);color:var(--green)}
 .b-pipeline{background:var(--amber-bg);color:var(--amber)}
 .b-watching{background:var(--surface2);color:var(--text2)}
-.log-item{padding:12px 16px;border-bottom:0.5px solid var(--border)}
-.log-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.log-date{font-size:12px;color:var(--text3);font-weight:500}
-.log-type{font-size:11px;padding:1px 6px;border-radius:10px;background:var(--surface2);color:var(--text2)}
-.log-body{font-size:14px;color:var(--text);line-height:1.5;margin-bottom:6px}
-.log-tags{display:flex;flex-wrap:wrap;gap:4px}
-.tag{font-size:11px;padding:2px 7px;border-radius:10px}
-.tag-contact{background:var(--accent-bg);color:var(--accent2)}
-.tag-company{background:var(--green-bg);color:var(--green)}
+/* INTERACTION ROW - 4 column inbox style */
+.int-row{display:grid;grid-template-columns:52px 1fr 48px 1fr;gap:0;border-bottom:0.5px solid var(--border);cursor:pointer;transition:background .1s}
+.int-row:active{background:var(--surface2)}
+.int-cell{padding:10px 6px 10px}
+.int-cell:first-child{padding-left:14px}
+.int-cell:last-child{padding-right:14px}
+.int-date{font-size:11px;color:var(--text3);font-weight:500;line-height:1.4}
+.int-company{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.int-people{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.int-type{font-size:10px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.04em;line-height:1.4}
+.int-notes{font-size:12px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* LANDING INTERACTION CARD */
+.landing-int{padding:14px 16px;border-bottom:0.5px solid var(--border)}
+.landing-int-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.landing-int-meta{flex:1}
+.landing-int-date{font-size:12px;font-weight:500;color:var(--text3)}
+.landing-int-type{font-size:11px;color:var(--text3);margin-top:1px}
+.landing-int-notes{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:8px}
+.landing-int-people{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.person-chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:4px 10px;border-radius:20px;background:var(--accent-bg);color:var(--accent2);cursor:pointer;border:none;font-family:inherit}
+.person-chip:active{background:var(--accent2);color:#fff}
+.co-chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:4px 10px;border-radius:20px;background:var(--green-bg);color:var(--green);cursor:pointer;border:none;font-family:inherit}
+.co-chip:active{background:var(--green);color:#fff}
+/* PROFILE FIELDS */
+.profile-hero{padding:16px 16px 12px;border-bottom:0.5px solid var(--border);display:flex;gap:14px;align-items:flex-start}
+.profile-avatar{width:52px;height:52px;border-radius:50%;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.profile-info{flex:1;min-width:0}
+.profile-name{font-size:20px;font-weight:700;color:var(--text);margin-bottom:3px}
+.profile-sub{font-size:14px;color:var(--text2);margin-bottom:6px}
+.profile-badges{display:flex;flex-wrap:wrap;gap:5px}
+.profile-actions{display:flex;gap:8px;padding:10px 16px;border-bottom:0.5px solid var(--border);background:var(--surface2);flex-wrap:wrap}
+.action-btn{flex:1;min-width:60px;padding:8px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--surface);font-size:13px;font-weight:500;color:var(--accent2);cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;font-family:inherit}
+.action-btn:active{background:var(--surface2)}
+.action-btn.danger{color:var(--red)}
+.collapsible{border-bottom:0.5px solid var(--border)}
+.collapsible-hd{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2)}
+.collapsible-hd svg{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.collapsible-hd.open svg{transform:rotate(90deg)}
+.collapsible-body{display:none}
+.collapsible-body.open{display:block}
+.profile-field{display:flex;padding:8px 16px;gap:12px;border-bottom:0.5px solid var(--border)}
+.profile-field:last-child{border-bottom:none}
+.pf-label{font-size:13px;color:var(--text3);width:100px;flex-shrink:0;padding-top:1px}
+.pf-value{font-size:14px;color:var(--text);flex:1;line-height:1.5}
+.pf-value a{color:var(--accent2);text-decoration:none}
+.pf-link{color:var(--accent2);cursor:pointer;background:none;border:none;font-size:14px;font-family:inherit;padding:0;text-align:left}
+.bio-box{padding:10px 16px 14px}
+.bio-text{font-size:14px;color:var(--text2);line-height:1.6;background:var(--surface2);padding:10px 12px;border-radius:var(--radius-sm)}
+.subsection-hd{padding:14px 16px 6px;font-size:12px;font-weight:600;color:var(--text2);display:flex;justify-content:space-between;align-items:center}
+.subsection-hd.mention{color:var(--text3);font-style:italic}
+.empty-section{padding:10px 16px 14px;font-size:13px;color:var(--text3);font-style:italic}
+.contact-row{padding:10px 16px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:10px;cursor:pointer}
+.contact-row:last-child{border-bottom:none}
+.contact-row:active{background:var(--surface2)}
+.cr-info{flex:1;min-width:0}
+.cr-name{font-size:14px;font-weight:600;color:var(--text)}
+.cr-sub{font-size:12px;color:var(--text3)}
+.cr-actions{display:flex;gap:8px}
+.cr-link{font-size:12px;color:var(--accent2);text-decoration:none}
+/* MODALS */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.modal-bg.open{display:flex}
+.modal{background:var(--surface);border-radius:16px 16px 0 0;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom)}
+.modal-hd{padding:16px 16px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10}
+.modal-title{font-size:17px;font-weight:600}
+.modal-close{background:var(--surface2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center}
+/* FORMS */
+.form-body{padding:12px 16px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;font-family:inherit;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none}
+.field textarea{resize:vertical;min-height:80px;line-height:1.5}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field-hint{font-size:11px;color:var(--text3);margin-top:4px}
+.form-actions{display:flex;gap:10px;padding:12px 16px 16px;border-top:0.5px solid var(--border)}
+.btn-cancel{flex:1;padding:12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;font-weight:500;background:none;color:var(--text2);cursor:pointer}
+.btn-save{flex:2;padding:12px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:600;background:var(--accent);color:#fff;cursor:pointer}
+/* MULTI SELECT */
+.ms-wrap{border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 8px;background:var(--surface);min-height:44px;cursor:text}
+.ms-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
+.ms-chip{display:inline-flex;align-items:center;gap:3px;font-size:13px;padding:3px 8px;border-radius:20px;background:var(--accent-bg);color:var(--accent2)}
+.ms-chip.co{background:var(--green-bg);color:var(--green)}
+.ms-chip button{background:none;border:none;cursor:pointer;color:inherit;font-size:14px;padding:0;line-height:1;display:flex;align-items:center}
+.ms-input{border:none;outline:none;font-size:15px;font-family:inherit;background:transparent;color:var(--text);width:100%;min-width:60px;padding:2px 4px}
+.ms-dropdown{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-sm);max-height:180px;overflow-y:auto;margin-top:4px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.ms-opt{padding:10px 12px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.ms-opt:active{background:var(--surface2)}
+.ms-opt-new{color:var(--accent2);font-style:italic}
+/* FAB */
+.fab{position:fixed;bottom:60px;right:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.25);z-index:100;transition:transform .1s}
+.fab:active{transform:scale(.94)}
+/* DASHBOARD */
+.dash-search{padding:16px 16px 12px;background:var(--surface);border-bottom:0.5px solid var(--border)}
+.dash-row{display:flex;gap:8px;align-items:center}
+.dash-filter{padding:9px 10px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none;flex-shrink:0}
+.dash-input-wrap{flex:1;position:relative}
+.dash-input-wrap input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;background:var(--surface);color:var(--text)}
+.dash-input-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.search-results{background:var(--surface)}
+/* TODO */
 .todo-item{padding:12px 16px;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;gap:10px}
 .todo-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);background:none;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s}
 .todo-check.done{background:var(--green);border-color:var(--green)}
@@ -83,71 +190,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .todo-link{font-size:12px;color:var(--text3);margin-top:3px}
 .todo-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .todo-actions{display:flex;gap:4px}
-.mini-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:3px 7px;font-size:11px;color:var(--text2);cursor:pointer}
-.move-sel{font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text2);appearance:none;-webkit-appearance:none}
-.profile-hero{padding:20px 16px 16px;border-bottom:0.5px solid var(--border);display:flex;gap:14px;align-items:flex-start}
-.profile-avatar{width:56px;height:56px;border-radius:50%;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.profile-info{flex:1;min-width:0}
-.profile-name{font-size:20px;font-weight:700;color:var(--text);margin-bottom:3px}
-.profile-sub{font-size:14px;color:var(--text2);margin-bottom:6px}
-.profile-badges{display:flex;flex-wrap:wrap;gap:5px}
-.profile-actions{display:flex;gap:8px;padding:10px 16px;border-bottom:0.5px solid var(--border);background:var(--surface2)}
-.action-btn{flex:1;padding:8px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--surface);font-size:13px;font-weight:500;color:var(--accent2);cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center}
-.action-btn:active{background:var(--surface2)}
-.profile-section{border-bottom:0.5px solid var(--border)}
-.profile-section-hd{padding:12px 16px 0;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
-.profile-field{display:flex;padding:8px 16px;gap:12px;border-bottom:0.5px solid var(--border)}
-.profile-field:last-child{border-bottom:none}
-.pf-label{font-size:13px;color:var(--text3);width:90px;flex-shrink:0;padding-top:1px}
-.pf-value{font-size:14px;color:var(--text);flex:1;line-height:1.5}
-.pf-value a{color:var(--accent2);text-decoration:none}
-.bio-box{padding:10px 16px 14px}
-.bio-text{font-size:14px;color:var(--text2);line-height:1.6;background:var(--surface2);padding:10px 12px;border-radius:var(--radius-sm)}
-.subsection-hd{padding:14px 16px 6px;font-size:12px;font-weight:600;color:var(--text2)}
-.subsection-hd.mention{color:var(--text3);font-style:italic}
-.empty-section{padding:10px 16px 14px;font-size:13px;color:var(--text3);font-style:italic}
-.contact-row{padding:10px 16px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:10px;cursor:pointer}
-.contact-row:last-child{border-bottom:none}
-.contact-row:active{background:var(--surface2)}
-.cr-info{flex:1;min-width:0}
-.cr-name{font-size:14px;font-weight:600;color:var(--text)}
-.cr-sub{font-size:12px;color:var(--text3)}
-.cr-actions{display:flex;gap:8px}
-.cr-link{font-size:12px;color:var(--accent2)}
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
-.modal-bg.open{display:flex}
-.modal{background:var(--surface);border-radius:16px 16px 0 0;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom)}
-.modal-hd{padding:16px 16px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10}
-.modal-title{font-size:17px;font-weight:600}
-.modal-close{background:var(--surface2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center}
-.form-body{padding:12px 16px}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
-.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;font-family:inherit;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none}
-.field textarea{resize:vertical;min-height:80px;line-height:1.5}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.field-hint{font-size:11px;color:var(--text3);margin-top:4px}
-.form-actions{display:flex;gap:10px;padding:12px 16px 16px;border-top:0.5px solid var(--border)}
-.btn-cancel{flex:1;padding:12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;font-weight:500;background:none;color:var(--text2);cursor:pointer}
-.btn-save{flex:2;padding:12px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:600;background:var(--accent);color:#fff;cursor:pointer}
-.ms-wrap{border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 8px;background:var(--surface);min-height:44px;cursor:text}
-.ms-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
-.ms-chip{display:inline-flex;align-items:center;gap:3px;font-size:13px;padding:3px 8px;border-radius:20px;background:var(--accent-bg);color:var(--accent2)}
-.ms-chip button{background:none;border:none;cursor:pointer;color:var(--accent2);font-size:14px;padding:0;line-height:1;display:flex;align-items:center}
-.ms-input{border:none;outline:none;font-size:15px;font-family:inherit;background:transparent;color:var(--text);width:100%;min-width:60px;padding:2px 4px}
-.ms-dropdown{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-sm);max-height:180px;overflow-y:auto;margin-top:4px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.ms-opt{padding:10px 12px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
-.ms-opt:active{background:var(--surface2)}
-.ms-opt-new{color:var(--accent2);font-style:italic}
-.fab{position:fixed;bottom:24px;right:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.25);z-index:100;transition:transform .1s}
-.fab:active{transform:scale(.94)}
-.dash-search{padding:16px 16px 12px;background:var(--surface);border-bottom:0.5px solid var(--border)}
-.dash-row{display:flex;gap:8px;align-items:center}
-.dash-filter{padding:9px 10px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;background:var(--surface);color:var(--text);appearance:none;-webkit-appearance:none;flex-shrink:0}
-.dash-input-wrap{flex:1;position:relative}
-.dash-input-wrap input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:15px;background:var(--surface);color:var(--text)}
-.dash-input-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.search-results{background:var(--surface)}
+.mini-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:3px 7px;font-size:11px;color:var(--text2);cursor:pointer;font-family:inherit}
+.move-sel{font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text2);appearance:none;-webkit-appearance:none;font-family:inherit}
+/* MISC */
 .divider{height:8px;background:var(--bg);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
 mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 .empty-state{padding:40px 20px;text-align:center;color:var(--text3);font-size:14px;line-height:1.6}
@@ -161,49 +206,43 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
 .fc-pipeline{background:var(--amber-bg);color:var(--amber)}
 .fc-watching{background:var(--surface2);color:var(--text2)}
 .toggle-btn{background:none;border:1px solid var(--accent2);border-radius:var(--radius-sm);padding:4px 10px;font-size:12px;color:var(--accent2);cursor:pointer}
-.loading-overlay{position:fixed;inset:0;background:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;color:#fff;gap:16px}
-.loading-overlay.hidden{display:none}
-.loading-spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:15px;opacity:.8}
+/* CONTACT MINI CARD */
+.mini-card-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300;display:none;align-items:flex-end;justify-content:center}
+.mini-card-bg.open{display:flex}
+.mini-card{background:var(--surface);border-radius:16px 16px 0 0;width:100%;max-width:680px;padding:16px 16px 32px}
+.mini-card-name{font-size:18px;font-weight:700;margin-bottom:2px}
+.mini-card-sub{font-size:13px;color:var(--text2);margin-bottom:14px}
+.mini-card-actions{display:flex;gap:10px;flex-wrap:wrap}
 </style>
 </head>
 <body>
-
-<!-- loading overlay removed - app loads instantly -->
-
 <div class="app">
   <div class="topbar">
-    <div class="topbar-logo">Field<span>Notes</span> <span style="font-size:10px;font-weight:300;opacity:.5;letter-spacing:.5px">v1.4 · 15 Apr</span></div>
+    <div class="topbar-logo">Field<span>Notes</span> <span class="topbar-version">v2.0 · 16 Apr</span></div>
     <span class="sync-status" id="sync-status">Synced</span>
     <button class="icon-btn" onclick="syncNow()" title="Sync">
       <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
     </button>
   </div>
-
-  <nav class="nav" style="grid-template-columns:repeat(5,1fr)">
+  <nav class="nav">
     <button class="nav-btn active" onclick="showPage('dash',this)">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      Home
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home
     </button>
     <button class="nav-btn" onclick="showPage('contacts',this)">
-      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-      Contacts
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Contacts
     </button>
     <button class="nav-btn" onclick="showPage('companies',this)">
-      <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7h18M3 14h18M5 21V7M19 21V7M10 21V7M14 21V7"/></svg>
-      Companies
+      <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7h18M3 14h18M5 21V7M19 21V7M10 21V7M14 21V7"/></svg>Companies
     </button>
     <button class="nav-btn" onclick="showPage('interactions',this)">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      Log
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Log
     </button>
     <button class="nav-btn" onclick="showPage('todos',this)">
-      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-      To-Dos
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>To-Dos
     </button>
   </nav>
 
+  <!-- DASHBOARD -->
   <div id="page-dash" class="page active">
     <div class="dash-search">
       <div class="dash-row">
@@ -229,6 +268,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     </div>
   </div>
 
+  <!-- CONTACTS -->
   <div id="page-contacts" class="page">
     <div class="search-wrap">
       <div class="search-row">
@@ -241,6 +281,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div id="contact-list"></div>
   </div>
 
+  <!-- COMPANIES -->
   <div id="page-companies" class="page">
     <div class="search-wrap">
       <div class="search-row">
@@ -259,14 +300,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div id="company-list"></div>
   </div>
 
-  <div id="page-todos" class="page">
-    <div style="padding:10px 16px;border-bottom:0.5px solid var(--border);display:flex;justify-content:flex-end">
-      <button class="toggle-btn" onclick="toggleFocusPanel()">Show Focus Names</button>
-    </div>
-    <div id="focus-panel" style="display:none"></div>
-    <div id="todo-list"></div>
-  </div>
-
+  <!-- INTERACTIONS LOG -->
   <div id="page-interactions" class="page">
     <div class="search-wrap">
       <div class="search-row">
@@ -279,18 +313,49 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <div id="interaction-list"></div>
   </div>
 
-</div>
-
-<!-- FOOTER -->
-<div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:var(--surface);border-top:0.5px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;z-index:99">
-  <span id="last-saved" style="font-size:11px;color:var(--text3)">Not yet saved</span>
-  <div style="display:flex;gap:10px;align-items:center">
-    <button onclick="resetKey()" style="font-size:11px;padding:4px 8px;border:1px solid var(--border);border-radius:var(--radius-sm);background:none;color:var(--text3);cursor:pointer;font-family:inherit">Reset key</button>
-    <button onclick="exportAll()" style="font-size:12px;padding:6px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;color:var(--text2);cursor:pointer;font-family:inherit">Export CSV</button>
+  <!-- TODOS -->
+  <div id="page-todos" class="page">
+    <div style="padding:10px 16px;border-bottom:0.5px solid var(--border);display:flex;justify-content:flex-end">
+      <button class="toggle-btn" onclick="toggleFocusPanel()">Show Focus Names</button>
+    </div>
+    <div id="focus-panel" style="display:none"></div>
+    <div id="todo-list"></div>
   </div>
 </div>
 
-<!-- PROFILE MODAL -->
+<!-- LANDING PAGES -->
+<div class="landing" id="landing-company">
+  <div class="landing-topbar">
+    <button class="back-btn" onclick="closeLanding('company')">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back
+    </button>
+    <span class="landing-title" id="landing-company-title">Company</span>
+    <button class="icon-btn" onclick="openLogFromLanding('company')" title="Log interaction" style="margin-left:auto">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+  <div class="landing-body" id="landing-company-body"></div>
+</div>
+
+<div class="landing" id="landing-contact">
+  <div class="landing-topbar">
+    <button class="back-btn" onclick="closeLanding('contact')">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back
+    </button>
+    <span class="landing-title" id="landing-contact-title">Contact</span>
+    <button class="icon-btn" onclick="openLogFromLanding('contact')" title="Log interaction" style="margin-left:auto">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+  <div class="landing-body" id="landing-contact-body"></div>
+</div>
+
+<!-- MINI CONTACT CARD -->
+<div class="mini-card-bg" id="mini-card-bg" onclick="closeMiniCard()">
+  <div class="mini-card" id="mini-card" onclick="event.stopPropagation()"></div>
+</div>
+
+<!-- PROFILE MODAL (legacy for edit) -->
 <div class="modal-bg" id="modal-profile">
   <div class="modal" id="modal-profile-body"></div>
 </div>
@@ -305,10 +370,11 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
         <div class="ms-wrap" onclick="focusMs('lc')"><div class="ms-chips" id="lc-chips"></div><input class="ms-input" id="lc-input" placeholder="Search contacts…" oninput="msSearch('lc',this.value)" autocomplete="off"/></div>
         <div id="lc-dd" class="ms-dropdown" style="display:none"></div>
       </div>
-      <div class="field"><label>Topic (optional)</label>
-        <div class="ms-wrap" onclick="focusMs('lt')"><div class="ms-chips" id="lt-chips"></div><input class="ms-input" id="lt-input" placeholder="Search sponsors or companies…" oninput="msSearch('lt',this.value)" autocomplete="off"/></div>
-        <div id="lt-dd" class="ms-dropdown" style="display:none"></div>
-        <div class="field-hint">What company was discussed — separate from who the contact works at</div>
+      <div class="field"><label>Topic</label><input id="log-topic" placeholder="e.g. Q2 pipeline, Proofpoint refi, intro call"/></div>
+      <div class="field"><label>Companies discussed</label>
+        <div class="ms-wrap" onclick="focusMs('lcd')"><div class="ms-chips" id="lcd-chips"></div><input class="ms-input" id="lcd-input" placeholder="Search companies… (add up to 4)" oninput="msSearch('lcd',this.value)" autocomplete="off"/></div>
+        <div id="lcd-dd" class="ms-dropdown" style="display:none"></div>
+        <div class="field-hint">Specific companies discussed — separate from who the contacts work at</div>
       </div>
       <div class="field"><label>Type</label>
         <select id="log-type"><option>Call</option><option>Meeting</option><option>Conference</option><option>Email</option><option>Other</option></select>
@@ -465,416 +531,528 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
   <div class="modal" style="border-radius:var(--radius);max-width:480px;margin:20px">
     <div class="modal-hd"><span class="modal-title">One-time setup</span></div>
     <div class="form-body">
-      <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:16px">Paste your Google service account private key below. This is stored only in this browser and never uploaded anywhere.</p>
+      <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:16px">Paste your Google service account private key below. Stored only in this browser.</p>
       <div class="field">
         <label>Private Key</label>
         <textarea id="setup-key" style="min-height:120px;font-size:12px;font-family:monospace" placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;...paste full key here...&#10;-----END RSA PRIVATE KEY-----"></textarea>
-        <div class="field-hint">Copy the entire private_key value from your JSON credentials file, including the BEGIN and END lines.</div>
       </div>
     </div>
-    <div class="form-actions">
-      <button class="btn-save" onclick="submitSetupKey()">Save & Connect</button>
-    </div>
+    <div class="form-actions"><button class="btn-save" onclick="submitSetupKey()">Save & Connect</button></div>
   </div>
 </div>
 
 <button class="fab" onclick="openModal('add')">+</button>
 
+<!-- FOOTER -->
+<div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:var(--surface);border-top:0.5px solid var(--border);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;z-index:99">
+  <span id="last-saved" style="font-size:11px;color:var(--text3)">Not yet saved</span>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button onclick="resetKey()" style="font-size:11px;padding:4px 8px;border:1px solid var(--border);border-radius:var(--radius-sm);background:none;color:var(--text3);cursor:pointer;font-family:inherit">Reset key</button>
+    <button onclick="exportAll()" style="font-size:12px;padding:6px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;color:var(--text2);cursor:pointer;font-family:inherit">Export CSV</button>
+  </div>
+</div>
+
 <script>
 // ─────────────────────────────────────────────────────────────
-// CONFIGURATION
-// Sheet ID and Client Email are safe to store here publicly.
-// Private Key is stored in browser local storage only — never in this file.
+// CONFIG
 // ─────────────────────────────────────────────────────────────
 const SHEET_ID = '12uhcFfFHWXhZy5Ig-zI2GNK0jRlxLt7laNBj3LogE_A';
 const CLIENT_EMAIL = 'fieldnotes@field-notes-493112.iam.gserviceaccount.com';
 let PRIVATE_KEY = '';
-
-function getPrivateKey() {
-  return localStorage.getItem('fn_private_key') || '';
-}
-function savePrivateKey(key) {
-  localStorage.setItem('fn_private_key', key);
-  PRIVATE_KEY = key;
-}
-// ─────────────────────────────────────────────────────────────
+function getPrivateKey(){ return localStorage.getItem('fn_private_key')||''; }
+function savePrivateKey(k){ localStorage.setItem('fn_private_key',k); PRIVATE_KEY=k; }
 
 // ─────────────────────────────────────────────────────────────
-// GOOGLE SHEETS AUTH (JWT)
+// AUTH
 // ─────────────────────────────────────────────────────────────
-let accessToken = null;
-let tokenExpiry = 0;
-
-async function getAccessToken() {
-  if (accessToken && Date.now() < tokenExpiry - 60000) return accessToken;
-  PRIVATE_KEY = getPrivateKey();
-  if (!PRIVATE_KEY) throw new Error('No private key configured');
-  const now = Math.floor(Date.now() / 1000);
-  const header = { alg: 'RS256', typ: 'JWT' };
-  const claim = {
-    iss: CLIENT_EMAIL,
-    scope: 'https://www.googleapis.com/auth/spreadsheets',
-    aud: 'https://oauth2.googleapis.com/token',
-    exp: now + 3600,
-    iat: now
-  };
-  const b64 = obj => btoa(JSON.stringify(obj)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
-  const unsigned = b64(header) + '.' + b64(claim);
+let accessToken=null, tokenExpiry=0;
+async function getAccessToken(){
+  if(accessToken&&Date.now()<tokenExpiry-60000) return accessToken;
+  PRIVATE_KEY=getPrivateKey();
+  if(!PRIVATE_KEY) throw new Error('No private key configured');
+  const now=Math.floor(Date.now()/1000);
+  const header={alg:'RS256',typ:'JWT'};
+  const claim={iss:CLIENT_EMAIL,scope:'https://www.googleapis.com/auth/spreadsheets',aud:'https://oauth2.googleapis.com/token',exp:now+3600,iat:now};
+  const b64=obj=>btoa(JSON.stringify(obj)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  const unsigned=b64(header)+'.'+b64(claim);
   let key;
-  try {
-    key = await importPrivateKey(PRIVATE_KEY);
-  } catch(e) {
-    console.error('Key import failed:', e);
-    localStorage.removeItem('fn_private_key');
-    throw new Error('Invalid private key format: ' + e.message);
-  }
-  const sig = await crypto.subtle.sign({ name: 'RSASSA-PKCS1-v1_5' }, key, new TextEncoder().encode(unsigned));
-  const jwt = unsigned + '.' + btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
-  const resp = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${jwt}`
-  });
-  const data = await resp.json();
-  if (!data.access_token) {
-    console.error('Token error:', data);
-    throw new Error('Auth failed: ' + (data.error_description || data.error || 'unknown'));
-  }
-  accessToken = data.access_token;
-  tokenExpiry = Date.now() + (data.expires_in * 1000);
+  try{ key=await importPrivateKey(PRIVATE_KEY); }
+  catch(e){ localStorage.removeItem('fn_private_key'); throw new Error('Invalid private key: '+e.message); }
+  const sig=await crypto.subtle.sign({name:'RSASSA-PKCS1-v1_5'},key,new TextEncoder().encode(unsigned));
+  const jwt=unsigned+'.'+btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  const resp=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:`grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${jwt}`});
+  const data=await resp.json();
+  if(!data.access_token) throw new Error('Auth failed: '+(data.error_description||data.error||'unknown'));
+  accessToken=data.access_token;
+  tokenExpiry=Date.now()+(data.expires_in*1000);
   return accessToken;
 }
-
-async function importPrivateKey(pem) {
-  // Handle both real newlines and escaped \n from JSON
-  const cleaned = pem.replace(/\\n/g, '\n');
-  const pemContent = cleaned
-    .replace(/-----BEGIN RSA PRIVATE KEY-----/g, '')
-    .replace(/-----BEGIN PRIVATE KEY-----/g, '')
-    .replace(/-----END RSA PRIVATE KEY-----/g, '')
-    .replace(/-----END PRIVATE KEY-----/g, '')
-    .replace(/\s/g, '');
-  const binaryDer = Uint8Array.from(atob(pemContent), c => c.charCodeAt(0));
-  return await crypto.subtle.importKey('pkcs8', binaryDer, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
+async function importPrivateKey(pem){
+  const cleaned=pem.replace(/\\n/g,'\n');
+  const pemContent=cleaned.replace(/-----BEGIN RSA PRIVATE KEY-----/g,'').replace(/-----BEGIN PRIVATE KEY-----/g,'').replace(/-----END RSA PRIVATE KEY-----/g,'').replace(/-----END PRIVATE KEY-----/g,'').replace(/\s/g,'');
+  const binaryDer=Uint8Array.from(atob(pemContent),c=>c.charCodeAt(0));
+  return await crypto.subtle.importKey('pkcs8',binaryDer,{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['sign']);
 }
 
 // ─────────────────────────────────────────────────────────────
-// SHEETS READ/WRITE
+// SHEETS
 // ─────────────────────────────────────────────────────────────
-async function sheetsGet(range) {
-  const token = await getAccessToken();
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}`;
-  const resp = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-  if (!resp.ok) throw new Error(`Sheets GET failed: ${resp.status}`);
-  const data = await resp.json();
-  return data.values || [];
+async function sheetsGet(range){
+  const token=await getAccessToken();
+  const resp=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}`,{headers:{Authorization:`Bearer ${token}`}});
+  if(!resp.ok) throw new Error(`Sheets GET failed: ${resp.status}`);
+  const data=await resp.json();
+  return data.values||[];
 }
-
-async function sheetsUpdate(range, values) {
-  const token = await getAccessToken();
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?valueInputOption=RAW`;
-  const resp = await fetch(url, {
-    method: 'PUT',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ range, majorDimension: 'ROWS', values })
-  });
-  if (!resp.ok) throw new Error(`Sheets PUT failed: ${resp.status}`);
-  return resp.json();
-}
-
-async function sheetsAppend(range, values) {
-  const token = await getAccessToken();
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
-  const resp = await fetch(url, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ range, majorDimension: 'ROWS', values })
-  });
-  if (!resp.ok) throw new Error(`Sheets append failed: ${resp.status}`);
-  return resp.json();
-}
-
-async function sheetsClear(range) {
-  const token = await getAccessToken();
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}:clear`;
-  const resp = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
-  if (!resp.ok) throw new Error(`Sheets clear failed: ${resp.status}`);
+async function sheetsUpdate(range,values){
+  const token=await getAccessToken();
+  const resp=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?valueInputOption=RAW`,{method:'PUT',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify({range,majorDimension:'ROWS',values})});
+  if(!resp.ok) throw new Error(`Sheets PUT failed: ${resp.status}`);
   return resp.json();
 }
 
 // ─────────────────────────────────────────────────────────────
 // DATA LAYER
 // ─────────────────────────────────────────────────────────────
-let DB = { sponsors:[], corps:[], contacts:[], interactions:[], todos:[], focusNames:[] };
-
-function rowsToObjects(rows) {
-  if (!rows.length) return [];
-  const headers = rows[0];
-  return rows.slice(1).filter(r => r.some(v => v)).map(r => {
-    const obj = {};
-    headers.forEach((h, i) => { obj[h] = r[i] || ''; });
-    return obj;
-  });
-}
-
-function objectsToRows(objects, headers) {
-  return [headers, ...objects.map(obj => headers.map(h => obj[h] !== undefined ? String(obj[h]) : ''))];
-}
-
-const HEADERS = {
-  Contacts: ['id','firstName','lastName','preferredName','contactType','companyId','companyType','role','title','coverage','email','phone','location','linkedin','connection','bio','priority','createdAt'],
-  Sponsors: ['id','name','funds','priority','notes'],
-  Corporates: ['id','name','type','peOwner','description','revenue','ebitda','margin','growth','valuation','leverage','priority','notes'],
-  Interactions: ['id','date','contactIds','topicId','topicType','topicLabel','type','notes','createdAt'],
-  FocusNames: ['id','companyId','companyLabel','sponsorId','sponsorLabel','status','notes','createdAt'],
-  Todos: ['id','text','priority','contactId','contactLabel','companyId','companyLabel','status','completedAt','createdAt']
+let DB={sponsors:[],corps:[],contacts:[],interactions:[],todos:[],focusNames:[]};
+const HEADERS={
+  Contacts:['id','firstName','lastName','preferredName','contactType','companyId','companyType','role','title','coverage','email','phone','location','linkedin','connection','bio','priority','createdAt'],
+  Sponsors:['id','name','funds','priority','notes'],
+  Corporates:['id','name','type','peOwner','description','revenue','ebitda','margin','growth','valuation','leverage','priority','notes'],
+  Interactions:['id','date','contactIds','topicText','companiesDiscussed','type','notes','createdAt'],
+  FocusNames:['id','companyId','companyLabel','sponsorId','sponsorLabel','status','notes','createdAt'],
+  Todos:['id','text','priority','contactId','contactLabel','companyId','companyLabel','status','completedAt','createdAt']
 };
-
-async function loadFromSheets() {
-  setSyncStatus('syncing', 'Loading…');
-  try {
-    const [contacts, sponsors, corps, interactions, focusNames, todos] = await Promise.all([
-      sheetsGet('Contacts!A:R'),
-      sheetsGet('Sponsors!A:E'),
-      sheetsGet('Corporates!A:M'),
-      sheetsGet('Interactions!A:I'),
-      sheetsGet('FocusNames!A:H'),
-      sheetsGet('Todos!A:J')
+function rowsToObjects(rows){
+  if(!rows.length) return[];
+  const headers=rows[0];
+  return rows.slice(1).filter(r=>r.some(v=>v)).map(r=>{const obj={};headers.forEach((h,i)=>{obj[h]=r[i]||'';});return obj;});
+}
+function objectsToRows(objects,headers){
+  return[headers,...objects.map(obj=>headers.map(h=>obj[h]!==undefined?String(obj[h]):''))];
+}
+async function loadFromSheets(){
+  setSyncStatus('syncing','Loading…');
+  try{
+    const[contacts,sponsors,corps,interactions,focusNames,todos]=await Promise.all([
+      sheetsGet('Contacts!A:R'),sheetsGet('Sponsors!A:E'),sheetsGet('Corporates!A:M'),
+      sheetsGet('Interactions!A:H'),sheetsGet('FocusNames!A:H'),sheetsGet('Todos!A:J')
     ]);
-    DB.contacts = rowsToObjects(contacts);
-    DB.sponsors = rowsToObjects(sponsors);
-    DB.corps = rowsToObjects(corps);
-    DB.interactions = rowsToObjects(interactions);
-    DB.focusNames = rowsToObjects(focusNames);
-    DB.todos = rowsToObjects(todos);
-
-    // If sheets are empty, seed with initial data
-    if (!DB.contacts.length && !DB.sponsors.length) {
-      await seedInitialData();
-    }
-
-    setSyncStatus('synced', 'Synced');
+    DB.contacts=rowsToObjects(contacts);
+    DB.sponsors=rowsToObjects(sponsors);
+    DB.corps=rowsToObjects(corps);
+    DB.interactions=rowsToObjects(interactions);
+    DB.focusNames=rowsToObjects(focusNames);
+    DB.todos=rowsToObjects(todos);
+    setSyncStatus('synced','Synced');
+    saveLocalFallback();
     return true;
-  } catch(e) {
-    console.error('Load error:', e);
-    setSyncStatus('error', 'Offline');
-    // Fall back to local storage
+  }catch(e){
+    console.error('Load error:',e);
+    setSyncStatus('error','Offline');
     loadLocalFallback();
     return false;
   }
 }
-
-async function saveSheet(sheetName, data) {
-  const headers = HEADERS[sheetName];
-  if (!data.length) {
-    await sheetsUpdate(`${sheetName}!A1`, [headers]);
-    return;
-  }
-  const rows = objectsToRows(data, headers);
-  await sheetsUpdate(`${sheetName}!A1`, rows);
+async function saveSheet(sheetName,data){
+  const headers=HEADERS[sheetName];
+  const rows=data.length?objectsToRows(data,headers):[headers];
+  await sheetsUpdate(`${sheetName}!A1`,rows);
 }
-
-async function saveAll() {
-  setSyncStatus('syncing', 'Saving…');
-  try {
-    await Promise.all([
-      saveSheet('Contacts', DB.contacts),
-      saveSheet('Sponsors', DB.sponsors),
-      saveSheet('Corporates', DB.corps),
-      saveSheet('Interactions', DB.interactions),
-      saveSheet('FocusNames', DB.focusNames),
-      saveSheet('Todos', DB.todos)
-    ]);
+async function saveAll(){
+  setSyncStatus('syncing','Saving…');
+  try{
+    await Promise.all([saveSheet('Contacts',DB.contacts),saveSheet('Sponsors',DB.sponsors),saveSheet('Corporates',DB.corps),saveSheet('Interactions',DB.interactions),saveSheet('FocusNames',DB.focusNames),saveSheet('Todos',DB.todos)]);
     saveLocalFallback();
-    const now = new Date();
-    const stamp = now.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' ' + now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
-    const el = document.getElementById('last-saved');
-    if (el) el.textContent = 'Last saved ' + stamp;
-    setSyncStatus('synced', 'Synced');
-  } catch(e) {
-    console.error('Save error:', e);
-    setSyncStatus('error', 'Save failed');
+    const now=new Date();
+    const stamp=now.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    const el=document.getElementById('last-saved');
+    if(el) el.textContent='Last saved '+stamp;
+    setSyncStatus('synced','Synced');
+  }catch(e){
+    console.error('Save error:',e);
+    setSyncStatus('error','Save failed');
     saveLocalFallback();
   }
 }
-
-function saveLocalFallback() {
-  try { localStorage.setItem('fn_db_backup', JSON.stringify(DB)); } catch(e) {}
-}
-
-function loadLocalFallback() {
-  try {
-    const d = localStorage.getItem('fn_db_backup');
-    if (d) { const p = JSON.parse(d); if (p.contacts) DB = p; }
-  } catch(e) {}
-}
-
-function setSyncStatus(state, text) {
-  const el = document.getElementById('sync-status');
-  el.textContent = text;
-  el.className = 'sync-status' + (state !== 'synced' ? ' ' + state : '');
-}
-
-async function syncNow() {
-  await loadFromSheets();
-  renderAll();
-}
-
-// ─────────────────────────────────────────────────────────────
-// SEED DATA
-// ─────────────────────────────────────────────────────────────
-function uid() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
-function today() { return new Date().toISOString().slice(0,10); }
-function fmtDate(iso) { if(!iso) return ''; const d = new Date(iso); return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
-function initials(n) { if(!n) return '?'; return n.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
-
-async function seedInitialData() {
-  // Sheets are empty — nothing to seed. Data should exist in Google Sheets.
-  console.warn('Sheets appear empty. Check your Google Sheets connection.');
-  setSyncStatus('error', 'Sheets empty');
-}
+function saveLocalFallback(){ try{localStorage.setItem('fn_db_backup',JSON.stringify(DB));}catch(e){} }
+function loadLocalFallback(){ try{const d=localStorage.getItem('fn_db_backup');if(d){const p=JSON.parse(d);if(p.contacts)DB=p;}}catch(e){} }
+function setSyncStatus(state,text){ const el=document.getElementById('sync-status');el.textContent=text;el.className='sync-status'+(state!=='synced'?' '+state:''); }
+async function syncNow(){ await loadFromSheets(); renderAll(); }
 
 // ─────────────────────────────────────────────────────────────
 // HELPERS
 // ─────────────────────────────────────────────────────────────
-function displayName(c) {
-  if (!c) return 'Unknown';
-  const first = c.preferredName || c.firstName || '';
-  const last = c.lastName || '';
-  return (first + ' ' + last).trim() || 'Unknown';
+function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
+function today(){ return new Date().toISOString().slice(0,10); }
+function fmtDate(iso){ if(!iso) return''; const d=new Date(iso); return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+function fmtDateShort(iso){ if(!iso) return''; const d=new Date(iso); return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
+function initials(n){ if(!n) return'?'; return n.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
+function displayName(c){ if(!c) return'Unknown'; const first=c.preferredName||c.firstName||''; const last=c.lastName||''; return(first+' '+last).trim()||'Unknown'; }
+function fullLegalName(c){ if(!c) return''; return(c.firstName+' '+c.lastName).trim(); }
+function getCompanyName(id,type){ if(!id) return''; if(type==='sponsor'){const s=DB.sponsors.find(x=>x.id===id);return s?s.name:'';} const c=DB.corps.find(x=>x.id===id);return c?c.name:''; }
+function getSponsorName(id){ const s=DB.sponsors.find(x=>x.id===id);return s?s.name:''; }
+function allCompanies(){ return[...DB.sponsors.map(s=>({...s,_type:'sponsor'})),...DB.corps.map(c=>({...c,_type:'corp'}))].sort((a,b)=>a.name.localeCompare(b.name)); }
+function contactsAtCompany(id){ return DB.contacts.filter(c=>c.companyId===id); }
+function portcosOfSponsor(id){ return DB.corps.filter(c=>c.peOwner===id); }
+function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function highlight(text,q){ if(!q||!text) return escHtml(text||''); const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'); return escHtml(text).replace(re,'<mark>$1</mark>'); }
+function hl(t,q){ return highlight(t,q); }
+function lastContactedDate(contactId){ const hits=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(contactId)); if(!hits.length) return''; hits.sort((a,b)=>new Date(b.date)-new Date(a.date)); return fmtDate(hits[0].date); }
+
+// Get all companies an interaction is associated with (via contacts + explicit companies discussed)
+function getInteractionCompanies(i){
+  const companyIds=new Set();
+  // From contacts' employers
+  (i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean).forEach(cid=>{
+    const c=DB.contacts.find(x=>x.id===cid);
+    if(c&&c.companyId) companyIds.add(c.companyId+'|'+c.companyType);
+  });
+  // From explicitly discussed companies
+  (i.companiesDiscussed||'').split(';').map(x=>x.trim()).filter(Boolean).forEach(cid=>{
+    const co=DB.corps.find(x=>x.id===cid)||DB.sponsors.find(x=>x.id===cid);
+    if(co) companyIds.add(cid+'|'+(DB.sponsors.find(x=>x.id===cid)?'sponsor':'corp'));
+  });
+  return [...companyIds].map(s=>{const[id,type]=s.split('|');return{id,type,name:getCompanyName(id,type)};}).filter(x=>x.name);
 }
-function shortName(c) {
-  if (!c) return 'Unknown';
-  return displayName(c);
-}
-function fullLegalName(c) {
-  if (!c) return '';
-  return (c.firstName + ' ' + c.lastName).trim();
-}
-function getCompanyName(id, type) {
-  if (!id) return '';
-  if (type === 'sponsor') { const s = DB.sponsors.find(x => x.id === id); return s ? s.name : ''; }
-  const c = DB.corps.find(x => x.id === id); return c ? c.name : '';
-}
-function getSponsorName(id) { const s = DB.sponsors.find(x => x.id === id); return s ? s.name : ''; }
-function allCompanies() {
-  return [...DB.sponsors.map(s=>({...s,_type:'sponsor'})),...DB.corps.map(c=>({...c,_type:'corp'}))].sort((a,b)=>a.name.localeCompare(b.name));
-}
-function contactsAtCompany(id) { return DB.contacts.filter(c => c.companyId === id); }
-function portcosOfSponsor(id) { return DB.corps.filter(c => c.peOwner === id); }
-function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function highlight(text, q) {
-  if (!q || !text) return escHtml(text||'');
-  const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
-  return escHtml(text).replace(re,'<mark>$1</mark>');
-}
-function hl(t, q) { return highlight(t, q); }
-function lastContactedDate(contactId) {
-  const hits = DB.interactions.filter(i => (i.contactIds||'').split(';').map(x=>x.trim()).includes(contactId));
-  if (!hits.length) return '';
-  hits.sort((a,b) => new Date(b.date) - new Date(a.date));
-  return fmtDate(hits[0].date);
+
+// Primary display company for an interaction (first explicitly discussed, else first contact's company)
+function getPrimaryCompany(i){
+  const discussed=(i.companiesDiscussed||'').split(';').map(x=>x.trim()).filter(Boolean);
+  if(discussed.length){
+    const id=discussed[0];
+    const isSponsor=!!DB.sponsors.find(x=>x.id===id);
+    return{id,type:isSponsor?'sponsor':'corp',name:getCompanyName(id,isSponsor?'sponsor':'corp')};
+  }
+  const contactIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
+  for(const cid of contactIds){
+    const c=DB.contacts.find(x=>x.id===cid);
+    if(c&&c.companyId) return{id:c.companyId,type:c.companyType,name:getCompanyName(c.companyId,c.companyType)};
+  }
+  return null;
 }
 
 // ─────────────────────────────────────────────────────────────
 // NAVIGATION
 // ─────────────────────────────────────────────────────────────
-function showPage(id, btn) {
-  try {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    const page = document.getElementById('page-'+id);
-    if (!page) { console.error('Page not found:', id); return; }
+function showPage(id,btn){
+  try{
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    const page=document.getElementById('page-'+id);
+    if(!page){console.error('Page not found:',id);return;}
     page.classList.add('active');
-    if (btn) btn.classList.add('active');
-    if (id==='dash') renderDash();
-    else if (id==='contacts') renderContacts();
-    else if (id==='companies') renderCompanies();
-    else if (id==='todos') renderTodos();
-    else if (id==='interactions') renderInteractions();
-  } catch(e) {
-    console.error('showPage error:', e);
-    alert('Navigation error: ' + e.message);
+    if(btn) btn.classList.add('active');
+    if(id==='dash') renderDash();
+    else if(id==='contacts') renderContacts();
+    else if(id==='companies') renderCompanies();
+    else if(id==='todos') renderTodos();
+    else if(id==='interactions') renderInteractions();
+  }catch(e){console.error('showPage error:',e);}
+}
+function renderAll(){ try{renderDash();renderContacts();renderCompanies();renderTodos();renderInteractions();}catch(e){console.error('renderAll error:',e);} }
+
+// ─────────────────────────────────────────────────────────────
+// LANDING PAGES
+// ─────────────────────────────────────────────────────────────
+let currentCompanyId=null, currentCompanyType=null;
+let currentContactId=null;
+let landingStack=[]; // track navigation stack for back button
+
+function openCompanyLanding(id,type){
+  landingStack.push({type:'company',id,compType:type});
+  currentCompanyId=id; currentCompanyType=type;
+  const name=getCompanyName(id,type);
+  document.getElementById('landing-company-title').textContent=name;
+  document.getElementById('landing-company-body').innerHTML=buildCompanyLanding(id,type);
+  document.getElementById('landing-company').classList.add('open');
+  document.getElementById('landing-company').scrollTop=0;
+}
+
+function openContactLanding(id){
+  landingStack.push({type:'contact',id});
+  currentContactId=id;
+  const c=DB.contacts.find(x=>x.id===id);
+  document.getElementById('landing-contact-title').textContent=c?displayName(c):'Contact';
+  document.getElementById('landing-contact-body').innerHTML=buildContactLanding(id);
+  document.getElementById('landing-contact').classList.add('open');
+  document.getElementById('landing-contact').scrollTop=0;
+}
+
+function closeLanding(type){
+  document.getElementById('landing-'+type).classList.remove('open');
+  landingStack=landingStack.filter(x=>x.type!==type);
+}
+
+function openLogFromLanding(type){
+  if(type==='company'&&currentCompanyId){
+    openModal('log',{companyId:currentCompanyId,companyType:currentCompanyType});
+  } else if(type==='contact'&&currentContactId){
+    openModal('log',{contactId:currentContactId});
+  } else {
+    openModal('log');
   }
 }
 
-function renderAll() {
-  renderDash();renderContacts();renderCompanies();renderTodos();renderInteractions();
+function buildCompanyLanding(id,type){
+  const isSponsor=type==='sponsor';
+  const entity=isSponsor?DB.sponsors.find(x=>x.id===id):DB.corps.find(x=>x.id===id);
+  if(!entity) return'<div class="empty-state">Not found</div>';
+
+  // Interactions: where company is explicitly discussed OR contact works there
+  const allInts=DB.interactions.filter(i=>{
+    const discussed=(i.companiesDiscussed||'').split(';').map(x=>x.trim()).includes(id);
+    const viaContact=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean).some(cid=>{
+      const c=DB.contacts.find(x=>x.id===cid);
+      return c&&c.companyId===id;
+    });
+    return discussed||viaContact;
+  }).sort((a,b)=>new Date(b.date)-new Date(a.date));
+
+  const contacts=contactsAtCompany(id).sort((a,b)=>displayName(a).localeCompare(displayName(b)));
+  const portcos=isSponsor?portcosOfSponsor(id).sort((a,b)=>a.name.localeCompare(b.name)):[];
+  const focusItems=DB.focusNames.filter(f=>f.sponsorId===id||f.companyId===id);
+
+  let html='';
+
+  // Hero
+  html+=`<div class="profile-hero">
+    <div class="profile-avatar ${isSponsor?'av-amber':'av-green'}">${initials(entity.name)}</div>
+    <div class="profile-info">
+      <div class="profile-name">${escHtml(entity.name)}</div>
+      <div class="profile-sub">${isSponsor?'PE Sponsor':entity.type}${!isSponsor&&entity.peOwner?` · PE: <button class="pf-link" onclick="openCompanyLanding('${entity.peOwner}','sponsor')">${escHtml(getSponsorName(entity.peOwner))}</button>`:''}</div>
+    </div>
+  </div>`;
+
+  // Actions
+  html+=`<div class="profile-actions">
+    <button class="action-btn" onclick="openLogFromLanding('company')">+ Log</button>
+    <button class="action-btn" onclick="editEntity('${type}','${id}')">Edit</button>
+    <button class="action-btn danger" onclick="deleteEntity('${type}','${id}')">Delete</button>
+  </div>`;
+
+  // Static info (collapsible)
+  const hasInfo=isSponsor?(entity.funds||entity.notes):(entity.description||entity.revenue||entity.ebitda||entity.notes);
+  if(hasInfo){
+    html+=`<div class="collapsible">
+      <div class="collapsible-hd" onclick="toggleCollapsible(this)">
+        ${isSponsor?'Fund & firm details':'Company details'}
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <div class="collapsible-body">`;
+    if(isSponsor){
+      if(entity.funds) html+=`<div class="profile-field"><span class="pf-label">Funds</span><span class="pf-value">${escHtml(entity.funds)}</span></div>`;
+      if(entity.notes) html+=`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(entity.notes)}</span></div>`;
+    } else {
+      if(entity.description) html+=`<div class="bio-box"><div class="bio-text">${escHtml(entity.description)}</div></div>`;
+      const fin=[entity.revenue?['Revenue',entity.revenue]:null,entity.ebitda?['EBITDA',entity.ebitda]:null,entity.margin?['Margin',entity.margin]:null,entity.growth?['Growth',entity.growth]:null,entity.valuation?['Valuation',entity.valuation]:null,entity.leverage?['Leverage',entity.leverage]:null].filter(Boolean);
+      fin.forEach(([k,v])=>{html+=`<div class="profile-field"><span class="pf-label">${k}</span><span class="pf-value">${escHtml(v)}</span></div>`;});
+      if(entity.notes) html+=`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(entity.notes)}</span></div>`;
+    }
+    html+='</div></div>';
+  }
+
+  // Interactions — HERO SECTION
+  html+=`<div class="subsection-hd">Interactions (${allInts.length})</div>`;
+  if(allInts.length){
+    html+=allInts.map(i=>buildLandingInt(i)).join('');
+  } else {
+    html+='<div class="empty-section">No interactions yet</div>';
+  }
+
+  // Contacts at this company
+  if(contacts.length){
+    html+=`<div class="divider"></div><div class="subsection-hd">People (${contacts.length})</div>`;
+    html+=contacts.map(c=>`<div class="contact-row" onclick="openContactLanding('${c.id}')">
+      <div class="avatar av-blue" style="width:36px;height:36px;font-size:12px">${initials(displayName(c))}</div>
+      <div class="cr-info">
+        <div class="cr-name">${escHtml(displayName(c))}</div>
+        <div class="cr-sub">${escHtml([c.role,c.title].filter(Boolean).join(', '))}${c.coverage?' · '+escHtml(c.coverage):''}</div>
+      </div>
+      <div class="cr-actions">
+        ${c.email?`<a href="mailto:${escHtml(c.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}
+        ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="cr-link" onclick="event.stopPropagation()">📞</a>`:''}
+      </div>
+    </div>`).join('');
+  }
+
+  // Portcos (sponsors only)
+  if(portcos.length){
+    html+=`<div class="divider"></div><div class="subsection-hd">Portfolio companies (${portcos.length})</div>`;
+    html+=portcos.map(c=>`<div class="contact-row" onclick="openCompanyLanding('${c.id}','corp')">
+      <div class="avatar av-green" style="width:36px;height:36px;font-size:12px">${initials(c.name)}</div>
+      <div class="cr-info">
+        <div class="cr-name">${escHtml(c.name)}</div>
+        <div class="cr-sub">${[c.revenue?'Rev: '+c.revenue:'',c.ebitda?'EBITDA: '+c.ebitda:'',c.leverage?c.leverage+' lev':''].filter(Boolean).join(' · ')||'No financial data'}</div>
+      </div>
+    </div>`).join('');
+  }
+
+  // Focus names
+  if(focusItems.length){
+    html+=`<div class="divider"></div><div class="subsection-hd">Focus names (${focusItems.length})</div>`;
+    html+=focusItems.map(f=>`<div class="contact-row" onclick="openCompanyLanding('${f.companyId}','corp')">
+      <div class="cr-info"><div class="cr-name">${escHtml(f.companyLabel)}</div><div class="cr-sub">${f.notes||''}</div></div>
+      <span class="badge b-${(f.status||'').toLowerCase()}">${f.status}</span>
+    </div>`).join('');
+  }
+
+  return html;
+}
+
+function buildContactLanding(id){
+  const c=DB.contacts.find(x=>x.id===id);
+  if(!c) return'<div class="empty-state">Not found</div>';
+
+  const coName=c.companyId?getCompanyName(c.companyId,c.companyType):'';
+  const coType=c.companyType||'corp';
+
+  // All interactions where this contact is tagged or mentioned by name
+  const directInts=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id)).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const nameLower=displayName(c).toLowerCase();
+  const mentionInts=DB.interactions.filter(i=>!(i.contactIds||'').split(';').map(x=>x.trim()).includes(id)&&i.notes.toLowerCase().includes(nameLower)&&nameLower.length>3).sort((a,b)=>new Date(b.date)-new Date(a.date));
+
+  let html='';
+
+  // Hero
+  html+=`<div class="profile-hero">
+    <div class="profile-avatar av-blue">${initials(displayName(c))}</div>
+    <div class="profile-info">
+      <div class="profile-name">${escHtml(displayName(c))}</div>
+      <div class="profile-sub">${escHtml([c.title,c.role].filter(Boolean).join(' · '))}${coName?` <button class="pf-link" onclick="openCompanyLanding('${c.companyId}','${coType}')">${escHtml(coName)}</button>`:''}</div>
+      <div class="profile-badges">
+        <span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>
+        ${c.coverage?`<span class="badge b-other">${escHtml(c.coverage)}</span>`:''}
+        ${c.location?`<span class="badge b-other">📍 ${escHtml(c.location)}</span>`:''}
+      </div>
+    </div>
+  </div>`;
+
+  // Actions
+  html+=`<div class="profile-actions">
+    ${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''}
+    ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}
+    <button class="action-btn" onclick="openLogFromLanding('contact')">+ Log</button>
+    <button class="action-btn" onclick="editEntity('contact','${id}')">Edit</button>
+    <button class="action-btn danger" onclick="deleteEntity('contact','${id}')">Delete</button>
+  </div>`;
+
+  // Contact details (collapsible)
+  if(c.email||c.phone||c.linkedin||c.preferredName||c.connection||c.bio){
+    html+=`<div class="collapsible">
+      <div class="collapsible-hd" onclick="toggleCollapsible(this)">Contact details
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <div class="collapsible-body">
+        ${c.preferredName?`<div class="profile-field"><span class="pf-label">Full name</span><span class="pf-value">${escHtml(fullLegalName(c))}</span></div>`:''}
+        ${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}
+        ${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}
+        ${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}
+        ${c.connection?`<div class="profile-field"><span class="pf-label">Connection</span><span class="pf-value">${escHtml(c.connection)}</span></div>`:''}
+        ${c.bio?`<div class="bio-box"><div class="bio-text">${escHtml(c.bio)}</div></div>`:''}
+      </div>
+    </div>`;
+  }
+
+  // Interactions — HERO
+  html+=`<div class="subsection-hd">Interactions (${directInts.length})</div>`;
+  if(directInts.length){
+    html+=directInts.map(i=>buildLandingInt(i)).join('');
+  } else {
+    html+='<div class="empty-section">No interactions yet</div>';
+  }
+  if(mentionInts.length){
+    html+=`<div class="subsection-hd mention">Also mentioned in (${mentionInts.length})</div>`;
+    html+=mentionInts.map(i=>buildLandingInt(i)).join('');
+  }
+
+  return html;
+}
+
+function buildLandingInt(i){
+  const contactIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
+  const contacts=contactIds.map(cid=>DB.contacts.find(x=>x.id===cid)).filter(Boolean);
+  const companies=getInteractionCompanies(i);
+
+  return`<div class="landing-int">
+    <div class="landing-int-header">
+      <div class="landing-int-meta">
+        <div class="landing-int-date">${fmtDate(i.date)}${i.topicText?' · <em style="font-weight:400">'+escHtml(i.topicText)+'</em>':''}</div>
+        <div class="landing-int-type">${escHtml(i.type||'Note')}</div>
+      </div>
+    </div>
+    <div class="landing-int-notes">${escHtml(i.notes||'')}</div>
+    <div class="landing-int-people">
+      ${contacts.map(c=>`<button class="person-chip" onclick="openContactLanding('${c.id}')">${escHtml(displayName(c))}</button>`).join('')}
+      ${companies.map(co=>`<button class="co-chip" onclick="openCompanyLanding('${co.id}','${co.type}')">${escHtml(co.name)}</button>`).join('')}
+    </div>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <button class="mini-btn" onclick="editInteraction('${i.id}')">Edit</button>
+      <button class="mini-btn" style="color:var(--red)" onclick="deleteInteraction('${i.id}')">Delete</button>
+    </div>
+  </div>`;
+}
+
+function toggleCollapsible(hd){
+  hd.classList.toggle('open');
+  hd.nextElementSibling.classList.toggle('open');
 }
 
 // ─────────────────────────────────────────────────────────────
 // MODALS
 // ─────────────────────────────────────────────────────────────
 let editingLog=null,editingContact=null,editingSponsor=null,editingCorp=null,editingFocus=null,editingTodo=null;
-const msState = {lc:[],lt:[],'ac-co':[],'aco-pe':[],'af-co':[],'af-sp':[],'at-c':[],'at-co':[]};
-const msMax = {lc:4,lt:1,'ac-co':1,'aco-pe':1,'af-co':1,'af-sp':1,'at-c':1,'at-co':1};
+const msState={lc:[],lcd:[],'ac-co':[],'aco-pe':[],'af-co':[],'af-sp':[],'at-c':[],'at-co':[]};
+const msMax={lc:4,lcd:4,'ac-co':1,'aco-pe':1,'af-co':1,'af-sp':1,'at-c':1,'at-co':1};
 
-function openModal(id, data) {
-  if (id==='log') {
-    if (!editingLog) {
-      msState.lc=[];msState.lt=[];
+function openModal(id,data){
+  if(id==='log'){
+    if(!editingLog){
+      msState.lc=[];msState.lcd=[];
       document.getElementById('log-date').value=today();
       document.getElementById('log-type').value='Call';
       document.getElementById('log-notes').value='';
+      document.getElementById('log-topic').value='';
       document.getElementById('log-title').textContent='Log Interaction';
-      renderMsChips('lc');renderMsChips('lt');
-      if (data&&data.contactId) {
-        const c=DB.contacts.find(x=>x.id===data.contactId);
-        if (c) { msState.lc=[{id:c.id,label:displayName(c)}]; renderMsChips('lc'); }
-      }
+      renderMsChips('lc');renderMsChips('lcd');
+      if(data&&data.contactId){const c=DB.contacts.find(x=>x.id===data.contactId);if(c){msState.lc=[{id:c.id,label:displayName(c)}];renderMsChips('lc');}}
+      if(data&&data.companyId){const name=getCompanyName(data.companyId,data.companyType);msState.lcd=[{id:data.companyId,label:name,_type:data.companyType}];renderMsChips('lcd');}
     }
   }
-  if (id==='add-contact') {
-    if (!editingContact) {
-      document.getElementById('ac-title').textContent='New Contact';
-      ['ac-first','ac-last','ac-pref','ac-role','ac-title-f','ac-coverage','ac-email','ac-phone','ac-location','ac-linkedin','ac-connection','ac-bio'].forEach(f=>{const el=document.getElementById(f);if(el)el.value='';});
-      document.getElementById('ac-type').value='sponsor';
-      document.getElementById('ac-priority').value='';
-      msState['ac-co']=[];renderMsChips('ac-co');
-    }
+  if(id==='add-contact'&&!editingContact){
+    document.getElementById('ac-title').textContent='New Contact';
+    ['ac-first','ac-last','ac-pref','ac-role','ac-title-f','ac-coverage','ac-email','ac-phone','ac-location','ac-linkedin','ac-connection','ac-bio'].forEach(f=>{const el=document.getElementById(f);if(el)el.value='';});
+    document.getElementById('ac-type').value='sponsor';document.getElementById('ac-priority').value='';
+    msState['ac-co']=[];renderMsChips('ac-co');
   }
-  if (id==='add-sponsor') {
-    if (!editingSponsor) {
-      document.getElementById('as-title').textContent='New PE Firm';
-      ['as-name','as-funds','as-notes'].forEach(f=>document.getElementById(f).value='');
-      document.getElementById('as-priority').value='';
-    }
+  if(id==='add-sponsor'&&!editingSponsor){
+    document.getElementById('as-title').textContent='New PE Firm';
+    ['as-name','as-funds','as-notes'].forEach(f=>document.getElementById(f).value='');
+    document.getElementById('as-priority').value='';
   }
-  if (id==='add-corp') {
-    if (!editingCorp) {
-      document.getElementById('aco-title').textContent='New Corporate';
-      ['aco-name','aco-desc','aco-rev','aco-ebitda','aco-margin','aco-growth','aco-val','aco-lev','aco-notes'].forEach(f=>document.getElementById(f).value='');
-      document.getElementById('aco-type').value='Private';
-      document.getElementById('aco-priority').value='';
-      msState['aco-pe']=[];renderMsChips('aco-pe');
-    }
+  if(id==='add-corp'&&!editingCorp){
+    document.getElementById('aco-title').textContent='New Corporate';
+    ['aco-name','aco-desc','aco-rev','aco-ebitda','aco-margin','aco-growth','aco-val','aco-lev','aco-notes'].forEach(f=>document.getElementById(f).value='');
+    document.getElementById('aco-type').value='Private';document.getElementById('aco-priority').value='';
+    msState['aco-pe']=[];renderMsChips('aco-pe');
   }
-  if (id==='add-focus') {
-    if (!editingFocus) {
-      document.getElementById('af-title').textContent='New Focus Name';
-      document.getElementById('af-status').value='Active';
-      document.getElementById('af-notes').value='';
-      msState['af-co']=[];msState['af-sp']=[];
-      renderMsChips('af-co');renderMsChips('af-sp');
-    }
+  if(id==='add-focus'&&!editingFocus){
+    document.getElementById('af-title').textContent='New Focus Name';
+    document.getElementById('af-status').value='Active';document.getElementById('af-notes').value='';
+    msState['af-co']=[];msState['af-sp']=[];renderMsChips('af-co');renderMsChips('af-sp');
   }
-  if (id==='add-todo') {
-    if (!editingTodo) {
-      document.getElementById('at-title').textContent='New To-Do';
-      document.getElementById('at-text').value='';
-      document.getElementById('at-priority').value='Now';
-      msState['at-c']=[];msState['at-co']=[];
-      renderMsChips('at-c');renderMsChips('at-co');
-    }
+  if(id==='add-todo'&&!editingTodo){
+    document.getElementById('at-title').textContent='New To-Do';
+    document.getElementById('at-text').value='';document.getElementById('at-priority').value='Now';
+    msState['at-c']=[];msState['at-co']=[];renderMsChips('at-c');renderMsChips('at-co');
   }
   document.getElementById('modal-'+id).classList.add('open');
   setTimeout(()=>{const inp=document.querySelector('#modal-'+id+' input:not([type=date])');if(inp)inp.focus();},300);
 }
 
-function closeModal(id) {
+function closeModal(id){
   document.getElementById('modal-'+id).classList.remove('open');
   document.querySelectorAll('.ms-dropdown').forEach(d=>d.style.display='none');
-  // Clear editing state when modal is dismissed
   if(id==='log') editingLog=null;
   if(id==='add-contact') editingContact=null;
   if(id==='add-sponsor') editingSponsor=null;
@@ -882,50 +1060,49 @@ function closeModal(id) {
   if(id==='add-focus') editingFocus=null;
   if(id==='add-todo') editingTodo=null;
 }
-function closeProfile() { document.getElementById('modal-profile').classList.remove('open'); }
 
 document.querySelectorAll('.modal-bg').forEach(bg=>{
-  bg.addEventListener('click',e=>{
-    if(e.target===bg){const id=bg.id.replace('modal-','');if(id==='profile')closeProfile();else closeModal(id);}
-  });
+  bg.addEventListener('click',e=>{if(e.target===bg){const id=bg.id.replace('modal-','');closeModal(id);}});
 });
 
 // ─────────────────────────────────────────────────────────────
 // MULTI-SELECT
 // ─────────────────────────────────────────────────────────────
-function focusMs(key) { document.getElementById(key+'-input').focus(); }
-function renderMsChips(key) {
-  const cont=document.getElementById(key+'-chips');
-  if(!cont)return;
-  cont.innerHTML=(msState[key]||[]).map(item=>`<span class="ms-chip">${escHtml(item.label)}<button onclick="msRemove('${key}','${item.id}')">×</button></span>`).join('');
+function focusMs(key){document.getElementById(key+'-input').focus();}
+function renderMsChips(key){
+  const cont=document.getElementById(key+'-chips');if(!cont)return;
+  const isCo=['lcd','at-co','aco-pe','af-co','af-sp'].includes(key);
+  cont.innerHTML=(msState[key]||[]).map(item=>`<span class="ms-chip ${isCo?'co':''}">${escHtml(item.label)}<button onclick="msRemove('${key}','${item.id}')">×</button></span>`).join('');
 }
-function msRemove(key,id) { msState[key]=(msState[key]||[]).filter(i=>i.id!==id);renderMsChips(key); }
-function msSearch(key,q) {
-  const dd=document.getElementById(key+'-dd');
-  if(!dd)return;
+function msRemove(key,id){msState[key]=(msState[key]||[]).filter(i=>i.id!==id);renderMsChips(key);}
+function msSearch(key,q){
+  const dd=document.getElementById(key+'-dd');if(!dd)return;
   if(!q.trim()){dd.style.display='none';return;}
   const lq=q.toLowerCase();
   const already=(msState[key]||[]).map(i=>i.id);
   let items=[];
-  if(key==='lc'||key==='at-c') {
+  if(key==='lc'||key==='at-c'){
     items=DB.contacts.filter(c=>!already.includes(c.id)&&displayName(c).toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:displayName(c),sub:c.role||'',_type:'contact'}));
-  } else if(key==='lt'||key==='at-co') {
+  } else if(key==='lcd'||key==='at-co'){
     items=allCompanies().filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:c.name,sub:c._type==='sponsor'?'PE Firm':'Corporate',_type:c._type}));
-  } else if(key==='ac-co') {
+    if(!items.find(x=>x.label.toLowerCase()===lq)&&q.trim()&&key==='lcd'){
+      items.push({id:'__new__',label:'Create "'+q.trim()+'"',sub:'New company',_type:'new',_name:q.trim()});
+    }
+  } else if(key==='ac-co'){
     items=allCompanies().filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:c.name,sub:c._type==='sponsor'?'PE Firm':'Corporate',_type:c._type}));
-  } else if(key==='aco-pe') {
+  } else if(key==='aco-pe'){
     items=DB.sponsors.filter(s=>!already.includes(s.id)&&s.name.toLowerCase().includes(lq)).slice(0,8).map(s=>({id:s.id,label:s.name,sub:'PE Firm',_type:'sponsor'}));
-  } else if(key==='af-co') {
+  } else if(key==='af-co'){
     items=DB.corps.filter(c=>!already.includes(c.id)&&c.name.toLowerCase().includes(lq)).slice(0,8).map(c=>({id:c.id,label:c.name,sub:c.type,_type:'corp'}));
     if(!items.length&&q.trim()) items=[{id:'__new__',label:'Create "'+q.trim()+'"',sub:'New company',_type:'new',_name:q.trim()}];
-  } else if(key==='af-sp') {
+  } else if(key==='af-sp'){
     items=DB.sponsors.filter(s=>!already.includes(s.id)&&s.name.toLowerCase().includes(lq)).slice(0,8).map(s=>({id:s.id,label:s.name,sub:'PE Firm',_type:'sponsor'}));
   }
   if(!items.length){dd.style.display='none';return;}
   dd.innerHTML=items.map(item=>`<div class="ms-opt ${item.id==='__new__'?'ms-opt-new':''}" onclick='msSelect("${key}",${JSON.stringify(item).replace(/'/g,"\\'")})'><span>${escHtml(item.label)}</span><span style="font-size:11px;color:var(--text3)">${escHtml(item.sub)}</span></div>`).join('');
   dd.style.display='block';
 }
-function msSelect(key,item) {
+function msSelect(key,item){
   if(item.id==='__new__'){
     const newCo={id:uid(),name:item._name,type:'Private',peOwner:'',description:'',revenue:'',ebitda:'',margin:'',growth:'',valuation:'',leverage:'',priority:'',notes:''};
     DB.corps.push(newCo);saveAll();
@@ -942,20 +1119,37 @@ document.addEventListener('click',e=>{
 });
 
 // ─────────────────────────────────────────────────────────────
+// MINI CONTACT CARD
+// ─────────────────────────────────────────────────────────────
+function showMiniCard(contactId){
+  const c=DB.contacts.find(x=>x.id===contactId);if(!c)return;
+  const co=c.companyId?getCompanyName(c.companyId,c.companyType):'';
+  document.getElementById('mini-card').innerHTML=`
+    <div class="mini-card-name">${escHtml(displayName(c))}</div>
+    <div class="mini-card-sub">${escHtml([c.role,c.title,co].filter(Boolean).join(' · '))}</div>
+    <div class="mini-card-actions">
+      ${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''}
+      ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}
+      <button class="action-btn" onclick="closeMiniCard();openContactLanding('${c.id}')">All conversations →</button>
+    </div>`;
+  document.getElementById('mini-card-bg').classList.add('open');
+}
+function closeMiniCard(){document.getElementById('mini-card-bg').classList.remove('open');}
+
+// ─────────────────────────────────────────────────────────────
 // SAVE FUNCTIONS
 // ─────────────────────────────────────────────────────────────
-async function saveInteraction() {
+async function saveInteraction(){
   const contactIds=(msState.lc||[]).map(i=>i.id).join('; ');
-  const topicItem=(msState.lt||[])[0]||null;
+  const companiesDiscussed=(msState.lcd||[]).map(i=>i.id).join('; ');
   const body=document.getElementById('log-notes').value.trim();
   if(!body&&!contactIds){alert('Please add at least a note or a contact.');return;}
   const obj={
     id:editingLog||uid(),
     date:document.getElementById('log-date').value,
     contactIds,
-    topicId:topicItem?topicItem.id:'',
-    topicType:topicItem?topicItem._type:'',
-    topicLabel:topicItem?topicItem.label:'',
+    topicText:document.getElementById('log-topic').value.trim(),
+    companiesDiscussed,
     type:document.getElementById('log-type').value,
     notes:body,
     createdAt:new Date().toISOString()
@@ -963,38 +1157,23 @@ async function saveInteraction() {
   if(editingLog){const i=DB.interactions.findIndex(x=>x.id===editingLog);if(i>=0)DB.interactions[i]=obj;}
   else DB.interactions.unshift(obj);
   await saveAll();closeModal('log');renderAll();
-  if(document.getElementById('modal-profile').classList.contains('open')&&currentProfileId) showProfile(currentProfileType,currentProfileId);
+  // Refresh landing if open
+  if(currentCompanyId) document.getElementById('landing-company-body').innerHTML=buildCompanyLanding(currentCompanyId,currentCompanyType);
+  if(currentContactId) document.getElementById('landing-contact-body').innerHTML=buildContactLanding(currentContactId);
 }
 
-async function saveContact() {
+async function saveContact(){
   const first=document.getElementById('ac-first').value.trim();
   const last=document.getElementById('ac-last').value.trim();
   if(!first&&!last){alert('Please enter a name.');return;}
   const coSel=(msState['ac-co']||[])[0]||null;
-  const obj={
-    id:editingContact||uid(),
-    firstName:first,lastName:last,
-    preferredName:document.getElementById('ac-pref').value.trim(),
-    contactType:document.getElementById('ac-type').value,
-    companyId:coSel?coSel.id:'',companyType:coSel?coSel._type:'',
-    role:document.getElementById('ac-role').value.trim(),
-    title:document.getElementById('ac-title-f').value.trim(),
-    coverage:document.getElementById('ac-coverage').value.trim(),
-    email:document.getElementById('ac-email').value.trim(),
-    phone:document.getElementById('ac-phone').value.trim(),
-    location:document.getElementById('ac-location').value.trim(),
-    linkedin:document.getElementById('ac-linkedin').value.trim(),
-    connection:document.getElementById('ac-connection').value.trim(),
-    bio:document.getElementById('ac-bio').value.trim(),
-    priority:document.getElementById('ac-priority').value,
-    createdAt:new Date().toISOString()
-  };
+  const obj={id:editingContact||uid(),firstName:first,lastName:last,preferredName:document.getElementById('ac-pref').value.trim(),contactType:document.getElementById('ac-type').value,companyId:coSel?coSel.id:'',companyType:coSel?coSel._type:'',role:document.getElementById('ac-role').value.trim(),title:document.getElementById('ac-title-f').value.trim(),coverage:document.getElementById('ac-coverage').value.trim(),email:document.getElementById('ac-email').value.trim(),phone:document.getElementById('ac-phone').value.trim(),location:document.getElementById('ac-location').value.trim(),linkedin:document.getElementById('ac-linkedin').value.trim(),connection:document.getElementById('ac-connection').value.trim(),bio:document.getElementById('ac-bio').value.trim(),priority:document.getElementById('ac-priority').value,createdAt:new Date().toISOString()};
   if(editingContact){const i=DB.contacts.findIndex(x=>x.id===editingContact);if(i>=0)DB.contacts[i]=obj;}
   else DB.contacts.push(obj);
   await saveAll();closeModal('add-contact');renderContacts();
 }
 
-async function saveSponsor() {
+async function saveSponsor(){
   const name=document.getElementById('as-name').value.trim();
   if(!name){alert('Please enter a firm name.');return;}
   if(!editingSponsor&&DB.sponsors.find(s=>s.name.toLowerCase()===name.toLowerCase())){alert('"'+name+'" already exists.');return;}
@@ -1004,68 +1183,197 @@ async function saveSponsor() {
   await saveAll();closeModal('add-sponsor');renderCompanies();
 }
 
-async function saveCorp() {
+async function saveCorp(){
   const name=document.getElementById('aco-name').value.trim();
   if(!name){alert('Please enter a company name.');return;}
   if(!editingCorp&&DB.corps.find(c=>c.name.toLowerCase()===name.toLowerCase())){alert('"'+name+'" already exists.');return;}
   const peSel=(msState['aco-pe']||[])[0]||null;
-  const obj={
-    id:editingCorp||uid(),name,type:document.getElementById('aco-type').value,
-    peOwner:peSel?peSel.id:'',description:document.getElementById('aco-desc').value.trim(),
-    revenue:document.getElementById('aco-rev').value.trim(),ebitda:document.getElementById('aco-ebitda').value.trim(),
-    margin:document.getElementById('aco-margin').value.trim(),growth:document.getElementById('aco-growth').value.trim(),
-    valuation:document.getElementById('aco-val').value.trim(),leverage:document.getElementById('aco-lev').value.trim(),
-    priority:document.getElementById('aco-priority').value,notes:document.getElementById('aco-notes').value.trim()
-  };
+  const obj={id:editingCorp||uid(),name,type:document.getElementById('aco-type').value,peOwner:peSel?peSel.id:'',description:document.getElementById('aco-desc').value.trim(),revenue:document.getElementById('aco-rev').value.trim(),ebitda:document.getElementById('aco-ebitda').value.trim(),margin:document.getElementById('aco-margin').value.trim(),growth:document.getElementById('aco-growth').value.trim(),valuation:document.getElementById('aco-val').value.trim(),leverage:document.getElementById('aco-lev').value.trim(),priority:document.getElementById('aco-priority').value,notes:document.getElementById('aco-notes').value.trim()};
   if(editingCorp){const i=DB.corps.findIndex(x=>x.id===editingCorp);if(i>=0)DB.corps[i]=obj;}
   else DB.corps.push(obj);
   await saveAll();closeModal('add-corp');renderCompanies();
 }
 
-async function saveFocus() {
+async function saveFocus(){
   const coSel=(msState['af-co']||[])[0]||null;
   if(!coSel){alert('Please select a company.');return;}
   const spSel=(msState['af-sp']||[])[0]||null;
-  const obj={
-    id:editingFocus||uid(),
-    companyId:coSel.id,companyLabel:coSel.label,
-    sponsorId:spSel?spSel.id:'',sponsorLabel:spSel?spSel.label:'',
-    status:document.getElementById('af-status').value,
-    notes:document.getElementById('af-notes').value.trim(),
-    createdAt:new Date().toISOString()
-  };
+  const obj={id:editingFocus||uid(),companyId:coSel.id,companyLabel:coSel.label,sponsorId:spSel?spSel.id:'',sponsorLabel:spSel?spSel.label:'',status:document.getElementById('af-status').value,notes:document.getElementById('af-notes').value.trim(),createdAt:new Date().toISOString()};
   if(editingFocus){const i=DB.focusNames.findIndex(x=>x.id===editingFocus);if(i>=0)DB.focusNames[i]=obj;}
   else DB.focusNames.push(obj);
   await saveAll();closeModal('add-focus');renderTodos();
 }
 
-async function saveTodo() {
+async function saveTodo(){
   const text=document.getElementById('at-text').value.trim();
   if(!text){alert('Please enter a task.');return;}
   const cSel=(msState['at-c']||[])[0]||null;
   const coSel=(msState['at-co']||[])[0]||null;
-  const obj={
-    id:editingTodo||uid(),text,priority:document.getElementById('at-priority').value,
-    contactId:cSel?cSel.id:'',contactLabel:cSel?cSel.label:'',
-    companyId:coSel?coSel.id:'',companyLabel:coSel?coSel.label:'',
-    status:'Open',completedAt:'',createdAt:new Date().toISOString()
-  };
+  const obj={id:editingTodo||uid(),text,priority:document.getElementById('at-priority').value,contactId:cSel?cSel.id:'',contactLabel:cSel?cSel.label:'',companyId:coSel?coSel.id:'',companyLabel:coSel?coSel.label:'',status:'Open',completedAt:'',createdAt:new Date().toISOString()};
   if(editingTodo){const i=DB.todos.findIndex(x=>x.id===editingTodo);if(i>=0)DB.todos[i]=obj;}
   else DB.todos.push(obj);
   await saveAll();closeModal('add-todo');renderTodos();
 }
 
 // ─────────────────────────────────────────────────────────────
-// DASHBOARD
+// EDIT / DELETE
 // ─────────────────────────────────────────────────────────────
-function renderDash() {
-  const nowTodos=DB.todos.filter(t=>t.status==='Open'&&t.priority==='Now').slice(0,5);
-  document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,false)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
-  const recent=DB.interactions.slice(0,5);
-  document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderDashLogItem(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
+function editEntity(type,id){
+  if(type==='contact') editContact(id);
+  else if(type==='sponsor') editSponsor(id);
+  else if(type==='corp') editCorp(id);
+}
+function editContact(id){
+  const c=DB.contacts.find(x=>x.id===id);if(!c)return;
+  editingContact=id;openModal('add-contact');
+  setTimeout(()=>{
+    document.getElementById('ac-title').textContent='Edit Contact';
+    document.getElementById('ac-first').value=c.firstName||'';document.getElementById('ac-last').value=c.lastName||'';
+    document.getElementById('ac-pref').value=c.preferredName||'';document.getElementById('ac-type').value=c.contactType||'other';
+    document.getElementById('ac-priority').value=c.priority||'';document.getElementById('ac-role').value=c.role||'';
+    document.getElementById('ac-title-f').value=c.title||'';document.getElementById('ac-coverage').value=c.coverage||'';
+    document.getElementById('ac-email').value=c.email||'';document.getElementById('ac-phone').value=c.phone||'';
+    document.getElementById('ac-location').value=c.location||'';document.getElementById('ac-linkedin').value=c.linkedin||'';
+    document.getElementById('ac-connection').value=c.connection||'';document.getElementById('ac-bio').value=c.bio||'';
+    if(c.companyId){const name=getCompanyName(c.companyId,c.companyType)||'';msState['ac-co']=[{id:c.companyId,label:name,_type:c.companyType}];renderMsChips('ac-co');}
+  },100);
+}
+function editSponsor(id){
+  const s=DB.sponsors.find(x=>x.id===id);if(!s)return;
+  editingSponsor=id;openModal('add-sponsor');
+  setTimeout(()=>{
+    document.getElementById('as-title').textContent='Edit PE Firm';
+    document.getElementById('as-name').value=s.name||'';document.getElementById('as-funds').value=s.funds||'';
+    document.getElementById('as-priority').value=s.priority||'';document.getElementById('as-notes').value=s.notes||'';
+  },100);
+}
+function editCorp(id){
+  const c=DB.corps.find(x=>x.id===id);if(!c)return;
+  editingCorp=id;openModal('add-corp');
+  setTimeout(()=>{
+    document.getElementById('aco-title').textContent='Edit Corporate';
+    document.getElementById('aco-name').value=c.name||'';document.getElementById('aco-type').value=c.type||'Private';
+    document.getElementById('aco-priority').value=c.priority||'';document.getElementById('aco-desc').value=c.description||'';
+    document.getElementById('aco-rev').value=c.revenue||'';document.getElementById('aco-ebitda').value=c.ebitda||'';
+    document.getElementById('aco-margin').value=c.margin||'';document.getElementById('aco-growth').value=c.growth||'';
+    document.getElementById('aco-val').value=c.valuation||'';document.getElementById('aco-lev').value=c.leverage||'';
+    document.getElementById('aco-notes').value=c.notes||'';
+    if(c.peOwner){const name=getSponsorName(c.peOwner)||'';msState['aco-pe']=[{id:c.peOwner,label:name,_type:'sponsor'}];renderMsChips('aco-pe');}
+  },100);
+}
+function editInteraction(id){
+  const i=DB.interactions.find(x=>x.id===id);if(!i)return;
+  editingLog=id;openModal('log');
+  setTimeout(()=>{
+    document.getElementById('log-title').textContent='Edit Interaction';
+    document.getElementById('log-date').value=i.date||today();
+    document.getElementById('log-type').value=i.type||'Call';
+    document.getElementById('log-notes').value=i.notes||'';
+    document.getElementById('log-topic').value=i.topicText||'';
+    const cIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
+    msState.lc=cIds.map(cid=>{const c=DB.contacts.find(x=>x.id===cid);return c?{id:c.id,label:displayName(c)}:null;}).filter(Boolean);
+    renderMsChips('lc');
+    const coIds=(i.companiesDiscussed||'').split(';').map(x=>x.trim()).filter(Boolean);
+    msState.lcd=coIds.map(cid=>{const name=getCompanyName(cid,DB.sponsors.find(x=>x.id===cid)?'sponsor':'corp');return name?{id:cid,label:name,_type:DB.sponsors.find(x=>x.id===cid)?'sponsor':'corp'}:null;}).filter(Boolean);
+    renderMsChips('lcd');
+  },100);
+}
+function editTodo(id){
+  const t=DB.todos.find(x=>x.id===id);if(!t)return;
+  editingTodo=id;openModal('add-todo');
+  setTimeout(()=>{
+    document.getElementById('at-title').textContent='Edit To-Do';
+    document.getElementById('at-text').value=t.text||'';
+    document.getElementById('at-priority').value=t.priority||'Now';
+    if(t.contactId&&t.contactLabel){msState['at-c']=[{id:t.contactId,label:t.contactLabel,_type:'contact'}];renderMsChips('at-c');}
+    if(t.companyId&&t.companyLabel){msState['at-co']=[{id:t.companyId,label:t.companyLabel,_type:'corp'}];renderMsChips('at-co');}
+  },100);
 }
 
-function dashSearch() {
+function confirmAction(msg,onConfirm){
+  const overlay=document.createElement('div');
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px';
+  overlay.innerHTML=`<div style="background:var(--surface);border-radius:var(--radius);padding:20px;width:100%;max-width:340px"><div style="font-size:15px;color:var(--text);line-height:1.5;margin-bottom:20px">${msg}</div><div style="display:flex;gap:10px"><button id="conf-cancel" style="flex:1;padding:11px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;font-size:15px;font-family:inherit;color:var(--text2);cursor:pointer">Cancel</button><button id="conf-ok" style="flex:1;padding:11px;border:none;border-radius:var(--radius-sm);background:var(--red);color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer">Delete</button></div></div>`;
+  document.body.appendChild(overlay);
+  overlay.querySelector('#conf-cancel').onclick=()=>document.body.removeChild(overlay);
+  overlay.querySelector('#conf-ok').onclick=()=>{document.body.removeChild(overlay);onConfirm();};
+}
+
+function deleteEntity(type,id){
+  if(type==='contact') deleteContact(id);
+  else if(type==='sponsor') deleteSponsor(id);
+  else if(type==='corp') deleteCorp(id);
+}
+async function deleteContact(id){
+  const linked=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id));
+  if(linked.length){alert(`Can't delete — this contact has ${linked.length} interaction${linked.length>1?'s':''} linked. Delete those first from the Log page.`);return;}
+  confirmAction('Delete this contact? This cannot be undone.',async()=>{
+    DB.contacts=DB.contacts.filter(x=>x.id!==id);
+    await saveAll();closeLanding('contact');renderContacts();
+  });
+}
+async function deleteSponsor(id){
+  const li=DB.interactions.filter(i=>i.companiesDiscussed&&i.companiesDiscussed.includes(id));
+  const lc=DB.contacts.filter(c=>c.companyId===id);
+  if(li.length||lc.length){const p=[];if(lc.length)p.push(`${lc.length} contact${lc.length>1?'s':''}`);if(li.length)p.push(`${li.length} interaction${li.length>1?'s':''}`);alert(`Can't delete — this firm has ${p.join(' and ')} linked. Remove those first.`);return;}
+  confirmAction('Delete this PE firm? This cannot be undone.',async()=>{
+    DB.sponsors=DB.sponsors.filter(x=>x.id!==id);
+    await saveAll();closeLanding('company');renderCompanies();
+  });
+}
+async function deleteCorp(id){
+  const li=DB.interactions.filter(i=>i.companiesDiscussed&&i.companiesDiscussed.includes(id));
+  const lc=DB.contacts.filter(c=>c.companyId===id);
+  if(li.length||lc.length){const p=[];if(lc.length)p.push(`${lc.length} contact${lc.length>1?'s':''}`);if(li.length)p.push(`${li.length} interaction${li.length>1?'s':''}`);alert(`Can't delete — this company has ${p.join(' and ')} linked. Remove those first.`);return;}
+  confirmAction('Delete this company? This cannot be undone.',async()=>{
+    DB.corps=DB.corps.filter(x=>x.id!==id);
+    await saveAll();closeLanding('company');renderCompanies();
+  });
+}
+async function deleteInteraction(id){
+  confirmAction('Delete this interaction? This cannot be undone.',async()=>{
+    DB.interactions=DB.interactions.filter(x=>x.id!==id);
+    await saveAll();renderInteractions();renderDash();
+    if(currentCompanyId) document.getElementById('landing-company-body').innerHTML=buildCompanyLanding(currentCompanyId,currentCompanyType);
+    if(currentContactId) document.getElementById('landing-contact-body').innerHTML=buildContactLanding(currentContactId);
+  });
+}
+async function deleteTodo(id){
+  confirmAction('Delete this to-do?',async()=>{
+    DB.todos=DB.todos.filter(x=>x.id!==id);await saveAll();renderTodos();
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// DASHBOARD
+// ─────────────────────────────────────────────────────────────
+function renderDash(){
+  const nowTodos=DB.todos.filter(t=>t.status==='Open'&&t.priority==='Now').slice(0,5);
+  document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,false)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
+  const recent=DB.interactions.slice(0,8);
+  document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderIntRow(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
+}
+
+function renderIntRow(i){
+  const primary=getPrimaryCompany(i);
+  const contactIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
+  const contactNames=contactIds.map(cid=>{const c=DB.contacts.find(x=>x.id===cid);return c?displayName(c):null;}).filter(Boolean);
+  const companyName=primary?primary.name:'—';
+  const companyId=primary?primary.id:null;
+  const companyType=primary?primary.type:null;
+  const onclick=companyId?`openCompanyLanding('${companyId}','${companyType}')`:'';
+  return`<div class="int-row" onclick="${onclick}">
+    <div class="int-cell"><div class="int-date">${fmtDateShort(i.date)}</div></div>
+    <div class="int-cell">
+      <div class="int-company">${escHtml(companyName)}</div>
+      <div class="int-people">${escHtml(contactNames.join(', '))||'—'}</div>
+    </div>
+    <div class="int-cell"><div class="int-type">${escHtml(i.type||'')}</div></div>
+    <div class="int-cell"><div class="int-notes">${escHtml(i.notes||'')}</div></div>
+  </div>`;
+}
+
+function dashSearch(){
   const q=document.getElementById('dash-search-input').value.trim();
   const filter=document.getElementById('dash-filter').value;
   const results=document.getElementById('dash-results');
@@ -1076,27 +1384,27 @@ function dashSearch() {
   let html='';
   if(filter==='all'||filter==='contact'){
     const hits=DB.contacts.filter(c=>[displayName(c),c.role,c.coverage,c.email,c.connection,c.bio].join(' ').toLowerCase().includes(lq)).slice(0,6);
-    if(hits.length){html+='<div class="section-hd">Contacts</div>';html+=hits.map(c=>`<div class="card" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&c.companyId?' · ':''}${hl(getCompanyName(c.companyId,c.companyType),q)}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
+    if(hits.length){html+='<div class="section-hd">Contacts</div>';html+=hits.map(c=>`<div class="card" onclick="openContactLanding('${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&c.companyId?' · ':''}${hl(getCompanyName(c.companyId,c.companyType),q)}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
   if(filter==='all'||filter==='sponsor'){
     const hits=DB.sponsors.filter(s=>s.name.toLowerCase().includes(lq)||(s.notes||'').toLowerCase().includes(lq)).slice(0,4);
-    if(hits.length){html+='<div class="section-hd">PE Sponsors</div>';html+=hits.map(s=>`<div class="card" onclick="openProfile('sponsor','${s.id}')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">PE Sponsor</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
+    if(hits.length){html+='<div class="section-hd">PE Sponsors</div>';html+=hits.map(s=>`<div class="card" onclick="openCompanyLanding('${s.id}','sponsor')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">PE Sponsor</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
   if(filter==='all'||filter==='corp'){
     const hits=DB.corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq)).slice(0,4);
-    if(hits.length){html+='<div class="section-hd">Corporates</div>';html+=hits.map(c=>`<div class="card" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${c.peOwner?' · '+getSponsorName(c.peOwner):''}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
+    if(hits.length){html+='<div class="section-hd">Corporates</div>';html+=hits.map(c=>`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${c.peOwner?' · '+getSponsorName(c.peOwner):''}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
   if(filter==='all'){
     const hits=DB.interactions.filter(i=>i.notes.toLowerCase().includes(lq)).slice(0,3);
-    if(hits.length){html+='<div class="section-hd">Interactions</div>';html+=hits.map(i=>renderLogItem(i,q)).join('');}
+    if(hits.length){html+='<div class="section-hd">Interactions</div>';html+=hits.map(i=>renderIntRow(i)).join('');}
   }
-  results.innerHTML=html||'<div class="empty-state" style="padding:16px">No results for "'+escHtml(q)+'"</div>';
+  results.innerHTML=html||`<div class="empty-state" style="padding:16px">No results for "${escHtml(q)}"</div>`;
 }
 
 // ─────────────────────────────────────────────────────────────
-// CONTACTS
+// CONTACTS LIST
 // ─────────────────────────────────────────────────────────────
-function renderContacts() {
+function renderContacts(){
   const q=(document.getElementById('contact-search')||{}).value||'';
   const lq=q.toLowerCase();
   let contacts=[...DB.contacts].sort((a,b)=>((a.lastName||a.firstName||'').toLowerCase()).localeCompare((b.lastName||b.firstName||'').toLowerCase()));
@@ -1108,15 +1416,15 @@ function renderContacts() {
     if(letter!==lastLetter){html+=`<div class="section-hd">${letter}</div>`;lastLetter=letter;}
     const co=c.companyId?getCompanyName(c.companyId,c.companyType):'';
     const lc=lastContactedDate(c.id);
-    html+=`<div class="card" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&co?' · ':''}${hl(co,q)}</div>${lc?`<div class="card-meta">Last: ${lc}</div>`:''}</div><div class="card-right"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;
+    html+=`<div class="card" onclick="openContactLanding('${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&co?' · ':''}${hl(co,q)}</div>${lc?`<div class="card-meta">Last: ${lc}</div>`:''}</div><div class="card-right"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;
   });
   document.getElementById('contact-list').innerHTML=html;
 }
 
 // ─────────────────────────────────────────────────────────────
-// COMPANIES
+// COMPANIES LIST
 // ─────────────────────────────────────────────────────────────
-function renderCompanies() {
+function renderCompanies(){
   const q=(document.getElementById('co-search')||{}).value||'';
   const filter=(document.getElementById('co-filter')||{}).value||'all';
   const lq=q.toLowerCase();
@@ -1126,7 +1434,7 @@ function renderCompanies() {
     if(lq) sponsors=sponsors.filter(s=>s.name.toLowerCase().includes(lq));
     if(sponsors.length){
       if(filter==='all')html+='<div class="section-hd">PE Sponsors</div>';
-      html+=sponsors.map(s=>{const cc=contactsAtCompany(s.id).length;const pc=portcosOfSponsor(s.id).length;return`<div class="card" onclick="openProfile('sponsor','${s.id}')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">${cc} contact${cc!==1?'s':''}${pc?' · '+pc+' portco'+(pc!==1?'s':''):''}</div></div><div class="card-right"><span class="badge b-sponsor">Sponsor</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
+      html+=sponsors.map(s=>{const cc=contactsAtCompany(s.id).length;const pc=portcosOfSponsor(s.id).length;return`<div class="card" onclick="openCompanyLanding('${s.id}','sponsor')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">${cc} contact${cc!==1?'s':''}${pc?' · '+pc+' portco'+(pc!==1?'s':''):''}</div></div><div class="card-right"><span class="badge b-sponsor">Sponsor</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
     }
   }
   if(filter==='all'||filter==='corporate'){
@@ -1134,7 +1442,7 @@ function renderCompanies() {
     if(lq) corps=corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq));
     if(corps.length){
       if(filter==='all')html+='<div class="divider"></div><div class="section-hd">Corporates</div>';
-      html+=corps.map(c=>{const owner=c.peOwner?getSponsorName(c.peOwner):'';return`<div class="card" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${owner?' · PE: '+hl(owner,q):''}</div>${c.revenue||c.ebitda?`<div class="card-meta">${c.revenue?'Rev: '+c.revenue:''}${c.revenue&&c.ebitda?' | ':''}${c.ebitda?'EBITDA: '+c.ebitda:''}</div>`:''}</div><div class="card-right"><span class="badge b-corp">Corp</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
+      html+=corps.map(c=>{const owner=c.peOwner?getSponsorName(c.peOwner):'';return`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${owner?' · PE: '+hl(owner,q):''}</div>${c.revenue||c.ebitda?`<div class="card-meta">${c.revenue?'Rev: '+c.revenue:''}${c.revenue&&c.ebitda?' | ':''}${c.ebitda?'EBITDA: '+c.ebitda:''}</div>`:''}</div><div class="card-right"><span class="badge b-corp">Corp</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
     }
   }
   if(filter==='all'||filter==='other'){
@@ -1142,10 +1450,45 @@ function renderCompanies() {
     if(lq) others=others.filter(c=>c.name.toLowerCase().includes(lq));
     if(others.length){
       if(filter==='all')html+='<div class="divider"></div><div class="section-hd">Other</div>';
-      html+=others.map(c=>`<div class="card" onclick="openProfile('corp','${c.id}')"><div class="avatar av-gray">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">Bank / Advisory / Other</div></div><div class="card-right"><span class="badge b-other">Other</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
+      html+=others.map(c=>`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="avatar av-gray">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">Bank / Advisory / Other</div></div><div class="card-right"><span class="badge b-other">Other</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
     }
   }
   document.getElementById('company-list').innerHTML=html||'<div class="empty-state">No companies found</div>';
+}
+
+// ─────────────────────────────────────────────────────────────
+// INTERACTIONS PAGE
+// ─────────────────────────────────────────────────────────────
+function renderInteractions(){
+  const q=(document.getElementById('int-search')||{}).value||'';
+  const lq=q.toLowerCase();
+  let items=[...DB.interactions].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(lq) items=items.filter(i=>[i.notes,i.topicText,(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):'';}).join(' ')].join(' ').toLowerCase().includes(lq));
+  const list=document.getElementById('interaction-list');
+  if(!items.length){list.innerHTML='<div class="empty-state">No interactions yet.<br>Tap + to log one.</div>';return;}
+  list.innerHTML=items.map(i=>{
+    const primary=getPrimaryCompany(i);
+    const cIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
+    const cNames=cIds.map(cid=>{const c=DB.contacts.find(x=>x.id===cid);return c?displayName(c):null;}).filter(Boolean);
+    const preview=(i.notes||'').slice(0,120)+(i.notes&&i.notes.length>120?'…':'');
+    return`<div class="landing-int">
+      <div class="landing-int-header">
+        <div class="landing-int-meta">
+          <div class="landing-int-date">${fmtDate(i.date)}${i.topicText?' · <em>'+escHtml(i.topicText)+'</em>':''}</div>
+          <div class="landing-int-type">${escHtml(i.type||'Note')}</div>
+        </div>
+      </div>
+      <div style="font-size:14px;color:var(--text);line-height:1.5;margin-bottom:8px">${q?hl(preview,q):escHtml(preview)}</div>
+      <div class="landing-int-people">
+        ${cNames.map((n,idx)=>`<button class="person-chip" onclick="openContactLanding('${cIds[idx]}')">${escHtml(n)}</button>`).join('')}
+        ${primary?`<button class="co-chip" onclick="openCompanyLanding('${primary.id}','${primary.type}')">${escHtml(primary.name)}</button>`:''}
+      </div>
+      <div style="display:flex;gap:6px;margin-top:8px">
+        <button class="mini-btn" onclick="editInteraction('${i.id}')">Edit</button>
+        <button class="mini-btn" style="color:var(--red)" onclick="deleteInteraction('${i.id}')">Delete</button>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1163,7 +1506,7 @@ function renderTodos(){
     const bySponsors={};
     DB.focusNames.forEach(f=>{const key=f.sponsorLabel||'Personal';if(!bySponsors[key])bySponsors[key]=[];bySponsors[key].push(f);});
     fp.style.display='block';
-    fp.innerHTML=`<div class="focus-panel"><div class="focus-panel-hd">Focus Names</div>${Object.entries(bySponsors).map(([sp,items])=>`<div class="focus-group"><div class="focus-group-name">${escHtml(sp)}</div>${items.map(f=>`<span class="focus-chip fc-${f.status.toLowerCase()}" onclick="openProfile('corp','${f.companyId}')">${escHtml(f.companyLabel)}</span>`).join('')}</div>`).join('')}</div>`;
+    fp.innerHTML=`<div class="focus-panel"><div class="focus-panel-hd">Focus Names</div>${Object.entries(bySponsors).map(([sp,items])=>`<div class="focus-group"><div class="focus-group-name">${escHtml(sp)}</div>${items.map(f=>`<span class="focus-chip fc-${(f.status||'').toLowerCase()}" onclick="openCompanyLanding('${f.companyId}','corp')">${escHtml(f.companyLabel)}</span>`).join('')}</div>`).join('')}</div>`;
   } else { fp.style.display='none'; }
   let html='';
   ['Now','Later','Radar'].forEach(p=>{
@@ -1172,80 +1515,15 @@ function renderTodos(){
   });
   const done=DB.todos.filter(t=>t.status==='Complete').sort((a,b)=>new Date(b.completedAt)-new Date(a.completedAt)).slice(0,5);
   if(done.length){html+='<div class="divider"></div><div class="section-hd">Recently completed</div>';html+=done.map(t=>renderTodoItem(t)).join('');}
-  if(!DB.todos.length)html='<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>No to-dos yet.<br>Tap + to add one.</div>';
+  if(!DB.todos.length) html='<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>No to-dos yet.</div>';
   document.getElementById('todo-list').innerHTML=html;
 }
-// ─────────────────────────────────────────────────────────────
-// INTERACTIONS PAGE
-// ─────────────────────────────────────────────────────────────
-function renderInteractions(){
-  const q=(document.getElementById('int-search')||{}).value||'';
-  const lq=q.toLowerCase();
-  let items=[...DB.interactions].sort((a,b)=>new Date(b.date)-new Date(a.date));
-  if(lq) items=items.filter(i=>[i.notes,i.topicLabel,(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):'';}).join(' ')].join(' ').toLowerCase().includes(lq));
-  const list=document.getElementById('interaction-list');
-  if(!items.length){list.innerHTML='<div class="empty-state">No interactions yet.<br>Tap + to log one.</div>';return;}
-  list.innerHTML=items.map(i=>renderLogItemFull(i,q)).join('');
-}
-
-function renderLogItemFull(i,q){
-  const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?shortName(c):null;}).filter(Boolean);
-  const preview=(i.notes||'').slice(0,160)+(i.notes&&i.notes.length>160?'…':'');
-  return`<div class="log-item" style="cursor:default">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:3px">
-      <div style="font-size:13px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${contactNames.length?escHtml(contactNames.join(', ')):'<span style="color:var(--text3)">No contacts</span>'}${i.topicLabel?' · <span style="color:var(--green)">'+escHtml(i.topicLabel)+'</span>':''}</div>
-      <span style="font-size:11px;color:var(--text3);flex-shrink:0">${fmtDate(i.date)}</span>
-    </div>
-    <div style="font-size:11px;color:var(--text3);margin-bottom:4px">${escHtml(i.type||'Note')}</div>
-    <div style="font-size:13px;color:var(--text2);line-height:1.5">${q?hl(preview,q):escHtml(preview)}</div>
-    <div style="display:flex;gap:6px;margin-top:8px">
-      <button class="mini-btn" onclick="editInteraction('${i.id}')">Edit</button>
-      <button class="mini-btn" onclick="deleteInteraction('${i.id}')" style="color:var(--red)">Delete</button>
-    </div>
-  </div>`;
-}
-
-function editInteraction(id){
-  const i=DB.interactions.find(x=>x.id===id);if(!i)return;
-  editingLog=id;
-  openModal('log');
-  setTimeout(()=>{
-    document.getElementById('log-title').textContent='Edit Interaction';
-    document.getElementById('log-date').value=i.date||today();
-    document.getElementById('log-type').value=i.type||'Call';
-    document.getElementById('log-notes').value=i.notes||'';
-    const contactIds=(i.contactIds||'').split(';').map(x=>x.trim()).filter(Boolean);
-    msState.lc=contactIds.map(cid=>{const c=DB.contacts.find(x=>x.id===cid);return c?{id:c.id,label:shortName(c)}:null;}).filter(Boolean);
-    renderMsChips('lc');
-    if(i.topicId&&i.topicLabel){msState.lt=[{id:i.topicId,label:i.topicLabel,_type:i.topicType}];renderMsChips('lt');}
-  },100);
-}
-
-async function deleteInteraction(id){
-  confirmAction('Delete this interaction? This cannot be undone.', async()=>{
-    DB.interactions=DB.interactions.filter(x=>x.id!==id);
-    await saveAll();renderInteractions();renderDash();
-  });
-}
-
 function renderTodoItem(t,compact){
   const done=t.status==='Complete';
   const link=[];
   if(t.contactLabel)link.push('👤 '+t.contactLabel);
   if(t.companyLabel)link.push('🏢 '+t.companyLabel);
-  return`<div class="todo-item"><button class="todo-check ${done?'done':''}" onclick="toggleTodo('${t.id}')"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-content"><div class="todo-text ${done?'done':''}">${escHtml(t.text)}</div>${link.length?`<div class="todo-link">${link.join(' · ')}</div>`:''}</div><div class="todo-right"><span class="badge b-${t.priority.toLowerCase()}">${t.priority}</span>${!done&&!compact?`<div class="todo-actions"><button class="mini-btn" onclick="editTodo('${t.id}')">Edit</button><select class="move-sel" onchange="changePriority('${t.id}',this.value)"><option value="">Change prio</option>${['Now','Later','Radar'].filter(x=>x!==t.priority).map(x=>`<option value="${x}">${x}</option>`).join('')}</select><button class="mini-btn" onclick="deleteTodo('${t.id}')">✕</button></div>`:''}</div></div>`;
-}
-function editTodo(id){
-  const t=DB.todos.find(x=>x.id===id);if(!t)return;
-  editingTodo=id;
-  openModal('add-todo');
-  setTimeout(()=>{
-    document.getElementById('at-title').textContent='Edit To-Do';
-    document.getElementById('at-text').value=t.text||'';
-    document.getElementById('at-priority').value=t.priority||'Now';
-    if(t.contactId&&t.contactLabel){msState['at-c']=[{id:t.contactId,label:t.contactLabel,_type:'contact'}];renderMsChips('at-c');}
-    if(t.companyId&&t.companyLabel){msState['at-co']=[{id:t.companyId,label:t.companyLabel,_type:'corp'}];renderMsChips('at-co');}
-  },100);
+  return`<div class="todo-item"><button class="todo-check ${done?'done':''}" onclick="toggleTodo('${t.id}')"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-content"><div class="todo-text ${done?'done':''}">${escHtml(t.text)}</div>${link.length?`<div class="todo-link">${link.join(' · ')}</div>`:''}</div><div class="todo-right"><span class="badge b-${(t.priority||'').toLowerCase()}">${t.priority}</span>${!done&&!compact?`<div class="todo-actions"><button class="mini-btn" onclick="editTodo('${t.id}')">Edit</button><select class="move-sel" onchange="changePriority('${t.id}',this.value)"><option value="">Change prio</option>${['Now','Later','Radar'].filter(x=>x!==t.priority).map(x=>`<option value="${x}">${x}</option>`).join('')}</select><button class="mini-btn" onclick="deleteTodo('${t.id}')">✕</button></div>`:''}</div></div>`;
 }
 async function toggleTodo(id){
   const t=DB.todos.find(x=>x.id===id);if(!t)return;
@@ -1257,204 +1535,6 @@ async function changePriority(id,val){
   if(!val)return;
   const t=DB.todos.find(x=>x.id===id);if(!t)return;
   t.priority=val;await saveAll();renderTodos();
-}
-async function deleteTodo(id){
-  confirmAction('Delete this to-do?', async()=>{
-    DB.todos=DB.todos.filter(x=>x.id!==id);await saveAll();renderTodos();
-  });
-}
-
-// ─────────────────────────────────────────────────────────────
-// LOG RENDERING
-// ─────────────────────────────────────────────────────────────
-function renderDashLogItem(i){
-  const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):null;}).filter(Boolean);
-  const firstContact=contactNames.length?DB.contacts.find(x=>displayName(x)===contactNames[0]):null;
-  const affil=firstContact&&firstContact.companyId?getCompanyName(firstContact.companyId,firstContact.companyType):'';
-  const subject=i.topicLabel||i.type||'';
-  const cid=firstContact?firstContact.id:'';
-  return '<div class="log-item" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;cursor:pointer" onclick="'+( cid ? "openProfile(\'contact\',\'"+cid+"\')": '')+'">'
-    +'<div><div style="font-size:13px;font-weight:600;color:var(--text)">'+escHtml(contactNames.join(', ')||'—')+'</div>'
-    +'<div style="font-size:11px;color:var(--text3)">'+fmtDate(i.date)+'</div></div>'
-    +'<div style="font-size:13px;color:var(--text2);padding-top:1px">'+escHtml(affil||'—')+'</div>'
-    +'<div style="font-size:13px;color:var(--text2);padding-top:1px">'+escHtml(subject||'—')+'</div>'
-    +'</div>';
-}
-function renderLogItem(i,q){
-  const contactNames=(i.contactIds||'').split(';').map(id=>{const c=DB.contacts.find(x=>x.id===id.trim());return c?displayName(c):null;}).filter(Boolean);
-  const preview=(i.notes||'').slice(0,120)+(i.notes&&i.notes.length>120?'…':'');
-  const headline=[
-    contactNames.length?`<strong>${escHtml(contactNames.join(', '))}</strong>`:'',
-    i.topicLabel?`<strong>${escHtml(i.topicLabel)}</strong>`:''
-  ].filter(Boolean).join(' · ');
-  return`<div class="log-item">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:3px">
-      <div style="font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${headline||'<span style="color:var(--text3)">No contacts</span>'}</div>
-      <span style="font-size:11px;color:var(--text3);flex-shrink:0">${fmtDate(i.date)}</span>
-    </div>
-    <div style="font-size:11px;color:var(--text3);margin-bottom:3px">${escHtml(i.type||'Note')}</div>
-    <div style="font-size:13px;color:var(--text2);line-height:1.4">${q?hl(preview,q):escHtml(preview)}</div>
-  </div>`;
-}
-
-// ─────────────────────────────────────────────────────────────
-// PROFILES
-// ─────────────────────────────────────────────────────────────
-let currentProfileType=null,currentProfileId=null;
-function openProfile(type,id){currentProfileType=type;currentProfileId=id;showProfile(type,id);}
-function showProfile(type,id){
-  const body=document.getElementById('modal-profile-body');
-  if(type==='contact')body.innerHTML=buildContactProfile(id);
-  else if(type==='sponsor')body.innerHTML=buildSponsorProfile(id);
-  else if(type==='corp')body.innerHTML=buildCorpProfile(id);
-  document.getElementById('modal-profile').classList.add('open');
-}
-
-function buildContactProfile(id){
-  const c=DB.contacts.find(x=>x.id===id);if(!c)return'<div class="empty-state">Not found</div>';
-  const co=c.companyId?getCompanyName(c.companyId,c.companyType):'';
-  const directLogs=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id));
-  const nameLower=displayName(c).toLowerCase();
-  const mentionLogs=DB.interactions.filter(i=>!(i.contactIds||'').split(';').map(x=>x.trim()).includes(id)&&i.notes.toLowerCase().includes(nameLower)&&nameLower.length>3);
-  return`<div class="modal-hd"><span class="modal-title">${escHtml(displayName(c))}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
-  <div class="profile-hero"><div class="profile-avatar av-blue">${initials(displayName(c))}</div><div class="profile-info"><div class="profile-name">${escHtml(displayName(c))}</div><div class="profile-sub">${escHtml([c.title,c.role,co].filter(Boolean).join(' · '))}</div><div class="profile-badges"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span>${c.coverage?`<span class="badge b-other">${escHtml(c.coverage)}</span>`:''}${c.location?`<span class="badge b-other">📍 ${escHtml(c.location)}</span>`:''}</div></div></div>
-  <div class="profile-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="action-btn">✉ Email</a>`:''} ${c.phone?`<a href="tel:${escHtml(c.phone)}" class="action-btn">📞 Call</a>`:''}<button class="action-btn" onclick="closeProfile();openModal('log',{contactId:'${id}'})">+ Log</button><button class="action-btn" onclick="editContact('${id}')">Edit</button><button class="action-btn" style="color:var(--red)" onclick="deleteContact('${id}')">Delete</button></div>
-  ${c.email||c.phone||c.linkedin||c.preferredName?`<div class="profile-section"><div class="profile-section-hd">Contact</div>${c.preferredName?`<div class="profile-field"><span class="pf-label">Full name</span><span class="pf-value">${escHtml(fullLegalName(c))}</span></div>`:''}${c.email?`<div class="profile-field"><span class="pf-label">Email</span><span class="pf-value"><a href="mailto:${escHtml(c.email)}">${escHtml(c.email)}</a></span></div>`:''}${c.phone?`<div class="profile-field"><span class="pf-label">Phone</span><span class="pf-value"><a href="tel:${escHtml(c.phone)}">${escHtml(c.phone)}</a></span></div>`:''}${c.linkedin?`<div class="profile-field"><span class="pf-label">LinkedIn</span><span class="pf-value"><a href="${escHtml(c.linkedin)}" target="_blank">Profile</a></span></div>`:''}</div>`:''}
-  ${c.connection||c.bio?`<div class="profile-section">${c.connection?`<div class="profile-field"><span class="pf-label">Connection</span><span class="pf-value">${escHtml(c.connection)}</span></div>`:''} ${c.bio?`<div class="bio-box"><div class="bio-text">${escHtml(c.bio)}</div></div>`:''}</div>`:''}
-  <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
-}
-
-function buildSponsorProfile(id){
-  const s=DB.sponsors.find(x=>x.id===id);if(!s)return'<div class="empty-state">Not found</div>';
-  const contacts=contactsAtCompany(id).sort((a,b)=>displayName(a).localeCompare(displayName(b)));
-  const portcos=portcosOfSponsor(id).sort((a,b)=>a.name.localeCompare(b.name));
-  const focusItems=DB.focusNames.filter(f=>f.sponsorId===id);
-  const directLogs=DB.interactions.filter(i=>i.topicId===id);
-  const nameLower=s.name.toLowerCase();
-  const mentionLogs=DB.interactions.filter(i=>i.topicId!==id&&i.notes.toLowerCase().includes(nameLower));
-  return`<div class="modal-hd"><span class="modal-title">${escHtml(s.name)}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
-  <div class="profile-hero"><div class="profile-avatar av-amber">${initials(s.name)}</div><div class="profile-info"><div class="profile-name">${escHtml(s.name)}</div><div class="profile-sub">PE Sponsor</div></div></div>
-  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editSponsor('${id}')">Edit</button><button class="action-btn" style="color:var(--red)" onclick="deleteSponsor('${id}')">Delete</button></div>
-  ${s.funds||s.notes?`<div class="profile-section">${s.funds?`<div class="profile-field"><span class="pf-label">Funds</span><span class="pf-value">${escHtml(s.funds)}</span></div>`:''} ${s.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(s.notes)}</span></div>`:''}</div>`:''}
-  <div class="profile-section"><div class="subsection-hd">Contacts at ${escHtml(s.name)} (${contacts.length})</div>${contacts.length?contacts.map(c=>`<div class="contact-row" onclick="openProfile('contact','${c.id}')"><div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(c))}</div><div class="cr-info"><div class="cr-name">${escHtml(displayName(c))}</div><div class="cr-sub">${escHtml([c.role,c.title].filter(Boolean).join(', '))}${c.coverage?' · '+escHtml(c.coverage):''}</div></div><div class="cr-actions">${c.email?`<a href="mailto:${escHtml(c.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}</div></div>`).join(''):'<div class="empty-section">No contacts linked</div>'}</div>
-  ${portcos.length?`<div class="profile-section"><div class="subsection-hd">Portfolio Companies (${portcos.length})</div>${portcos.map(c=>`<div class="contact-row" onclick="openProfile('corp','${c.id}')"><div class="avatar av-green" style="width:32px;height:32px;font-size:11px">${initials(c.name)}</div><div class="cr-info"><div class="cr-name">${escHtml(c.name)}</div><div class="cr-sub">${[c.revenue?'Rev: '+c.revenue:'',c.ebitda?'EBITDA: '+c.ebitda:'',c.leverage?c.leverage+' lev':''].filter(Boolean).join(' · ')||'No financial data'}</div></div></div>`).join('')}</div>`:''}
-  ${focusItems.length?`<div class="profile-section"><div class="subsection-hd">Focus Names (${focusItems.length})</div>${focusItems.map(f=>`<div class="contact-row" onclick="openProfile('corp','${f.companyId}')"><div class="cr-info"><div class="cr-name">${escHtml(f.companyLabel)}</div><div class="cr-sub">${f.notes||''}</div></div><span class="badge b-${f.status.toLowerCase()}">${f.status}</span></div>`).join('')}</div>`:''}
-  <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
-}
-
-function buildCorpProfile(id){
-  const c=DB.corps.find(x=>x.id===id);if(!c)return'<div class="empty-state">Not found</div>';
-  const owner=c.peOwner?DB.sponsors.find(s=>s.id===c.peOwner):null;
-  const contacts=contactsAtCompany(id).sort((a,b)=>displayName(a).localeCompare(displayName(b)));
-  const focusItems=DB.focusNames.filter(f=>f.companyId===id);
-  const directLogs=DB.interactions.filter(i=>i.topicId===id);
-  const nameLower=c.name.toLowerCase();
-  const mentionLogs=DB.interactions.filter(i=>i.topicId!==id&&i.notes.toLowerCase().includes(nameLower));
-  const fin=[c.revenue?['Revenue',c.revenue]:null,c.ebitda?['EBITDA',c.ebitda]:null,c.margin?['EBITDA Margin',c.margin]:null,c.growth?['Growth',c.growth]:null,c.valuation?['Valuation',c.valuation]:null,c.leverage?['Leverage',c.leverage]:null].filter(Boolean);
-  return`<div class="modal-hd"><span class="modal-title">${escHtml(c.name)}</span><button class="modal-close" onclick="closeProfile()">×</button></div>
-  <div class="profile-hero"><div class="profile-avatar av-green">${initials(c.name)}</div><div class="profile-info"><div class="profile-name">${escHtml(c.name)}</div><div class="profile-sub">${c.type}${owner?' · PE: '+escHtml(owner.name):''}</div><div class="profile-badges">${owner?`<span class="badge b-sponsor" onclick="openProfile('sponsor','${owner.id}')" style="cursor:pointer">${escHtml(owner.name)}</span>`:''}</div></div></div>
-  <div class="profile-actions"><button class="action-btn" onclick="closeProfile();openModal('log')">+ Log</button><button class="action-btn" onclick="editCorp('${id}')">Edit</button><button class="action-btn" onclick="closeProfile();openModal('add-focus')">+ Focus</button><button class="action-btn" style="color:var(--red)" onclick="deleteCorp('${id}')">Delete</button></div>
-  ${c.description?`<div class="bio-box"><div class="bio-text">${escHtml(c.description)}</div></div>`:''}
-  ${fin.length?`<div class="profile-section"><div class="profile-section-hd">Financials</div>${fin.map(([k,v])=>`<div class="profile-field"><span class="pf-label">${k}</span><span class="pf-value">${escHtml(v)}</span></div>`).join('')}${c.notes?`<div class="profile-field"><span class="pf-label">Notes</span><span class="pf-value">${escHtml(c.notes)}</span></div>`:''}</div>`:''}
-  ${contacts.length?`<div class="profile-section"><div class="subsection-hd">Contacts (${contacts.length})</div>${contacts.map(ct=>`<div class="contact-row" onclick="openProfile('contact','${ct.id}')"><div class="avatar av-blue" style="width:32px;height:32px;font-size:11px">${initials(displayName(ct))}</div><div class="cr-info"><div class="cr-name">${escHtml(displayName(ct))}</div><div class="cr-sub">${escHtml(ct.role||'')}</div></div><div class="cr-actions">${ct.email?`<a href="mailto:${escHtml(ct.email)}" class="cr-link" onclick="event.stopPropagation()">✉</a>`:''}</div></div>`).join('')}</div>`:''}
-  ${focusItems.length?`<div class="profile-section"><div class="subsection-hd">On Focus Lists</div>${focusItems.map(f=>`<div class="profile-field"><span class="pf-label">${escHtml(f.sponsorLabel||'Personal')}</span><span class="pf-value"><span class="badge b-${f.status.toLowerCase()}">${f.status}</span> ${f.notes?escHtml(f.notes):''}</span></div>`).join('')}</div>`:''}
-  <div class="profile-section"><div class="subsection-hd">Direct interactions (${directLogs.length})</div>${directLogs.length?directLogs.map(i=>renderLogItem(i)).join(''):'<div class="empty-section">None yet</div>'}${mentionLogs.length?`<div class="subsection-hd mention">Also mentioned in (${mentionLogs.length})</div>${mentionLogs.map(i=>renderLogItem(i)).join('')}`:''}</div>`;
-}
-
-// ─────────────────────────────────────────────────────────────
-// EDIT HELPERS
-// ─────────────────────────────────────────────────────────────
-function editContact(id){
-  const c=DB.contacts.find(x=>x.id===id);if(!c)return;
-  editingContact=id;closeProfile();openModal('add-contact');
-  setTimeout(()=>{
-    document.getElementById('ac-title').textContent='Edit Contact';
-    document.getElementById('ac-first').value=c.firstName||'';document.getElementById('ac-last').value=c.lastName||'';
-    document.getElementById('ac-pref').value=c.preferredName||'';document.getElementById('ac-type').value=c.contactType||'other';
-    document.getElementById('ac-priority').value=c.priority||'';document.getElementById('ac-role').value=c.role||'';
-    document.getElementById('ac-title-f').value=c.title||'';document.getElementById('ac-coverage').value=c.coverage||'';
-    document.getElementById('ac-email').value=c.email||'';document.getElementById('ac-phone').value=c.phone||'';
-    document.getElementById('ac-location').value=c.location||'';document.getElementById('ac-linkedin').value=c.linkedin||'';
-    document.getElementById('ac-connection').value=c.connection||'';document.getElementById('ac-bio').value=c.bio||'';
-    if(c.companyId){const name=getCompanyName(c.companyId,c.companyType)||'';msState['ac-co']=[{id:c.companyId,label:name,_type:c.companyType}];renderMsChips('ac-co');}
-  },100);
-}
-function editSponsor(id){
-  const s=DB.sponsors.find(x=>x.id===id);if(!s)return;
-  editingSponsor=id;closeProfile();openModal('add-sponsor');
-  setTimeout(()=>{
-    document.getElementById('as-title').textContent='Edit PE Firm';
-    document.getElementById('as-name').value=s.name||'';document.getElementById('as-funds').value=s.funds||'';
-    document.getElementById('as-priority').value=s.priority||'';document.getElementById('as-notes').value=s.notes||'';
-  },100);
-}
-function editCorp(id){
-  const c=DB.corps.find(x=>x.id===id);if(!c)return;
-  editingCorp=id;closeProfile();openModal('add-corp');
-  setTimeout(()=>{
-    document.getElementById('aco-title').textContent='Edit Corporate';
-    document.getElementById('aco-name').value=c.name||'';document.getElementById('aco-type').value=c.type||'Private';
-    document.getElementById('aco-priority').value=c.priority||'';document.getElementById('aco-desc').value=c.description||'';
-    document.getElementById('aco-rev').value=c.revenue||'';document.getElementById('aco-ebitda').value=c.ebitda||'';
-    document.getElementById('aco-margin').value=c.margin||'';document.getElementById('aco-growth').value=c.growth||'';
-    document.getElementById('aco-val').value=c.valuation||'';document.getElementById('aco-lev').value=c.leverage||'';
-    document.getElementById('aco-notes').value=c.notes||'';
-    if(c.peOwner){const name=getSponsorName(c.peOwner)||'';msState['aco-pe']=[{id:c.peOwner,label:name,_type:'sponsor'}];renderMsChips('aco-pe');}
-  },100);
-}
-
-function confirmAction(message, onConfirm) {
-  const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px';
-  overlay.innerHTML = `<div style="background:var(--surface);border-radius:var(--radius);padding:20px;width:100%;max-width:340px;box-shadow:0 8px 32px rgba(0,0,0,.2)">
-    <div style="font-size:15px;color:var(--text);line-height:1.5;margin-bottom:20px">${message}</div>
-    <div style="display:flex;gap:10px">
-      <button id="conf-cancel" style="flex:1;padding:11px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:none;font-size:15px;font-family:inherit;color:var(--text2);cursor:pointer">Cancel</button>
-      <button id="conf-ok" style="flex:1;padding:11px;border:none;border-radius:var(--radius-sm);background:var(--red);color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer">Delete</button>
-    </div>
-  </div>`;
-  document.body.appendChild(overlay);
-  overlay.querySelector('#conf-cancel').onclick = () => document.body.removeChild(overlay);
-  overlay.querySelector('#conf-ok').onclick = () => { document.body.removeChild(overlay); onConfirm(); };
-}
-
-async function deleteContact(id){
-  const linked=DB.interactions.filter(i=>(i.contactIds||'').split(';').map(x=>x.trim()).includes(id));
-  if(linked.length){
-    alert(`Can't delete — this contact has ${linked.length} interaction${linked.length>1?'s':''} linked. Delete those from the Log page first.`);return;
-  }
-  confirmAction('Delete this contact? This cannot be undone.', async()=>{
-    DB.contacts=DB.contacts.filter(x=>x.id!==id);
-    await saveAll();closeProfile();renderContacts();
-  });
-}
-async function deleteSponsor(id){
-  const linkedInteractions=DB.interactions.filter(i=>i.topicId===id);
-  const linkedContacts=DB.contacts.filter(c=>c.companyId===id);
-  if(linkedInteractions.length||linkedContacts.length){
-    const parts=[];
-    if(linkedContacts.length) parts.push(`${linkedContacts.length} contact${linkedContacts.length>1?'s':''}`);
-    if(linkedInteractions.length) parts.push(`${linkedInteractions.length} interaction${linkedInteractions.length>1?'s':''}`);
-    alert(`Can't delete — this firm has ${parts.join(' and ')} linked to it. Remove those first.`);return;
-  }
-  confirmAction('Delete this PE firm? This cannot be undone.', async()=>{
-    DB.sponsors=DB.sponsors.filter(x=>x.id!==id);
-    await saveAll();closeProfile();renderCompanies();
-  });
-}
-async function deleteCorp(id){
-  const linkedInteractions=DB.interactions.filter(i=>i.topicId===id);
-  const linkedContacts=DB.contacts.filter(c=>c.companyId===id);
-  if(linkedInteractions.length||linkedContacts.length){
-    const parts=[];
-    if(linkedContacts.length) parts.push(`${linkedContacts.length} contact${linkedContacts.length>1?'s':''}`);
-    if(linkedInteractions.length) parts.push(`${linkedInteractions.length} interaction${linkedInteractions.length>1?'s':''}`);
-    alert(`Can't delete — this company has ${parts.join(' and ')} linked to it. Remove those first.`);return;
-  }
-  confirmAction('Delete this company? This cannot be undone.', async()=>{
-    DB.corps=DB.corps.filter(x=>x.id!==id);
-    await saveAll();closeProfile();renderCompanies();
-  });
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1476,55 +1556,45 @@ function exportAll(){
 }
 
 // ─────────────────────────────────────────────────────────────
-// INIT
+// SETUP & INIT
 // ─────────────────────────────────────────────────────────────
-function resetKey() {
-  confirmAction('Clear saved private key? You will need to re-enter it.', ()=>{
-    localStorage.removeItem('fn_private_key');
-    accessToken = null;
+function resetKey(){
+  confirmAction('Clear saved private key? You will need to re-enter it.',()=>{
+    localStorage.removeItem('fn_private_key');accessToken=null;
     document.getElementById('modal-setup').classList.add('open');
   });
 }
-
-function submitSetupKey() {
-  const key = document.getElementById('setup-key').value.trim();
-  if (!key) { alert('Please paste your private key.'); return; }
+function submitSetupKey(){
+  const key=document.getElementById('setup-key').value.trim();
+  if(!key){alert('Please paste your private key.');return;}
   savePrivateKey(key);
   document.getElementById('modal-setup').classList.remove('open');
   init();
 }
-
 async function init(){
-  const key = getPrivateKey();
-  if (!key) {
-    document.getElementById('modal-setup').classList.add('open');
-    return;
-  }
-  PRIVATE_KEY = key;
-
-  // Always show app immediately
+  const key=getPrivateKey();
+  if(!key){ document.getElementById('modal-setup').classList.add('open'); return; }
+  PRIVATE_KEY=key;
   loadLocalFallback();
-  try { renderAll(); } catch(e) { console.error('Render error:', e); }
-  setSyncStatus('syncing', 'Loading…');
-
-  // Sync with Google Sheets in background
-  try {
-    const timeoutPromise = new Promise((_,reject) => setTimeout(()=>reject(new Error('Timeout')), 15000));
-    await Promise.race([loadFromSheets(), timeoutPromise]);
-    try { renderAll(); } catch(e) { console.error('Render error after sync:', e); alert('Render error: ' + e.message); }
-  } catch(e) {
-    console.error('Sync failed:', e);
-    const msg = e.message || '';
-    if (msg.includes('Invalid private key')) {
+  renderAll();
+  setSyncStatus('syncing','Loading…');
+  try{
+    const timeout=new Promise((_,reject)=>setTimeout(()=>reject(new Error('Timeout')),15000));
+    await Promise.race([loadFromSheets(),timeout]);
+    renderAll();
+  }catch(e){
+    console.error('Sync failed:',e);
+    if((e.message||'').includes('Invalid private key')){
       localStorage.removeItem('fn_private_key');
-      document.getElementById('setup-key').value = '';
+      document.getElementById('setup-key').value='';
       document.getElementById('modal-setup').classList.add('open');
       return;
     }
-    setSyncStatus('error', 'Offline — tap sync to retry');
+    setSyncStatus('error','Offline — tap sync to retry');
   }
 }
 
+// Syntax check passed — initialise
 init();
 </script>
 </body>
