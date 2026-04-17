@@ -63,11 +63,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
 .chevron{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
 /* AVATARS */
-.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;letter-spacing:-.5px}
-.av-blue{background:var(--accent-bg);color:var(--accent2)}
-.av-green{background:var(--green-bg);color:var(--green)}
-.av-amber{background:var(--amber-bg);color:var(--amber)}
-.av-gray{background:var(--surface2);color:var(--text2)}
+.ct-table{width:100%;border-collapse:collapse}
+.ct-thead{display:grid;grid-template-columns:1.8fr 1.4fr 1.2fr 1fr 1fr;padding:6px 14px;border-bottom:1px solid var(--border2);background:var(--surface2)}
+.ct-th{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ct-row{display:grid;grid-template-columns:1.8fr 1.4fr 1.2fr 1fr 1fr;padding:9px 14px;border-bottom:0.5px solid var(--border);cursor:pointer;transition:background .1s;align-items:center}
+.ct-row:active{background:var(--surface2)}
+.ct-cell{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:6px}
+.ct-cell.name{font-size:13px;font-weight:600;color:var(--text)}
 /* BADGES */
 .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;white-space:nowrap}
 .b-sponsor{background:var(--accent-bg);color:var(--accent2)}
@@ -80,16 +82,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .b-pipeline{background:var(--amber-bg);color:var(--amber)}
 .b-watching{background:var(--surface2);color:var(--text2)}
 /* INTERACTION ROW - 4 column inbox style */
-.int-row{display:grid;grid-template-columns:52px 1fr 48px 1fr;gap:0;border-bottom:0.5px solid var(--border);cursor:pointer;transition:background .1s}
+.int-row{display:grid;grid-template-columns:52px minmax(100px,140px) 1fr;gap:0;border-bottom:0.5px solid var(--border);cursor:pointer;transition:background .1s}
 .int-row:active{background:var(--surface2)}
 .int-cell{padding:10px 6px 10px}
 .int-cell:first-child{padding-left:14px}
 .int-cell:last-child{padding-right:14px}
 .int-date{font-size:11px;color:var(--text3);font-weight:500;line-height:1.4}
 .int-company{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.int-people{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.int-type{font-size:10px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.04em;line-height:1.4}
-.int-notes{font-size:12px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.int-person{font-size:11px;color:var(--text3);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.int-type{font-size:10px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:3px}
+.int-notes{font-size:12px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 /* LANDING INTERACTION CARD */
 .landing-int{padding:14px 16px;border-bottom:0.5px solid var(--border)}
 .landing-int-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
@@ -329,10 +331,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <button class="back-btn" onclick="closeLanding('company')">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back
     </button>
-    <span class="landing-title" id="landing-company-title">Company</span>
-    <button class="icon-btn" onclick="openLogFromLanding('company')" title="Log interaction" style="margin-left:auto">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
+    <span class="landing-title">Company</span>
   </div>
   <div class="landing-body" id="landing-company-body"></div>
 </div>
@@ -342,10 +341,7 @@ mark{background:#fff3a0;color:inherit;border-radius:2px;padding:0 1px}
     <button class="back-btn" onclick="closeLanding('contact')">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back
     </button>
-    <span class="landing-title" id="landing-contact-title">Contact</span>
-    <button class="icon-btn" onclick="openLogFromLanding('contact')" title="Log interaction" style="margin-left:auto">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
+    <span class="landing-title">Contact</span>
   </div>
   <div class="landing-body" id="landing-contact-body"></div>
 </div>
@@ -817,7 +813,7 @@ function buildCompanyLanding(id,type){
 
   // Hero
   html+=`<div class="profile-hero">
-    <div class="profile-avatar ${isSponsor?'av-amber':'av-green'}">${initials(entity.name)}</div>
+    
     <div class="profile-info">
       <div class="profile-name">${escHtml(entity.name)}</div>
       <div class="profile-sub">${isSponsor?'PE Sponsor':entity.type}${!isSponsor&&entity.peOwner?` · PE: <button class="pf-link" onclick="openCompanyLanding('${entity.peOwner}','sponsor')">${escHtml(getSponsorName(entity.peOwner))}</button>`:''}</div>
@@ -864,7 +860,7 @@ function buildCompanyLanding(id,type){
   if(contacts.length){
     html+=`<div class="divider"></div><div class="subsection-hd">People (${contacts.length})</div>`;
     html+=contacts.map(c=>`<div class="contact-row" onclick="openContactLanding('${c.id}')">
-      <div class="avatar av-blue" style="width:36px;height:36px;font-size:12px">${initials(displayName(c))}</div>
+      
       <div class="cr-info">
         <div class="cr-name">${escHtml(displayName(c))}</div>
         <div class="cr-sub">${escHtml([c.role,c.title].filter(Boolean).join(', '))}${c.coverage?' · '+escHtml(c.coverage):''}</div>
@@ -880,7 +876,7 @@ function buildCompanyLanding(id,type){
   if(portcos.length){
     html+=`<div class="divider"></div><div class="subsection-hd">Portfolio companies (${portcos.length})</div>`;
     html+=portcos.map(c=>`<div class="contact-row" onclick="openCompanyLanding('${c.id}','corp')">
-      <div class="avatar av-green" style="width:36px;height:36px;font-size:12px">${initials(c.name)}</div>
+      
       <div class="cr-info">
         <div class="cr-name">${escHtml(c.name)}</div>
         <div class="cr-sub">${[c.revenue?'Rev: '+c.revenue:'',c.ebitda?'EBITDA: '+c.ebitda:'',c.leverage?c.leverage+' lev':''].filter(Boolean).join(' · ')||'No financial data'}</div>
@@ -916,7 +912,7 @@ function buildContactLanding(id){
 
   // Hero
   html+=`<div class="profile-hero">
-    <div class="profile-avatar av-blue">${initials(displayName(c))}</div>
+    
     <div class="profile-info">
       <div class="profile-name">${escHtml(displayName(c))}</div>
       <div class="profile-sub">${escHtml([c.title,c.role].filter(Boolean).join(' · '))}${coName?` <button class="pf-link" onclick="openCompanyLanding('${c.companyId}','${coType}')">${escHtml(coName)}</button>`:''}</div>
@@ -1155,7 +1151,8 @@ async function saveInteraction(){
     createdAt:new Date().toISOString()
   };
   if(editingLog){const i=DB.interactions.findIndex(x=>x.id===editingLog);if(i>=0)DB.interactions[i]=obj;}
-  else DB.interactions.unshift(obj);
+  else DB.interactions.push(obj);
+  DB.interactions.sort((a,b)=>new Date(b.date)-new Date(a.date));
   await saveAll();closeModal('log');renderAll();
   // Refresh landing if open
   if(currentCompanyId) document.getElementById('landing-company-body').innerHTML=buildCompanyLanding(currentCompanyId,currentCompanyType);
@@ -1350,7 +1347,7 @@ async function deleteTodo(id){
 function renderDash(){
   const nowTodos=DB.todos.filter(t=>t.status==='Open'&&t.priority==='Now').slice(0,5);
   document.getElementById('dash-todos').innerHTML=nowTodos.length?nowTodos.map(t=>renderTodoItem(t,false)).join(''):'<div class="empty-state" style="padding:16px">No Now to-dos</div>';
-  const recent=DB.interactions.slice(0,8);
+  const recent=[...DB.interactions].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,8);
   document.getElementById('dash-interactions').innerHTML=recent.length?recent.map(i=>renderIntRow(i)).join(''):'<div class="empty-state" style="padding:16px">No interactions logged yet</div>';
 }
 
@@ -1366,9 +1363,9 @@ function renderIntRow(i){
     <div class="int-cell"><div class="int-date">${fmtDateShort(i.date)}</div></div>
     <div class="int-cell">
       <div class="int-company">${escHtml(companyName)}</div>
-      <div class="int-people">${escHtml(contactNames.join(', '))||'—'}</div>
+      ${contactNames.map(n=>`<div class="int-person">${escHtml(n)}</div>`).join('')}
+      <div class="int-type">${escHtml(i.type||'')}</div>
     </div>
-    <div class="int-cell"><div class="int-type">${escHtml(i.type||'')}</div></div>
     <div class="int-cell"><div class="int-notes">${escHtml(i.notes||'')}</div></div>
   </div>`;
 }
@@ -1384,15 +1381,15 @@ function dashSearch(){
   let html='';
   if(filter==='all'||filter==='contact'){
     const hits=DB.contacts.filter(c=>[displayName(c),c.role,c.coverage,c.email,c.connection,c.bio].join(' ').toLowerCase().includes(lq)).slice(0,6);
-    if(hits.length){html+='<div class="section-hd">Contacts</div>';html+=hits.map(c=>`<div class="card" onclick="openContactLanding('${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&c.companyId?' · ':''}${hl(getCompanyName(c.companyId,c.companyType),q)}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
+    if(hits.length){html+='<div class="section-hd">Contacts</div>';html+=hits.map(c=>`<div class="card" onclick="openContactLanding('${c.id}')"><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&c.companyId?' · ':''}${hl(getCompanyName(c.companyId,c.companyType),q)}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
   if(filter==='all'||filter==='sponsor'){
     const hits=DB.sponsors.filter(s=>s.name.toLowerCase().includes(lq)||(s.notes||'').toLowerCase().includes(lq)).slice(0,4);
-    if(hits.length){html+='<div class="section-hd">PE Sponsors</div>';html+=hits.map(s=>`<div class="card" onclick="openCompanyLanding('${s.id}','sponsor')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">PE Sponsor</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
+    if(hits.length){html+='<div class="section-hd">PE Sponsors</div>';html+=hits.map(s=>`<div class="card" onclick="openCompanyLanding('${s.id}','sponsor')"><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">PE Sponsor</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
   if(filter==='all'||filter==='corp'){
     const hits=DB.corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq)).slice(0,4);
-    if(hits.length){html+='<div class="section-hd">Corporates</div>';html+=hits.map(c=>`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${c.peOwner?' · '+getSponsorName(c.peOwner):''}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
+    if(hits.length){html+='<div class="section-hd">Corporates</div>';html+=hits.map(c=>`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${c.peOwner?' · '+getSponsorName(c.peOwner):''}</div></div><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>`).join('');}
   }
   if(filter==='all'){
     const hits=DB.interactions.filter(i=>i.notes.toLowerCase().includes(lq)).slice(0,3);
@@ -1408,15 +1405,25 @@ function renderContacts(){
   const q=(document.getElementById('contact-search')||{}).value||'';
   const lq=q.toLowerCase();
   let contacts=[...DB.contacts].sort((a,b)=>((a.lastName||a.firstName||'').toLowerCase()).localeCompare((b.lastName||b.firstName||'').toLowerCase()));
-  if(lq) contacts=contacts.filter(c=>[displayName(c),c.role,c.email,c.coverage,c.connection,c.bio].join(' ').toLowerCase().includes(lq));
+  if(lq) contacts=contacts.filter(c=>[displayName(c),c.role,c.title,c.email,c.coverage,c.connection,c.bio].join(' ').toLowerCase().includes(lq));
   if(!contacts.length){document.getElementById('contact-list').innerHTML='<div class="empty-state">No contacts found</div>';return;}
-  let html='',lastLetter='';
+  let html=`<div class="ct-thead">
+    <div class="ct-th">Name</div>
+    <div class="ct-th">Company</div>
+    <div class="ct-th">Function</div>
+    <div class="ct-th">Title</div>
+    <div class="ct-th">Last contact</div>
+  </div>`;
   contacts.forEach(c=>{
-    const letter=((c.lastName||c.firstName||'?')[0]||'?').toUpperCase();
-    if(letter!==lastLetter){html+=`<div class="section-hd">${letter}</div>`;lastLetter=letter;}
     const co=c.companyId?getCompanyName(c.companyId,c.companyType):'';
     const lc=lastContactedDate(c.id);
-    html+=`<div class="card" onclick="openContactLanding('${c.id}')"><div class="avatar av-blue">${initials(displayName(c))}</div><div class="card-body"><div class="card-name">${hl(displayName(c),q)}</div><div class="card-sub">${hl(c.role||'',q)}${c.role&&co?' · ':''}${hl(co,q)}</div>${lc?`<div class="card-meta">Last: ${lc}</div>`:''}</div><div class="card-right"><span class="badge ${c.contactType==='sponsor'?'b-sponsor':c.contactType==='corp'?'b-corp':'b-other'}">${c.contactType==='sponsor'?'Sponsor':c.contactType==='corp'?'Corp':'Other'}</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;
+    html+=`<div class="ct-row" onclick="openContactLanding('${c.id}')">
+      <div class="ct-cell name">${hl(displayName(c),q)}</div>
+      <div class="ct-cell">${hl(co,q)}</div>
+      <div class="ct-cell">${hl(c.role||'',q)}</div>
+      <div class="ct-cell">${hl(c.title||'',q)}</div>
+      <div class="ct-cell">${lc||'—'}</div>
+    </div>`;
   });
   document.getElementById('contact-list').innerHTML=html;
 }
@@ -1434,7 +1441,7 @@ function renderCompanies(){
     if(lq) sponsors=sponsors.filter(s=>s.name.toLowerCase().includes(lq));
     if(sponsors.length){
       if(filter==='all')html+='<div class="section-hd">PE Sponsors</div>';
-      html+=sponsors.map(s=>{const cc=contactsAtCompany(s.id).length;const pc=portcosOfSponsor(s.id).length;return`<div class="card" onclick="openCompanyLanding('${s.id}','sponsor')"><div class="avatar av-amber">${initials(s.name)}</div><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">${cc} contact${cc!==1?'s':''}${pc?' · '+pc+' portco'+(pc!==1?'s':''):''}</div></div><div class="card-right"><span class="badge b-sponsor">Sponsor</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
+      html+=sponsors.map(s=>{const cc=contactsAtCompany(s.id).length;const pc=portcosOfSponsor(s.id).length;return`<div class="card" onclick="openCompanyLanding('${s.id}','sponsor')"><div class="card-body"><div class="card-name">${hl(s.name,q)}</div><div class="card-sub">${cc} contact${cc!==1?'s':''}${pc?' · '+pc+' portco'+(pc!==1?'s':''):''}</div></div><div class="card-right"><span class="badge b-sponsor">Sponsor</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
     }
   }
   if(filter==='all'||filter==='corporate'){
@@ -1442,7 +1449,7 @@ function renderCompanies(){
     if(lq) corps=corps.filter(c=>c.name.toLowerCase().includes(lq)||(c.description||'').toLowerCase().includes(lq));
     if(corps.length){
       if(filter==='all')html+='<div class="divider"></div><div class="section-hd">Corporates</div>';
-      html+=corps.map(c=>{const owner=c.peOwner?getSponsorName(c.peOwner):'';return`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="avatar av-green">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${owner?' · PE: '+hl(owner,q):''}</div>${c.revenue||c.ebitda?`<div class="card-meta">${c.revenue?'Rev: '+c.revenue:''}${c.revenue&&c.ebitda?' | ':''}${c.ebitda?'EBITDA: '+c.ebitda:''}</div>`:''}</div><div class="card-right"><span class="badge b-corp">Corp</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
+      html+=corps.map(c=>{const owner=c.peOwner?getSponsorName(c.peOwner):'';return`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">${c.type}${owner?' · PE: '+hl(owner,q):''}</div>${c.revenue||c.ebitda?`<div class="card-meta">${c.revenue?'Rev: '+c.revenue:''}${c.revenue&&c.ebitda?' | ':''}${c.ebitda?'EBITDA: '+c.ebitda:''}</div>`:''}</div><div class="card-right"><span class="badge b-corp">Corp</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`;}).join('');
     }
   }
   if(filter==='all'||filter==='other'){
@@ -1450,7 +1457,7 @@ function renderCompanies(){
     if(lq) others=others.filter(c=>c.name.toLowerCase().includes(lq));
     if(others.length){
       if(filter==='all')html+='<div class="divider"></div><div class="section-hd">Other</div>';
-      html+=others.map(c=>`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="avatar av-gray">${initials(c.name)}</div><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">Bank / Advisory / Other</div></div><div class="card-right"><span class="badge b-other">Other</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
+      html+=others.map(c=>`<div class="card" onclick="openCompanyLanding('${c.id}','corp')"><div class="card-body"><div class="card-name">${hl(c.name,q)}</div><div class="card-sub">Bank / Advisory / Other</div></div><div class="card-right"><span class="badge b-other">Other</span><svg class="chevron" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
     }
   }
   document.getElementById('company-list').innerHTML=html||'<div class="empty-state">No companies found</div>';
